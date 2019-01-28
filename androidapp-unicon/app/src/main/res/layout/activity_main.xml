@@ -22,7 +22,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Client">
+    tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/EditText01"
