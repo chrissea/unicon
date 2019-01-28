@@ -1,8 +1,5 @@
 package com.example.androidapp_unicon;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -18,12 +15,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class Client extends MainActivity {
 
     private Socket socket;
 
-    private static final int SERVERPORT = 90;
-    private static final String SERVER_IP = "10.0.0.34";
+    private static final int SERVERPORT = 80;
+    private static final String SERVER_IP =  "10.0.0.34";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +67,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 }
-
