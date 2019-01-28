@@ -7,9 +7,10 @@ sock = socket.socket()
 
 sock.connect((host, port))
 
-message = "bi love ryan reynolds"
-data = "b"
+message = b"Now we Fuck Python"
 sock.send(message)
+
+data = b""
 
 while len(data) < len(message):
   data += sock.recv(1)
@@ -17,5 +18,7 @@ while len(data) < len(message):
 print(data)
 
 sock.close()
+
+
 
 
