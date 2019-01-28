@@ -1,0 +1,8 @@
+connect to the esp with app
+improve esp code to accept and interpret wifi connection stuff and transmit to psoc
+improve app so it can take user input (buttons / joysticks, etc) and sends that as data
+set up psoc to connect to the gamecube and the n64 as a controller
+* checkpoint: test phone as gamecube / n64 controller
+set up psoc to accept input from the gamecube controller and the n64 controller
+* checkpoint: test gc as n64 controller and vice versa
+
