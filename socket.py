@@ -1,13 +1,14 @@
 import socket
 
-host = "192.168.1.78"
+host = "10.0.0.34"
 port = 80
 
 sock = socket.socket()
 
 sock.connect((host, port))
 
-message = "hello world"
+message = "bi love ryan reynolds"
+data = "b"
 sock.send(message)
 
 while len(data) < len(message):
