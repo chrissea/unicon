@@ -52,27 +52,36 @@ void loop() {
   WiFiClient client = wifiServer.available();
  
   while (client) {
-    // can we combine the next two loops?
-    // also can we make them just if statements?
+    if (client.connected()){
+      Serial.println("Client connected");
+    }
     while (client.connected()) {
       while (client.available() > 0) {
-//    while (client.connected()) {client.available() > 0) {
-      char c = client.read();
-      Serial.println("received from app: "+c);
-      if (UART_PSOC.available()) {
-        UART_PSOC.write(c);
-        Serial.println("sending to psoc: "+c);
+        char c = client.read();
+        Serial.println(c);
+        
+        if (UART_PSOC.available()) {
+          UART_PSOC.write(c);
+          Serial.print("Sending to psoc: ");
+          Serial.println(c);
+        }
+        if (UART_PSOC.available()) {
+          char c = UART_PSOC.read();
+          Serial.print("Received from psoc: ");
+          Serial.print(c);
+          
+          client.write(c);
+          Serial.println("Sending to app: ");
+          Serial.println(c);
+        }
+      
       }
-      if (UART_PSOC.available()) {
-        char c = UART_PSOC.read();
-        Serial.println("received from psoc: "+c);
-        client.write(c);
-        Serial.println("sending to app: "+c);
-      }
-    }
-    delay(10);
+      delay(10);
     }
     client.stop();
     Serial.println("Client disconnected");
   }
 }
+
+
+//    while (client.connected()) {client.available() > 0) {
