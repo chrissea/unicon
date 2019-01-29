@@ -24,9 +24,11 @@ public class ControllerActivity extends AppCompatActivity {
     private static final int SERVER_PORT = 8000;
     private static final String SERVER_IP = "10.0.0.34";
     private static final String default_op = "";
-    private static final int refreshRate = 1000;
+    private static final int REFRESH_RATE = 1000;
+    volatile boolean finished = false;
 
     private static volatile String output = default_op;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class ControllerActivity extends AppCompatActivity {
                 InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
                 socket = new Socket(serverAddr, SERVER_PORT);
 
+
                 Log.i("connection", "the socket is initialized");
                 out = new PrintWriter(new BufferedWriter(
                         new OutputStreamWriter(socket.getOutputStream())),
@@ -84,15 +87,19 @@ public class ControllerActivity extends AppCompatActivity {
                 Log.i("error", "e");
             }
 
-            while(true) {
+            while(!Thread.currentThread().isInterrupted()) {
                 talkToServer(out);
             }
 
         }
 
+        public void stopMe() {
+            finished = true;
+        }
+
         public void talkToServer(PrintWriter out) {
             try {
-                Thread.sleep(refreshRate); }
+                Thread.sleep(REFRESH_RATE); }
             catch (Exception e) {
                 e.printStackTrace(); }
 
