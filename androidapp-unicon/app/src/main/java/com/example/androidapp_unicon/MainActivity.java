@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -16,7 +17,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,22 +37,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void onClick(View view) {
-        try {
-            EditText et = (EditText) findViewById(R.id.EditText01);
-            //String str = et.getText().toString();
-            PrintWriter out = new PrintWriter(new BufferedWriter(
-                    new OutputStreamWriter(socket.getOutputStream())),
-                    true);
-            out.println("pt.2 where space tho");
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Log.i("onclick", "click method calling");
+
+        EditText et = (EditText) findViewById(R.id.EditText01);
+        //String str = et.getText().toString();
+
+
+//        try {
+//            EditText et = (EditText) findViewById(R.id.EditText01);
+//            //String str = et.getText().toString();
+//            PrintWriter out = new PrintWriter(new BufferedWriter(
+//                    new OutputStreamWriter(socket.getOutputStream())),
+//                    true);
+//            out.println("pt.2 where space tho");
+//            Log.i("onclick", "ENTERING TRY STATEMENT YEAHHH");
+//        } catch (UnknownHostException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
+
+
 
     class ClientThread implements Runnable {
 
@@ -60,13 +73,15 @@ public class MainActivity extends AppCompatActivity {
                 InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
 
                 socket = new Socket(serverAddr, SERVERPORT);
-                /*Log.i("s", "the socket is initializing");
+                Log.i("s", "the socket is initializing");
 
                 PrintWriter out = new PrintWriter(new BufferedWriter(
                         new OutputStreamWriter(socket.getOutputStream())),
                         true);
                 out.println("where are the spaces coming from");
-*/
+//                OutputStream stream = socket.getOutputStream();
+//                stream.write(70);
+
             } catch (UnknownHostException e1) {
                 e1.printStackTrace();
                 Log.i("e1error", "unknown");
