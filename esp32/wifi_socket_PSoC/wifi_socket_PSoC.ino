@@ -20,7 +20,7 @@ const char* password =  "";
  */
 
 
-HardwareSerial UART_PSOC(0);//(1);
+HardwareSerial UART_PSOC(1);
 
 WiFiServer wifiServer(8000);
  
@@ -44,7 +44,7 @@ void setup() {
 
   // setup UART serial communication with the PSoC
   //                                 RX, TX
-  UART_PSOC.begin(115200, SERIAL_8N1, 3, 1);
+  UART_PSOC.begin(57600, SERIAL_8N1, 16, 17);
 }
  
 void loop() {
@@ -52,34 +52,33 @@ void loop() {
   WiFiClient client = wifiServer.available();
  
   while (client) {
-    if (client.connected()){
-      Serial.println("Client connected");
-    }
+    //if (client.connected()){
+      //Serial.println("Client connected");
+    //}
     while (client.connected()) {
-      while (client.available() > 0) {
+      while (client.available()) {
         char c = client.read();
-        Serial.println(c);
+        //Serial.println(c);
         
-        if (UART_PSOC.available()) {
+        if (UART_PSOC.availableForWrite()) {
           UART_PSOC.write(c);
-          Serial.print("Sending to psoc: ");
+          //Serial.print("Sending to psoc: ");
           Serial.println(c);
         }
         if (UART_PSOC.available()) {
           char c = UART_PSOC.read();
-          Serial.print("Received from psoc: ");
-          Serial.print(c);
+          //Serial.print("Received from psoc: ");
+          //Serial.print(c);
           
           client.write(c);
-          Serial.println("Sending to app: ");
-          Serial.println(c);
+          //Serial.println("Sending to app: ");
+          //Serial.println(c);
         }
       
       }
-      delay(10);
     }
     client.stop();
-    Serial.println("Client disconnected");
+    //Serial.println("Client disconnected");
   }
 }
 
