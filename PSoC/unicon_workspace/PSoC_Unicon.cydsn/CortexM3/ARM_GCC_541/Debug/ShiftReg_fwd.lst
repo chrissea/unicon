@@ -1,0 +1,2188 @@
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"ShiftReg_fwd.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ShiftReg_fwd_EnableInt,"ax",%progbits
+  20              		.align	2
+  21              		.global	ShiftReg_fwd_EnableInt
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	ShiftReg_fwd_EnableInt, %function
+  25              	ShiftReg_fwd_EnableInt:
+  26              	.LFB4:
+  27              		.file 1 "Generated_Source\\PSoC5\\ShiftReg_fwd.c"
+   1:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/ShiftReg_fwd.c **** * File Name: ShiftReg_fwd.c
+   3:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Version 2.30
+   4:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+   5:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Description:
+   6:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  This file provides the API source code for the Shift Register component.
+   7:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+   8:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Note: none
+   9:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  10:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+  11:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/ShiftReg_fwd.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:Generated_Source\PSoC5/ShiftReg_fwd.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:Generated_Source\PSoC5/ShiftReg_fwd.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************/
+  16:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  17:Generated_Source\PSoC5/ShiftReg_fwd.c **** #include "ShiftReg_fwd.h"
+  18:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  19:Generated_Source\PSoC5/ShiftReg_fwd.c **** uint8 ShiftReg_fwd_initVar = 0u;
+  20:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  21:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  22:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+  23:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_Start
+  24:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+  25:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  26:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+  27:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Starts the Shift Register.
+  28:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  29:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+  30:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 2
+
+
+  31:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  32:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+  33:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+  34:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  35:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Global Variables:
+  36:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  ShiftReg_fwd_initVar - used to check initial configuration, modified on
+  37:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  first function call.
+  38:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  39:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Reentrant:
+  40:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  No.
+  41:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  42:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+  43:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_Start(void) 
+  44:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+  45:Generated_Source\PSoC5/ShiftReg_fwd.c ****     if(0u == ShiftReg_fwd_initVar)
+  46:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+  47:Generated_Source\PSoC5/ShiftReg_fwd.c ****         ShiftReg_fwd_Init();
+  48:Generated_Source\PSoC5/ShiftReg_fwd.c ****         ShiftReg_fwd_initVar = 1u; /* Component initialized */
+  49:Generated_Source\PSoC5/ShiftReg_fwd.c ****     }
+  50:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  51:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_Enable();
+  52:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+  53:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  54:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  55:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+  56:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_Enable
+  57:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+  58:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  59:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+  60:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Enables the Shift Register.
+  61:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  62:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+  63:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  void.
+  64:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  65:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+  66:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  void.
+  67:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  68:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+  69:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_Enable(void) 
+  70:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+  71:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /* Changing address in Datapath Control Store
+  72:Generated_Source\PSoC5/ShiftReg_fwd.c ****        from NOP to component state machine commands space */
+  73:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SR_CONTROL |= ShiftReg_fwd_CLK_EN;
+  74:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  75:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_EnableInt();
+  76:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+  77:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  78:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  79:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+  80:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_Init
+  81:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+  82:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  83:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+  84:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Initializes Tx and/or Rx interrupt sources with initial values.
+  85:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  86:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+  87:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  void.
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 3
+
+
+  88:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  89:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+  90:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  void.
+  91:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+  92:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+  93:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_Init(void) 
+  94:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+  95:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SetIntMode(ShiftReg_fwd_INT_SRC);
+  96:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+  97:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  98:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  99:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ 100:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_Stop
+ 101:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 102:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 103:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 104:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Disables the Shift Register
+ 105:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 106:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 107:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 108:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 109:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 110:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 111:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 112:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 113:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_Stop(void) 
+ 114:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+ 115:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /*changing Datapath Control Store address to NOP space*/
+ 116:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SR_CONTROL &= ((uint8) ~ShiftReg_fwd_CLK_EN);
+ 117:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_DisableInt();
+ 118:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 119:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 120:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 121:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ 122:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_EnableInt
+ 123:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 124:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 125:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 126:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Enables the Shift Register interrupt.
+ 127:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 128:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 129:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 130:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 131:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 132:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 133:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 134:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 135:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_EnableInt(void) 
+ 136:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+  28              		.loc 1 136 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 4
+
+
+ 137:Generated_Source\PSoC5/ShiftReg_fwd.c ****     uint8 interruptState;
+ 138:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 139:Generated_Source\PSoC5/ShiftReg_fwd.c ****     interruptState = CyEnterCriticalSection();
+  36              		.loc 1 139 0
+  37 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+  38              	.LVL0:
+ 140:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SR_AUX_CONTROL |= ShiftReg_fwd_INTERRUPTS_ENABLE;
+  39              		.loc 1 140 0
+  40 0006 044A     		ldr	r2, .L3
+  41 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  42 000a 43F01003 		orr	r3, r3, #16
+  43 000e 1370     		strb	r3, [r2]
+ 141:Generated_Source\PSoC5/ShiftReg_fwd.c ****     CyExitCriticalSection(interruptState);
+  44              		.loc 1 141 0
+  45 0010 FFF7FEFF 		bl	CyExitCriticalSection
+  46              	.LVL1:
+  47 0014 08BD     		pop	{r3, pc}
+  48              	.L4:
+  49 0016 00BF     		.align	2
+  50              	.L3:
+  51 0018 96650040 		.word	1073767830
+  52              		.cfi_endproc
+  53              	.LFE4:
+  54              		.size	ShiftReg_fwd_EnableInt, .-ShiftReg_fwd_EnableInt
+  55              		.section	.text.ShiftReg_fwd_Enable,"ax",%progbits
+  56              		.align	2
+  57              		.global	ShiftReg_fwd_Enable
+  58              		.thumb
+  59              		.thumb_func
+  60              		.type	ShiftReg_fwd_Enable, %function
+  61              	ShiftReg_fwd_Enable:
+  62              	.LFB1:
+  70:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /* Changing address in Datapath Control Store
+  63              		.loc 1 70 0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67 0000 08B5     		push	{r3, lr}
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 3, -8
+  70              		.cfi_offset 14, -4
+  73:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+  71              		.loc 1 73 0
+  72 0002 044A     		ldr	r2, .L7
+  73 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  74 0006 43F00103 		orr	r3, r3, #1
+  75 000a 1370     		strb	r3, [r2]
+  75:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+  76              		.loc 1 75 0
+  77 000c FFF7FEFF 		bl	ShiftReg_fwd_EnableInt
+  78              	.LVL2:
+  79 0010 08BD     		pop	{r3, pc}
+  80              	.L8:
+  81 0012 00BF     		.align	2
+  82              	.L7:
+  83 0014 76650040 		.word	1073767798
+  84              		.cfi_endproc
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 5
+
+
+  85              	.LFE1:
+  86              		.size	ShiftReg_fwd_Enable, .-ShiftReg_fwd_Enable
+  87              		.section	.text.ShiftReg_fwd_DisableInt,"ax",%progbits
+  88              		.align	2
+  89              		.global	ShiftReg_fwd_DisableInt
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	ShiftReg_fwd_DisableInt, %function
+  93              	ShiftReg_fwd_DisableInt:
+  94              	.LFB5:
+ 142:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 143:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 144:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 145:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ 146:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_DisableInt
+ 147:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 148:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 149:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 150:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Disables the Shift Register interrupt.
+ 151:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 152:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 153:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 154:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 155:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 156:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 157:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 158:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_DisableInt(void) 
+ 160:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+  95              		.loc 1 160 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99 0000 08B5     		push	{r3, lr}
+ 100              		.cfi_def_cfa_offset 8
+ 101              		.cfi_offset 3, -8
+ 102              		.cfi_offset 14, -4
+ 161:Generated_Source\PSoC5/ShiftReg_fwd.c ****     uint8 interruptState;
+ 162:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 163:Generated_Source\PSoC5/ShiftReg_fwd.c ****     interruptState = CyEnterCriticalSection();
+ 103              		.loc 1 163 0
+ 104 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 105              	.LVL3:
+ 164:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SR_AUX_CONTROL &= ((uint8) ~ShiftReg_fwd_INTERRUPTS_ENABLE);
+ 106              		.loc 1 164 0
+ 107 0006 044A     		ldr	r2, .L11
+ 108 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 109 000a 03F0EF03 		and	r3, r3, #239
+ 110 000e 1370     		strb	r3, [r2]
+ 165:Generated_Source\PSoC5/ShiftReg_fwd.c ****     CyExitCriticalSection(interruptState);
+ 111              		.loc 1 165 0
+ 112 0010 FFF7FEFF 		bl	CyExitCriticalSection
+ 113              	.LVL4:
+ 114 0014 08BD     		pop	{r3, pc}
+ 115              	.L12:
+ 116 0016 00BF     		.align	2
+ 117              	.L11:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 6
+
+
+ 118 0018 96650040 		.word	1073767830
+ 119              		.cfi_endproc
+ 120              	.LFE5:
+ 121              		.size	ShiftReg_fwd_DisableInt, .-ShiftReg_fwd_DisableInt
+ 122              		.section	.text.ShiftReg_fwd_Stop,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	ShiftReg_fwd_Stop
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.type	ShiftReg_fwd_Stop, %function
+ 128              	ShiftReg_fwd_Stop:
+ 129              	.LFB3:
+ 114:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /*changing Datapath Control Store address to NOP space*/
+ 130              		.loc 1 114 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134 0000 08B5     		push	{r3, lr}
+ 135              		.cfi_def_cfa_offset 8
+ 136              		.cfi_offset 3, -8
+ 137              		.cfi_offset 14, -4
+ 116:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_DisableInt();
+ 138              		.loc 1 116 0
+ 139 0002 044A     		ldr	r2, .L15
+ 140 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 141 0006 03F0FE03 		and	r3, r3, #254
+ 142 000a 1370     		strb	r3, [r2]
+ 117:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 143              		.loc 1 117 0
+ 144 000c FFF7FEFF 		bl	ShiftReg_fwd_DisableInt
+ 145              	.LVL5:
+ 146 0010 08BD     		pop	{r3, pc}
+ 147              	.L16:
+ 148 0012 00BF     		.align	2
+ 149              	.L15:
+ 150 0014 76650040 		.word	1073767798
+ 151              		.cfi_endproc
+ 152              	.LFE3:
+ 153              		.size	ShiftReg_fwd_Stop, .-ShiftReg_fwd_Stop
+ 154              		.section	.text.ShiftReg_fwd_GetFIFOStatus,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	ShiftReg_fwd_GetFIFOStatus
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.type	ShiftReg_fwd_GetFIFOStatus, %function
+ 160              	ShiftReg_fwd_GetFIFOStatus:
+ 161              	.LFB6:
+ 166:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 167:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 168:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 169:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ 170:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_GetFIFOStatus
+ 171:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 172:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 173:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 174:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Returns current status of input or output FIFO.
+ 175:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 7
+
+
+ 176:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 177:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  fifoId.
+ 178:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 179:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 180:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  FIFO status.
+ 181:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 182:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 183:Generated_Source\PSoC5/ShiftReg_fwd.c **** uint8 ShiftReg_fwd_GetFIFOStatus(uint8 fifoId) 
+ 184:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+ 162              		.loc 1 184 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167              	.LVL6:
+ 168 0000 0346     		mov	r3, r0
+ 169              	.LVL7:
+ 185:Generated_Source\PSoC5/ShiftReg_fwd.c ****     uint8 result;
+ 186:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 187:Generated_Source\PSoC5/ShiftReg_fwd.c ****     result = ShiftReg_fwd_RET_FIFO_NOT_DEFINED;
+ 188:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 189:Generated_Source\PSoC5/ShiftReg_fwd.c ****     #if(0u != ShiftReg_fwd_USE_INPUT_FIFO)
+ 190:Generated_Source\PSoC5/ShiftReg_fwd.c ****         if(ShiftReg_fwd_IN_FIFO == fifoId)
+ 170              		.loc 1 190 0
+ 171 0002 0128     		cmp	r0, #1
+ 172 0004 0BD1     		bne	.L24
+ 191:Generated_Source\PSoC5/ShiftReg_fwd.c ****         {
+ 192:Generated_Source\PSoC5/ShiftReg_fwd.c ****             switch(ShiftReg_fwd_GET_IN_FIFO_STS)
+ 173              		.loc 1 192 0
+ 174 0006 0F4A     		ldr	r2, .L28
+ 175 0008 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 176 000a C2F3C102 		ubfx	r2, r2, #3, #2
+ 177 000e 12B1     		cbz	r2, .L19
+ 178 0010 022A     		cmp	r2, #2
+ 179 0012 02D0     		beq	.L20
+ 180 0014 05E0     		b	.L27
+ 181              	.L19:
+ 193:Generated_Source\PSoC5/ShiftReg_fwd.c ****             {
+ 194:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 case ShiftReg_fwd_IN_FIFO_FULL :
+ 195:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     result = ShiftReg_fwd_RET_FIFO_FULL;
+ 182              		.loc 1 195 0
+ 183 0016 0020     		movs	r0, #0
+ 184              	.LVL8:
+ 185 0018 04E0     		b	.L18
+ 186              	.LVL9:
+ 187              	.L20:
+ 196:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     break;
+ 197:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 198:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 case ShiftReg_fwd_IN_FIFO_EMPTY :
+ 199:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     result = ShiftReg_fwd_RET_FIFO_EMPTY;
+ 200:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     break;
+ 201:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 202:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 case ShiftReg_fwd_IN_FIFO_PARTIAL:
+ 203:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     result = ShiftReg_fwd_RET_FIFO_PARTIAL;
+ 188              		.loc 1 203 0
+ 189 001a 0120     		movs	r0, #1
+ 190              	.LVL10:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 8
+
+
+ 204:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     break;
+ 191              		.loc 1 204 0
+ 192 001c 02E0     		b	.L18
+ 193              	.LVL11:
+ 194              	.L24:
+ 187:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 195              		.loc 1 187 0
+ 196 001e FE20     		movs	r0, #254
+ 197              	.LVL12:
+ 198 0020 00E0     		b	.L18
+ 199              	.LVL13:
+ 200              	.L27:
+ 199:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     break;
+ 201              		.loc 1 199 0
+ 202 0022 0220     		movs	r0, #2
+ 203              	.LVL14:
+ 204              	.L18:
+ 205:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     
+ 206:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 default:
+ 207:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     /* Initial result value, while 
+ 208:Generated_Source\PSoC5/ShiftReg_fwd.c ****                        IN_FIFO_EMPTY case is false 
+ 209:Generated_Source\PSoC5/ShiftReg_fwd.c ****                      */
+ 210:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     result = ShiftReg_fwd_RET_FIFO_EMPTY;
+ 211:Generated_Source\PSoC5/ShiftReg_fwd.c ****                     break;
+ 212:Generated_Source\PSoC5/ShiftReg_fwd.c ****             }   
+ 213:Generated_Source\PSoC5/ShiftReg_fwd.c ****         }
+ 214:Generated_Source\PSoC5/ShiftReg_fwd.c ****     #endif /* (0u != ShiftReg_fwd_USE_INPUT_FIFO) */
+ 215:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 216:Generated_Source\PSoC5/ShiftReg_fwd.c ****     if(ShiftReg_fwd_OUT_FIFO == fifoId)
+ 205              		.loc 1 216 0
+ 206 0024 022B     		cmp	r3, #2
+ 207 0026 0BD1     		bne	.L21
+ 217:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+ 218:Generated_Source\PSoC5/ShiftReg_fwd.c ****         switch(ShiftReg_fwd_GET_OUT_FIFO_STS)
+ 208              		.loc 1 218 0
+ 209 0028 064B     		ldr	r3, .L28
+ 210 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 211 002c C3F34113 		ubfx	r3, r3, #5, #2
+ 212 0030 2BB1     		cbz	r3, .L26
+ 213 0032 022B     		cmp	r3, #2
+ 214 0034 01D0     		beq	.L23
+ 219:Generated_Source\PSoC5/ShiftReg_fwd.c ****         {
+ 220:Generated_Source\PSoC5/ShiftReg_fwd.c ****             case ShiftReg_fwd_OUT_FIFO_FULL :
+ 221:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 result = ShiftReg_fwd_RET_FIFO_FULL;
+ 215              		.loc 1 221 0
+ 216 0036 0020     		movs	r0, #0
+ 217              	.LVL15:
+ 218 0038 7047     		bx	lr
+ 219              	.LVL16:
+ 220              	.L23:
+ 222:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 break;
+ 223:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 224:Generated_Source\PSoC5/ShiftReg_fwd.c ****             case ShiftReg_fwd_OUT_FIFO_EMPTY :
+ 225:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 result = ShiftReg_fwd_RET_FIFO_EMPTY;
+ 226:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 break;
+ 227:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 228:Generated_Source\PSoC5/ShiftReg_fwd.c ****             case ShiftReg_fwd_OUT_FIFO_PARTIAL :
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 9
+
+
+ 229:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 result = ShiftReg_fwd_RET_FIFO_PARTIAL;
+ 221              		.loc 1 229 0
+ 222 003a 0120     		movs	r0, #1
+ 230:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 break;
+ 223              		.loc 1 230 0
+ 224 003c 7047     		bx	lr
+ 225              	.LVL17:
+ 226              	.L26:
+ 225:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 break;
+ 227              		.loc 1 225 0
+ 228 003e 0220     		movs	r0, #2
+ 229              	.LVL18:
+ 230              	.L21:
+ 231:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 232:Generated_Source\PSoC5/ShiftReg_fwd.c ****             default:
+ 233:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 /* Initial result value, while 
+ 234:Generated_Source\PSoC5/ShiftReg_fwd.c ****                    OUT_FIFO_FULL case is false 
+ 235:Generated_Source\PSoC5/ShiftReg_fwd.c ****                  */
+ 236:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 result = ShiftReg_fwd_RET_FIFO_FULL;
+ 237:Generated_Source\PSoC5/ShiftReg_fwd.c ****                 break;
+ 238:Generated_Source\PSoC5/ShiftReg_fwd.c ****         }
+ 239:Generated_Source\PSoC5/ShiftReg_fwd.c ****     }
+ 240:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 241:Generated_Source\PSoC5/ShiftReg_fwd.c ****     return(result);
+ 242:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 231              		.loc 1 242 0
+ 232 0040 7047     		bx	lr
+ 233              	.L29:
+ 234 0042 00BF     		.align	2
+ 235              	.L28:
+ 236 0044 66650040 		.word	1073767782
+ 237              		.cfi_endproc
+ 238              	.LFE6:
+ 239              		.size	ShiftReg_fwd_GetFIFOStatus, .-ShiftReg_fwd_GetFIFOStatus
+ 240              		.section	.text.ShiftReg_fwd_SetIntMode,"ax",%progbits
+ 241              		.align	2
+ 242              		.global	ShiftReg_fwd_SetIntMode
+ 243              		.thumb
+ 244              		.thumb_func
+ 245              		.type	ShiftReg_fwd_SetIntMode, %function
+ 246              	ShiftReg_fwd_SetIntMode:
+ 247              	.LFB7:
+ 243:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 244:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 245:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ 246:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_SetIntMode
+ 247:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 248:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 249:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 250:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Sets the Interrupt Source for the Shift Register interrupt. Multiple
+ 251:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  sources may be ORed together
+ 252:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 253:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 254:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  interruptSource: Byte containing the constant for the selected interrupt
+ 255:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  source/s.
+ 256:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 257:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 10
+
+
+ 258:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 259:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 260:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 261:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_SetIntMode(uint8 interruptSource) 
+ 262:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+ 248              		.loc 1 262 0
+ 249              		.cfi_startproc
+ 250              		@ args = 0, pretend = 0, frame = 0
+ 251              		@ frame_needed = 0, uses_anonymous_args = 0
+ 252              		@ link register save eliminated.
+ 253              	.LVL19:
+ 263:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SR_STATUS_MASK &= ((uint8) ~ShiftReg_fwd_INTS_EN_MASK);          /* Clear existing
+ 254              		.loc 1 263 0
+ 255 0000 054B     		ldr	r3, .L31
+ 256 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 257 0004 02F0F802 		and	r2, r2, #248
+ 258 0008 1A70     		strb	r2, [r3]
+ 264:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SR_STATUS_MASK |= (interruptSource & ShiftReg_fwd_INTS_EN_MASK); /* Set int */
+ 259              		.loc 1 264 0
+ 260 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 261 000c 00F00700 		and	r0, r0, #7
+ 262              	.LVL20:
+ 263 0010 1043     		orrs	r0, r0, r2
+ 264 0012 1870     		strb	r0, [r3]
+ 265 0014 7047     		bx	lr
+ 266              	.L32:
+ 267 0016 00BF     		.align	2
+ 268              	.L31:
+ 269 0018 86650040 		.word	1073767814
+ 270              		.cfi_endproc
+ 271              	.LFE7:
+ 272              		.size	ShiftReg_fwd_SetIntMode, .-ShiftReg_fwd_SetIntMode
+ 273              		.section	.text.ShiftReg_fwd_Init,"ax",%progbits
+ 274              		.align	2
+ 275              		.global	ShiftReg_fwd_Init
+ 276              		.thumb
+ 277              		.thumb_func
+ 278              		.type	ShiftReg_fwd_Init, %function
+ 279              	ShiftReg_fwd_Init:
+ 280              	.LFB2:
+  94:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ShiftReg_fwd_SetIntMode(ShiftReg_fwd_INT_SRC);
+ 281              		.loc 1 94 0
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 0
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285 0000 08B5     		push	{r3, lr}
+ 286              		.cfi_def_cfa_offset 8
+ 287              		.cfi_offset 3, -8
+ 288              		.cfi_offset 14, -4
+  95:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 289              		.loc 1 95 0
+ 290 0002 0020     		movs	r0, #0
+ 291 0004 FFF7FEFF 		bl	ShiftReg_fwd_SetIntMode
+ 292              	.LVL21:
+ 293 0008 08BD     		pop	{r3, pc}
+ 294              		.cfi_endproc
+ 295              	.LFE2:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 11
+
+
+ 296              		.size	ShiftReg_fwd_Init, .-ShiftReg_fwd_Init
+ 297 000a 00BF     		.section	.text.ShiftReg_fwd_Start,"ax",%progbits
+ 298              		.align	2
+ 299              		.global	ShiftReg_fwd_Start
+ 300              		.thumb
+ 301              		.thumb_func
+ 302              		.type	ShiftReg_fwd_Start, %function
+ 303              	ShiftReg_fwd_Start:
+ 304              	.LFB0:
+  44:Generated_Source\PSoC5/ShiftReg_fwd.c ****     if(0u == ShiftReg_fwd_initVar)
+ 305              		.loc 1 44 0
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309 0000 08B5     		push	{r3, lr}
+ 310              		.cfi_def_cfa_offset 8
+ 311              		.cfi_offset 3, -8
+ 312              		.cfi_offset 14, -4
+  45:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+ 313              		.loc 1 45 0
+ 314 0002 054B     		ldr	r3, .L38
+ 315 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 316 0006 23B9     		cbnz	r3, .L36
+  47:Generated_Source\PSoC5/ShiftReg_fwd.c ****         ShiftReg_fwd_initVar = 1u; /* Component initialized */
+ 317              		.loc 1 47 0
+ 318 0008 FFF7FEFF 		bl	ShiftReg_fwd_Init
+ 319              	.LVL22:
+  48:Generated_Source\PSoC5/ShiftReg_fwd.c ****     }
+ 320              		.loc 1 48 0
+ 321 000c 0122     		movs	r2, #1
+ 322 000e 024B     		ldr	r3, .L38
+ 323 0010 1A70     		strb	r2, [r3]
+ 324              	.L36:
+  51:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 325              		.loc 1 51 0
+ 326 0012 FFF7FEFF 		bl	ShiftReg_fwd_Enable
+ 327              	.LVL23:
+ 328 0016 08BD     		pop	{r3, pc}
+ 329              	.L39:
+ 330              		.align	2
+ 331              	.L38:
+ 332 0018 00000000 		.word	.LANCHOR0
+ 333              		.cfi_endproc
+ 334              	.LFE0:
+ 335              		.size	ShiftReg_fwd_Start, .-ShiftReg_fwd_Start
+ 336              		.section	.text.ShiftReg_fwd_GetIntStatus,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	ShiftReg_fwd_GetIntStatus
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.type	ShiftReg_fwd_GetIntStatus, %function
+ 342              	ShiftReg_fwd_GetIntStatus:
+ 343              	.LFB8:
+ 265:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 266:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 267:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 268:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 12
+
+
+ 269:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_GetIntStatus
+ 270:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 271:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 272:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 273:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Gets the Shift Register Interrupt status.
+ 274:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 275:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 276:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 277:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 278:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 279:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Byte containing the constant for the selected interrupt source/s.
+ 280:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 281:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 282:Generated_Source\PSoC5/ShiftReg_fwd.c **** uint8 ShiftReg_fwd_GetIntStatus(void) 
+ 283:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+ 344              		.loc 1 283 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		@ link register save eliminated.
+ 284:Generated_Source\PSoC5/ShiftReg_fwd.c ****     return(ShiftReg_fwd_SR_STATUS & ShiftReg_fwd_INTS_EN_MASK);
+ 349              		.loc 1 284 0
+ 350 0000 024B     		ldr	r3, .L41
+ 351 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 285:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 352              		.loc 1 285 0
+ 353 0004 00F00700 		and	r0, r0, #7
+ 354 0008 7047     		bx	lr
+ 355              	.L42:
+ 356 000a 00BF     		.align	2
+ 357              	.L41:
+ 358 000c 66650040 		.word	1073767782
+ 359              		.cfi_endproc
+ 360              	.LFE8:
+ 361              		.size	ShiftReg_fwd_GetIntStatus, .-ShiftReg_fwd_GetIntStatus
+ 362              		.section	.text.ShiftReg_fwd_WriteRegValue,"ax",%progbits
+ 363              		.align	2
+ 364              		.global	ShiftReg_fwd_WriteRegValue
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.type	ShiftReg_fwd_WriteRegValue, %function
+ 368              	ShiftReg_fwd_WriteRegValue:
+ 369              	.LFB9:
+ 286:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 287:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 288:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ 289:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_WriteRegValue
+ 290:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 291:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 292:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 293:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Send state directly to shift register
+ 294:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 295:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 296:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  shiftData: containing shift register state.
+ 297:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 298:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 299:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 13
+
+
+ 300:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 301:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 302:Generated_Source\PSoC5/ShiftReg_fwd.c **** void ShiftReg_fwd_WriteRegValue(uint8 shiftData)
+ 303:Generated_Source\PSoC5/ShiftReg_fwd.c ****                                                                      
+ 304:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+ 370              		.loc 1 304 0
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374              		@ link register save eliminated.
+ 375              	.LVL24:
+ 305:Generated_Source\PSoC5/ShiftReg_fwd.c ****     CY_SET_REG8(ShiftReg_fwd_SHIFT_REG_LSB_PTR, shiftData);
+ 376              		.loc 1 305 0
+ 377 0000 014B     		ldr	r3, .L44
+ 378 0002 1870     		strb	r0, [r3]
+ 379 0004 7047     		bx	lr
+ 380              	.L45:
+ 381 0006 00BF     		.align	2
+ 382              	.L44:
+ 383 0008 06650040 		.word	1073767686
+ 384              		.cfi_endproc
+ 385              	.LFE9:
+ 386              		.size	ShiftReg_fwd_WriteRegValue, .-ShiftReg_fwd_WriteRegValue
+ 387              		.section	.text.ShiftReg_fwd_WriteData,"ax",%progbits
+ 388              		.align	2
+ 389              		.global	ShiftReg_fwd_WriteData
+ 390              		.thumb
+ 391              		.thumb_func
+ 392              		.type	ShiftReg_fwd_WriteData, %function
+ 393              	ShiftReg_fwd_WriteData:
+ 394              	.LFB10:
+ 306:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 307:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 308:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 309:Generated_Source\PSoC5/ShiftReg_fwd.c **** #if(0u != ShiftReg_fwd_USE_INPUT_FIFO)
+ 310:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /*******************************************************************************
+ 311:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Function Name: ShiftReg_fwd_WriteData
+ 312:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ********************************************************************************
+ 313:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 314:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Summary:
+ 315:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  Send state to FIFO for later transfer to shift register based on the Load
+ 316:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  input
+ 317:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 318:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Parameters:
+ 319:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  shiftData: containing shift register state.
+ 320:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 321:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Return:
+ 322:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  Indicates: successful execution of function
+ 323:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  when FIFO is empty; and error when FIFO is full.
+ 324:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 325:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Reentrant:
+ 326:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  No.
+ 327:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 328:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *******************************************************************************/
+ 329:Generated_Source\PSoC5/ShiftReg_fwd.c ****     cystatus ShiftReg_fwd_WriteData(uint8 shiftData)
+ 330:Generated_Source\PSoC5/ShiftReg_fwd.c ****                                                                          
+ 331:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 14
+
+
+ 395              		.loc 1 331 0
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 0
+ 398              		@ frame_needed = 0, uses_anonymous_args = 0
+ 399              	.LVL25:
+ 400 0000 10B5     		push	{r4, lr}
+ 401              		.cfi_def_cfa_offset 8
+ 402              		.cfi_offset 4, -8
+ 403              		.cfi_offset 14, -4
+ 404 0002 0446     		mov	r4, r0
+ 405              	.LVL26:
+ 332:Generated_Source\PSoC5/ShiftReg_fwd.c ****         cystatus result;
+ 333:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 334:Generated_Source\PSoC5/ShiftReg_fwd.c ****         result = CYRET_INVALID_STATE;
+ 335:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 336:Generated_Source\PSoC5/ShiftReg_fwd.c ****         /* Writes data into the input FIFO if it is not FULL */
+ 337:Generated_Source\PSoC5/ShiftReg_fwd.c ****         if(ShiftReg_fwd_RET_FIFO_FULL != (ShiftReg_fwd_GetFIFOStatus(ShiftReg_fwd_IN_FIFO)))
+ 406              		.loc 1 337 0
+ 407 0004 0120     		movs	r0, #1
+ 408              	.LVL27:
+ 409 0006 FFF7FEFF 		bl	ShiftReg_fwd_GetFIFOStatus
+ 410              	.LVL28:
+ 411 000a 18B1     		cbz	r0, .L48
+ 338:Generated_Source\PSoC5/ShiftReg_fwd.c ****         {
+ 339:Generated_Source\PSoC5/ShiftReg_fwd.c ****             CY_SET_REG8(ShiftReg_fwd_IN_FIFO_VAL_LSB_PTR, shiftData);
+ 412              		.loc 1 339 0
+ 413 000c 024B     		ldr	r3, .L50
+ 414 000e 1C70     		strb	r4, [r3]
+ 415              	.LVL29:
+ 340:Generated_Source\PSoC5/ShiftReg_fwd.c ****             result = CYRET_SUCCESS;
+ 416              		.loc 1 340 0
+ 417 0010 0020     		movs	r0, #0
+ 418 0012 10BD     		pop	{r4, pc}
+ 419              	.LVL30:
+ 420              	.L48:
+ 334:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 421              		.loc 1 334 0
+ 422 0014 1120     		movs	r0, #17
+ 423              	.LVL31:
+ 341:Generated_Source\PSoC5/ShiftReg_fwd.c ****         }
+ 342:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 343:Generated_Source\PSoC5/ShiftReg_fwd.c ****         return(result);
+ 344:Generated_Source\PSoC5/ShiftReg_fwd.c ****     }
+ 424              		.loc 1 344 0
+ 425 0016 10BD     		pop	{r4, pc}
+ 426              	.L51:
+ 427              		.align	2
+ 428              	.L50:
+ 429 0018 46650040 		.word	1073767750
+ 430              		.cfi_endproc
+ 431              	.LFE10:
+ 432              		.size	ShiftReg_fwd_WriteData, .-ShiftReg_fwd_WriteData
+ 433              		.section	.text.ShiftReg_fwd_ReadData,"ax",%progbits
+ 434              		.align	2
+ 435              		.global	ShiftReg_fwd_ReadData
+ 436              		.thumb
+ 437              		.thumb_func
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 15
+
+
+ 438              		.type	ShiftReg_fwd_ReadData, %function
+ 439              	ShiftReg_fwd_ReadData:
+ 440              	.LFB11:
+ 345:Generated_Source\PSoC5/ShiftReg_fwd.c **** #endif /* (0u != ShiftReg_fwd_USE_INPUT_FIFO) */
+ 346:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 347:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 348:Generated_Source\PSoC5/ShiftReg_fwd.c **** #if(0u != ShiftReg_fwd_USE_OUTPUT_FIFO)
+ 349:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /*******************************************************************************
+ 350:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Function Name: ShiftReg_fwd_ReadData
+ 351:Generated_Source\PSoC5/ShiftReg_fwd.c ****     ********************************************************************************
+ 352:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 353:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Summary:
+ 354:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  Returns state in FIFO due to Store input.
+ 355:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 356:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Parameters:
+ 357:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  None.
+ 358:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 359:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Return:
+ 360:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  Shift Register state
+ 361:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 362:Generated_Source\PSoC5/ShiftReg_fwd.c ****     * Reentrant:
+ 363:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *  No.
+ 364:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *
+ 365:Generated_Source\PSoC5/ShiftReg_fwd.c ****     *******************************************************************************/
+ 366:Generated_Source\PSoC5/ShiftReg_fwd.c ****     uint8 ShiftReg_fwd_ReadData(void) 
+ 367:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+ 441              		.loc 1 367 0
+ 442              		.cfi_startproc
+ 443              		@ args = 0, pretend = 0, frame = 0
+ 444              		@ frame_needed = 0, uses_anonymous_args = 0
+ 445              		@ link register save eliminated.
+ 368:Generated_Source\PSoC5/ShiftReg_fwd.c ****         return(CY_GET_REG8(ShiftReg_fwd_OUT_FIFO_VAL_LSB_PTR));
+ 446              		.loc 1 368 0
+ 447 0000 014B     		ldr	r3, .L53
+ 448 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 369:Generated_Source\PSoC5/ShiftReg_fwd.c ****     }
+ 449              		.loc 1 369 0
+ 450 0004 7047     		bx	lr
+ 451              	.L54:
+ 452 0006 00BF     		.align	2
+ 453              	.L53:
+ 454 0008 56650040 		.word	1073767766
+ 455              		.cfi_endproc
+ 456              	.LFE11:
+ 457              		.size	ShiftReg_fwd_ReadData, .-ShiftReg_fwd_ReadData
+ 458              		.section	.text.ShiftReg_fwd_ReadRegValue,"ax",%progbits
+ 459              		.align	2
+ 460              		.global	ShiftReg_fwd_ReadRegValue
+ 461              		.thumb
+ 462              		.thumb_func
+ 463              		.type	ShiftReg_fwd_ReadRegValue, %function
+ 464              	ShiftReg_fwd_ReadRegValue:
+ 465              	.LFB12:
+ 370:Generated_Source\PSoC5/ShiftReg_fwd.c **** #endif /* (0u != ShiftReg_fwd_USE_OUTPUT_FIFO) */
+ 371:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 372:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 373:Generated_Source\PSoC5/ShiftReg_fwd.c **** /*******************************************************************************
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 16
+
+
+ 374:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Function Name: ShiftReg_fwd_ReadRegValue
+ 375:Generated_Source\PSoC5/ShiftReg_fwd.c **** ********************************************************************************
+ 376:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 377:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Summary:
+ 378:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Directly returns current state in shift register, not data in FIFO due
+ 379:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  to Store input.
+ 380:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 381:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Parameters:
+ 382:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  None.
+ 383:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 384:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Return:
+ 385:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  Shift Register state. Clears output FIFO.
+ 386:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 387:Generated_Source\PSoC5/ShiftReg_fwd.c **** * Reentrant:
+ 388:Generated_Source\PSoC5/ShiftReg_fwd.c **** *  No.
+ 389:Generated_Source\PSoC5/ShiftReg_fwd.c **** *
+ 390:Generated_Source\PSoC5/ShiftReg_fwd.c **** *******************************************************************************/
+ 391:Generated_Source\PSoC5/ShiftReg_fwd.c **** uint8 ShiftReg_fwd_ReadRegValue(void) 
+ 392:Generated_Source\PSoC5/ShiftReg_fwd.c **** {
+ 466              		.loc 1 392 0
+ 467              		.cfi_startproc
+ 468              		@ args = 0, pretend = 0, frame = 0
+ 469              		@ frame_needed = 0, uses_anonymous_args = 0
+ 470 0000 08B5     		push	{r3, lr}
+ 471              		.cfi_def_cfa_offset 8
+ 472              		.cfi_offset 3, -8
+ 473              		.cfi_offset 14, -4
+ 393:Generated_Source\PSoC5/ShiftReg_fwd.c ****     uint8 result;
+ 394:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 395:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /* Clear FIFO before software capture */
+ 396:Generated_Source\PSoC5/ShiftReg_fwd.c ****     while(ShiftReg_fwd_RET_FIFO_EMPTY != ShiftReg_fwd_GetFIFOStatus(ShiftReg_fwd_OUT_FIFO))
+ 474              		.loc 1 396 0
+ 475 0002 01E0     		b	.L56
+ 476              	.L57:
+ 397:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+ 398:Generated_Source\PSoC5/ShiftReg_fwd.c ****         (void) CY_GET_REG8(ShiftReg_fwd_OUT_FIFO_VAL_LSB_PTR);
+ 477              		.loc 1 398 0
+ 478 0004 054B     		ldr	r3, .L59
+ 479 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 480              	.L56:
+ 396:Generated_Source\PSoC5/ShiftReg_fwd.c ****     {
+ 481              		.loc 1 396 0
+ 482 0008 0220     		movs	r0, #2
+ 483 000a FFF7FEFF 		bl	ShiftReg_fwd_GetFIFOStatus
+ 484              	.LVL32:
+ 485 000e 0228     		cmp	r0, #2
+ 486 0010 F8D1     		bne	.L57
+ 399:Generated_Source\PSoC5/ShiftReg_fwd.c ****     }
+ 400:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 401:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /* Read of 8 bits from A1 causes capture to output FIFO */
+ 402:Generated_Source\PSoC5/ShiftReg_fwd.c ****     (void) CY_GET_REG8(ShiftReg_fwd_SHIFT_REG_CAPTURE_PTR);
+ 487              		.loc 1 402 0
+ 488 0012 034B     		ldr	r3, .L59+4
+ 489 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 403:Generated_Source\PSoC5/ShiftReg_fwd.c **** 
+ 404:Generated_Source\PSoC5/ShiftReg_fwd.c ****     /* Read output FIFO */
+ 405:Generated_Source\PSoC5/ShiftReg_fwd.c ****     result  = CY_GET_REG8(ShiftReg_fwd_OUT_FIFO_VAL_LSB_PTR);
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 17
+
+
+ 490              		.loc 1 405 0
+ 491 0016 014B     		ldr	r3, .L59
+ 492 0018 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 493              	.LVL33:
+ 406:Generated_Source\PSoC5/ShiftReg_fwd.c ****     
+ 407:Generated_Source\PSoC5/ShiftReg_fwd.c ****     #if(0u != (ShiftReg_fwd_SR_SIZE % 8u))
+ 408:Generated_Source\PSoC5/ShiftReg_fwd.c ****         result &= ((uint8) ShiftReg_fwd_SR_MASK);
+ 409:Generated_Source\PSoC5/ShiftReg_fwd.c ****     #endif /* (0u != (ShiftReg_fwd_SR_SIZE % 8u)) */
+ 410:Generated_Source\PSoC5/ShiftReg_fwd.c ****     
+ 411:Generated_Source\PSoC5/ShiftReg_fwd.c ****     return(result);
+ 412:Generated_Source\PSoC5/ShiftReg_fwd.c **** }
+ 494              		.loc 1 412 0
+ 495 001a 08BD     		pop	{r3, pc}
+ 496              	.L60:
+ 497              		.align	2
+ 498              	.L59:
+ 499 001c 56650040 		.word	1073767766
+ 500 0020 16650040 		.word	1073767702
+ 501              		.cfi_endproc
+ 502              	.LFE12:
+ 503              		.size	ShiftReg_fwd_ReadRegValue, .-ShiftReg_fwd_ReadRegValue
+ 504              		.global	ShiftReg_fwd_initVar
+ 505              		.bss
+ 506              		.set	.LANCHOR0,. + 0
+ 507              		.type	ShiftReg_fwd_initVar, %object
+ 508              		.size	ShiftReg_fwd_initVar, 1
+ 509              	ShiftReg_fwd_initVar:
+ 510 0000 00       		.space	1
+ 511              		.text
+ 512              	.Letext0:
+ 513              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 514              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 515              		.section	.debug_info,"",%progbits
+ 516              	.Ldebug_info0:
+ 517 0000 06030000 		.4byte	0x306
+ 518 0004 0400     		.2byte	0x4
+ 519 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 520 000a 04       		.byte	0x4
+ 521 000b 01       		.uleb128 0x1
+ 522 000c 32020000 		.4byte	.LASF37
+ 523 0010 0C       		.byte	0xc
+ 524 0011 6F010000 		.4byte	.LASF38
+ 525 0015 20000000 		.4byte	.LASF39
+ 526 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 527 001d 00000000 		.4byte	0
+ 528 0021 00000000 		.4byte	.Ldebug_line0
+ 529 0025 02       		.uleb128 0x2
+ 530 0026 01       		.byte	0x1
+ 531 0027 06       		.byte	0x6
+ 532 0028 40030000 		.4byte	.LASF0
+ 533 002c 02       		.uleb128 0x2
+ 534 002d 01       		.byte	0x1
+ 535 002e 08       		.byte	0x8
+ 536 002f 03010000 		.4byte	.LASF1
+ 537 0033 02       		.uleb128 0x2
+ 538 0034 02       		.byte	0x2
+ 539 0035 05       		.byte	0x5
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 18
+
+
+ 540 0036 F7020000 		.4byte	.LASF2
+ 541 003a 02       		.uleb128 0x2
+ 542 003b 02       		.byte	0x2
+ 543 003c 07       		.byte	0x7
+ 544 003d 89000000 		.4byte	.LASF3
+ 545 0041 02       		.uleb128 0x2
+ 546 0042 04       		.byte	0x4
+ 547 0043 05       		.byte	0x5
+ 548 0044 80000000 		.4byte	.LASF4
+ 549 0048 02       		.uleb128 0x2
+ 550 0049 04       		.byte	0x4
+ 551 004a 07       		.byte	0x7
+ 552 004b E1010000 		.4byte	.LASF5
+ 553 004f 02       		.uleb128 0x2
+ 554 0050 08       		.byte	0x8
+ 555 0051 05       		.byte	0x5
+ 556 0052 C9020000 		.4byte	.LASF6
+ 557 0056 02       		.uleb128 0x2
+ 558 0057 08       		.byte	0x8
+ 559 0058 07       		.byte	0x7
+ 560 0059 EC000000 		.4byte	.LASF7
+ 561 005d 03       		.uleb128 0x3
+ 562 005e 04       		.byte	0x4
+ 563 005f 05       		.byte	0x5
+ 564 0060 696E7400 		.ascii	"int\000"
+ 565 0064 02       		.uleb128 0x2
+ 566 0065 04       		.byte	0x4
+ 567 0066 07       		.byte	0x7
+ 568 0067 F3010000 		.4byte	.LASF8
+ 569 006b 04       		.uleb128 0x4
+ 570 006c 62010000 		.4byte	.LASF12
+ 571 0070 02       		.byte	0x2
+ 572 0071 E401     		.2byte	0x1e4
+ 573 0073 2C000000 		.4byte	0x2c
+ 574 0077 02       		.uleb128 0x2
+ 575 0078 04       		.byte	0x4
+ 576 0079 04       		.byte	0x4
+ 577 007a CC000000 		.4byte	.LASF9
+ 578 007e 02       		.uleb128 0x2
+ 579 007f 08       		.byte	0x8
+ 580 0080 04       		.byte	0x4
+ 581 0081 A9010000 		.4byte	.LASF10
+ 582 0085 02       		.uleb128 0x2
+ 583 0086 01       		.byte	0x1
+ 584 0087 08       		.byte	0x8
+ 585 0088 F2020000 		.4byte	.LASF11
+ 586 008c 04       		.uleb128 0x4
+ 587 008d 17000000 		.4byte	.LASF13
+ 588 0091 02       		.byte	0x2
+ 589 0092 8602     		.2byte	0x286
+ 590 0094 48000000 		.4byte	0x48
+ 591 0098 04       		.uleb128 0x4
+ 592 0099 36010000 		.4byte	.LASF14
+ 593 009d 02       		.byte	0x2
+ 594 009e 8E02     		.2byte	0x28e
+ 595 00a0 A4000000 		.4byte	0xa4
+ 596 00a4 05       		.uleb128 0x5
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 19
+
+
+ 597 00a5 6B000000 		.4byte	0x6b
+ 598 00a9 02       		.uleb128 0x2
+ 599 00aa 08       		.byte	0x8
+ 600 00ab 04       		.byte	0x4
+ 601 00ac 34030000 		.4byte	.LASF15
+ 602 00b0 02       		.uleb128 0x2
+ 603 00b1 04       		.byte	0x4
+ 604 00b2 07       		.byte	0x7
+ 605 00b3 C0020000 		.4byte	.LASF16
+ 606 00b7 06       		.uleb128 0x6
+ 607 00b8 00000000 		.4byte	.LASF17
+ 608 00bc 01       		.byte	0x1
+ 609 00bd 87       		.byte	0x87
+ 610 00be 00000000 		.4byte	.LFB4
+ 611 00c2 1C000000 		.4byte	.LFE4-.LFB4
+ 612 00c6 01       		.uleb128 0x1
+ 613 00c7 9C       		.byte	0x9c
+ 614 00c8 EE000000 		.4byte	0xee
+ 615 00cc 07       		.uleb128 0x7
+ 616 00cd 3B010000 		.4byte	.LASF20
+ 617 00d1 01       		.byte	0x1
+ 618 00d2 89       		.byte	0x89
+ 619 00d3 6B000000 		.4byte	0x6b
+ 620 00d7 00000000 		.4byte	.LLST0
+ 621 00db 08       		.uleb128 0x8
+ 622 00dc 06000000 		.4byte	.LVL0
+ 623 00e0 F3020000 		.4byte	0x2f3
+ 624 00e4 08       		.uleb128 0x8
+ 625 00e5 14000000 		.4byte	.LVL1
+ 626 00e9 FE020000 		.4byte	0x2fe
+ 627 00ed 00       		.byte	0
+ 628 00ee 06       		.uleb128 0x6
+ 629 00ef 95010000 		.4byte	.LASF18
+ 630 00f3 01       		.byte	0x1
+ 631 00f4 45       		.byte	0x45
+ 632 00f5 00000000 		.4byte	.LFB1
+ 633 00f9 18000000 		.4byte	.LFE1-.LFB1
+ 634 00fd 01       		.uleb128 0x1
+ 635 00fe 9C       		.byte	0x9c
+ 636 00ff 0D010000 		.4byte	0x10d
+ 637 0103 08       		.uleb128 0x8
+ 638 0104 10000000 		.4byte	.LVL2
+ 639 0108 B7000000 		.4byte	0xb7
+ 640 010c 00       		.byte	0
+ 641 010d 06       		.uleb128 0x6
+ 642 010e 4A010000 		.4byte	.LASF19
+ 643 0112 01       		.byte	0x1
+ 644 0113 9F       		.byte	0x9f
+ 645 0114 00000000 		.4byte	.LFB5
+ 646 0118 1C000000 		.4byte	.LFE5-.LFB5
+ 647 011c 01       		.uleb128 0x1
+ 648 011d 9C       		.byte	0x9c
+ 649 011e 44010000 		.4byte	0x144
+ 650 0122 07       		.uleb128 0x7
+ 651 0123 3B010000 		.4byte	.LASF20
+ 652 0127 01       		.byte	0x1
+ 653 0128 A1       		.byte	0xa1
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 20
+
+
+ 654 0129 6B000000 		.4byte	0x6b
+ 655 012d 13000000 		.4byte	.LLST1
+ 656 0131 08       		.uleb128 0x8
+ 657 0132 06000000 		.4byte	.LVL3
+ 658 0136 F3020000 		.4byte	0x2f3
+ 659 013a 08       		.uleb128 0x8
+ 660 013b 14000000 		.4byte	.LVL4
+ 661 013f FE020000 		.4byte	0x2fe
+ 662 0143 00       		.byte	0
+ 663 0144 06       		.uleb128 0x6
+ 664 0145 24010000 		.4byte	.LASF21
+ 665 0149 01       		.byte	0x1
+ 666 014a 71       		.byte	0x71
+ 667 014b 00000000 		.4byte	.LFB3
+ 668 014f 18000000 		.4byte	.LFE3-.LFB3
+ 669 0153 01       		.uleb128 0x1
+ 670 0154 9C       		.byte	0x9c
+ 671 0155 63010000 		.4byte	0x163
+ 672 0159 08       		.uleb128 0x8
+ 673 015a 10000000 		.4byte	.LVL5
+ 674 015e 0D010000 		.4byte	0x10d
+ 675 0162 00       		.byte	0
+ 676 0163 09       		.uleb128 0x9
+ 677 0164 D7020000 		.4byte	.LASF30
+ 678 0168 01       		.byte	0x1
+ 679 0169 B7       		.byte	0xb7
+ 680 016a 6B000000 		.4byte	0x6b
+ 681 016e 00000000 		.4byte	.LFB6
+ 682 0172 48000000 		.4byte	.LFE6-.LFB6
+ 683 0176 01       		.uleb128 0x1
+ 684 0177 9C       		.byte	0x9c
+ 685 0178 9B010000 		.4byte	0x19b
+ 686 017c 0A       		.uleb128 0xa
+ 687 017d 68010000 		.4byte	.LASF24
+ 688 0181 01       		.byte	0x1
+ 689 0182 B7       		.byte	0xb7
+ 690 0183 6B000000 		.4byte	0x6b
+ 691 0187 26000000 		.4byte	.LLST2
+ 692 018b 07       		.uleb128 0x7
+ 693 018c 2B020000 		.4byte	.LASF22
+ 694 0190 01       		.byte	0x1
+ 695 0191 B9       		.byte	0xb9
+ 696 0192 6B000000 		.4byte	0x6b
+ 697 0196 92000000 		.4byte	.LLST3
+ 698 019a 00       		.byte	0
+ 699 019b 0B       		.uleb128 0xb
+ 700 019c 1C030000 		.4byte	.LASF23
+ 701 01a0 01       		.byte	0x1
+ 702 01a1 0501     		.2byte	0x105
+ 703 01a3 00000000 		.4byte	.LFB7
+ 704 01a7 1C000000 		.4byte	.LFE7-.LFB7
+ 705 01ab 01       		.uleb128 0x1
+ 706 01ac 9C       		.byte	0x9c
+ 707 01ad C2010000 		.4byte	0x1c2
+ 708 01b1 0C       		.uleb128 0xc
+ 709 01b2 B0010000 		.4byte	.LASF25
+ 710 01b6 01       		.byte	0x1
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 21
+
+
+ 711 01b7 0501     		.2byte	0x105
+ 712 01b9 6B000000 		.4byte	0x6b
+ 713 01bd E2000000 		.4byte	.LLST4
+ 714 01c1 00       		.byte	0
+ 715 01c2 06       		.uleb128 0x6
+ 716 01c3 4C030000 		.4byte	.LASF26
+ 717 01c7 01       		.byte	0x1
+ 718 01c8 5D       		.byte	0x5d
+ 719 01c9 00000000 		.4byte	.LFB2
+ 720 01cd 0A000000 		.4byte	.LFE2-.LFB2
+ 721 01d1 01       		.uleb128 0x1
+ 722 01d2 9C       		.byte	0x9c
+ 723 01d3 E7010000 		.4byte	0x1e7
+ 724 01d7 0D       		.uleb128 0xd
+ 725 01d8 08000000 		.4byte	.LVL21
+ 726 01dc 9B010000 		.4byte	0x19b
+ 727 01e0 0E       		.uleb128 0xe
+ 728 01e1 01       		.uleb128 0x1
+ 729 01e2 50       		.byte	0x50
+ 730 01e3 01       		.uleb128 0x1
+ 731 01e4 30       		.byte	0x30
+ 732 01e5 00       		.byte	0
+ 733 01e6 00       		.byte	0
+ 734 01e7 06       		.uleb128 0x6
+ 735 01e8 11010000 		.4byte	.LASF27
+ 736 01ec 01       		.byte	0x1
+ 737 01ed 2B       		.byte	0x2b
+ 738 01ee 00000000 		.4byte	.LFB0
+ 739 01f2 1C000000 		.4byte	.LFE0-.LFB0
+ 740 01f6 01       		.uleb128 0x1
+ 741 01f7 9C       		.byte	0x9c
+ 742 01f8 0F020000 		.4byte	0x20f
+ 743 01fc 08       		.uleb128 0x8
+ 744 01fd 0C000000 		.4byte	.LVL22
+ 745 0201 C2010000 		.4byte	0x1c2
+ 746 0205 08       		.uleb128 0x8
+ 747 0206 16000000 		.4byte	.LVL23
+ 748 020a EE000000 		.4byte	0xee
+ 749 020e 00       		.byte	0
+ 750 020f 0F       		.uleb128 0xf
+ 751 0210 9C000000 		.4byte	.LASF32
+ 752 0214 01       		.byte	0x1
+ 753 0215 1A01     		.2byte	0x11a
+ 754 0217 6B000000 		.4byte	0x6b
+ 755 021b 00000000 		.4byte	.LFB8
+ 756 021f 10000000 		.4byte	.LFE8-.LFB8
+ 757 0223 01       		.uleb128 0x1
+ 758 0224 9C       		.byte	0x9c
+ 759 0225 0B       		.uleb128 0xb
+ 760 0226 01030000 		.4byte	.LASF28
+ 761 022a 01       		.byte	0x1
+ 762 022b 2E01     		.2byte	0x12e
+ 763 022d 00000000 		.4byte	.LFB9
+ 764 0231 0C000000 		.4byte	.LFE9-.LFB9
+ 765 0235 01       		.uleb128 0x1
+ 766 0236 9C       		.byte	0x9c
+ 767 0237 4A020000 		.4byte	0x24a
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 22
+
+
+ 768 023b 10       		.uleb128 0x10
+ 769 023c C0010000 		.4byte	.LASF29
+ 770 0240 01       		.byte	0x1
+ 771 0241 2E01     		.2byte	0x12e
+ 772 0243 6B000000 		.4byte	0x6b
+ 773 0247 01       		.uleb128 0x1
+ 774 0248 50       		.byte	0x50
+ 775 0249 00       		.byte	0
+ 776 024a 11       		.uleb128 0x11
+ 777 024b 69000000 		.4byte	.LASF31
+ 778 024f 01       		.byte	0x1
+ 779 0250 4901     		.2byte	0x149
+ 780 0252 8C000000 		.4byte	0x8c
+ 781 0256 00000000 		.4byte	.LFB10
+ 782 025a 1C000000 		.4byte	.LFE10-.LFB10
+ 783 025e 01       		.uleb128 0x1
+ 784 025f 9C       		.byte	0x9c
+ 785 0260 94020000 		.4byte	0x294
+ 786 0264 0C       		.uleb128 0xc
+ 787 0265 C0010000 		.4byte	.LASF29
+ 788 0269 01       		.byte	0x1
+ 789 026a 4901     		.2byte	0x149
+ 790 026c 6B000000 		.4byte	0x6b
+ 791 0270 03010000 		.4byte	.LLST5
+ 792 0274 12       		.uleb128 0x12
+ 793 0275 2B020000 		.4byte	.LASF22
+ 794 0279 01       		.byte	0x1
+ 795 027a 4C01     		.2byte	0x14c
+ 796 027c 8C000000 		.4byte	0x8c
+ 797 0280 24010000 		.4byte	.LLST6
+ 798 0284 0D       		.uleb128 0xd
+ 799 0285 0A000000 		.4byte	.LVL28
+ 800 0289 63010000 		.4byte	0x163
+ 801 028d 0E       		.uleb128 0xe
+ 802 028e 01       		.uleb128 0x1
+ 803 028f 50       		.byte	0x50
+ 804 0290 01       		.uleb128 0x1
+ 805 0291 31       		.byte	0x31
+ 806 0292 00       		.byte	0
+ 807 0293 00       		.byte	0
+ 808 0294 0F       		.uleb128 0xf
+ 809 0295 B6000000 		.4byte	.LASF33
+ 810 0299 01       		.byte	0x1
+ 811 029a 6E01     		.2byte	0x16e
+ 812 029c 6B000000 		.4byte	0x6b
+ 813 02a0 00000000 		.4byte	.LFB11
+ 814 02a4 0C000000 		.4byte	.LFE11-.LFB11
+ 815 02a8 01       		.uleb128 0x1
+ 816 02a9 9C       		.byte	0x9c
+ 817 02aa 11       		.uleb128 0x11
+ 818 02ab D2000000 		.4byte	.LASF34
+ 819 02af 01       		.byte	0x1
+ 820 02b0 8701     		.2byte	0x187
+ 821 02b2 6B000000 		.4byte	0x6b
+ 822 02b6 00000000 		.4byte	.LFB12
+ 823 02ba 24000000 		.4byte	.LFE12-.LFB12
+ 824 02be 01       		.uleb128 0x1
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 23
+
+
+ 825 02bf 9C       		.byte	0x9c
+ 826 02c0 E2020000 		.4byte	0x2e2
+ 827 02c4 13       		.uleb128 0x13
+ 828 02c5 2B020000 		.4byte	.LASF22
+ 829 02c9 01       		.byte	0x1
+ 830 02ca 8901     		.2byte	0x189
+ 831 02cc 6B000000 		.4byte	0x6b
+ 832 02d0 01       		.uleb128 0x1
+ 833 02d1 50       		.byte	0x50
+ 834 02d2 0D       		.uleb128 0xd
+ 835 02d3 0E000000 		.4byte	.LVL32
+ 836 02d7 63010000 		.4byte	0x163
+ 837 02db 0E       		.uleb128 0xe
+ 838 02dc 01       		.uleb128 0x1
+ 839 02dd 50       		.byte	0x50
+ 840 02de 01       		.uleb128 0x1
+ 841 02df 32       		.byte	0x32
+ 842 02e0 00       		.byte	0
+ 843 02e1 00       		.byte	0
+ 844 02e2 14       		.uleb128 0x14
+ 845 02e3 16020000 		.4byte	.LASF40
+ 846 02e7 01       		.byte	0x1
+ 847 02e8 13       		.byte	0x13
+ 848 02e9 6B000000 		.4byte	0x6b
+ 849 02ed 05       		.uleb128 0x5
+ 850 02ee 03       		.byte	0x3
+ 851 02ef 00000000 		.4byte	ShiftReg_fwd_initVar
+ 852 02f3 15       		.uleb128 0x15
+ 853 02f4 CA010000 		.4byte	.LASF35
+ 854 02f8 CA010000 		.4byte	.LASF35
+ 855 02fc 03       		.byte	0x3
+ 856 02fd 7D       		.byte	0x7d
+ 857 02fe 15       		.uleb128 0x15
+ 858 02ff 00020000 		.4byte	.LASF36
+ 859 0303 00020000 		.4byte	.LASF36
+ 860 0307 03       		.byte	0x3
+ 861 0308 7E       		.byte	0x7e
+ 862 0309 00       		.byte	0
+ 863              		.section	.debug_abbrev,"",%progbits
+ 864              	.Ldebug_abbrev0:
+ 865 0000 01       		.uleb128 0x1
+ 866 0001 11       		.uleb128 0x11
+ 867 0002 01       		.byte	0x1
+ 868 0003 25       		.uleb128 0x25
+ 869 0004 0E       		.uleb128 0xe
+ 870 0005 13       		.uleb128 0x13
+ 871 0006 0B       		.uleb128 0xb
+ 872 0007 03       		.uleb128 0x3
+ 873 0008 0E       		.uleb128 0xe
+ 874 0009 1B       		.uleb128 0x1b
+ 875 000a 0E       		.uleb128 0xe
+ 876 000b 55       		.uleb128 0x55
+ 877 000c 17       		.uleb128 0x17
+ 878 000d 11       		.uleb128 0x11
+ 879 000e 01       		.uleb128 0x1
+ 880 000f 10       		.uleb128 0x10
+ 881 0010 17       		.uleb128 0x17
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 24
+
+
+ 882 0011 00       		.byte	0
+ 883 0012 00       		.byte	0
+ 884 0013 02       		.uleb128 0x2
+ 885 0014 24       		.uleb128 0x24
+ 886 0015 00       		.byte	0
+ 887 0016 0B       		.uleb128 0xb
+ 888 0017 0B       		.uleb128 0xb
+ 889 0018 3E       		.uleb128 0x3e
+ 890 0019 0B       		.uleb128 0xb
+ 891 001a 03       		.uleb128 0x3
+ 892 001b 0E       		.uleb128 0xe
+ 893 001c 00       		.byte	0
+ 894 001d 00       		.byte	0
+ 895 001e 03       		.uleb128 0x3
+ 896 001f 24       		.uleb128 0x24
+ 897 0020 00       		.byte	0
+ 898 0021 0B       		.uleb128 0xb
+ 899 0022 0B       		.uleb128 0xb
+ 900 0023 3E       		.uleb128 0x3e
+ 901 0024 0B       		.uleb128 0xb
+ 902 0025 03       		.uleb128 0x3
+ 903 0026 08       		.uleb128 0x8
+ 904 0027 00       		.byte	0
+ 905 0028 00       		.byte	0
+ 906 0029 04       		.uleb128 0x4
+ 907 002a 16       		.uleb128 0x16
+ 908 002b 00       		.byte	0
+ 909 002c 03       		.uleb128 0x3
+ 910 002d 0E       		.uleb128 0xe
+ 911 002e 3A       		.uleb128 0x3a
+ 912 002f 0B       		.uleb128 0xb
+ 913 0030 3B       		.uleb128 0x3b
+ 914 0031 05       		.uleb128 0x5
+ 915 0032 49       		.uleb128 0x49
+ 916 0033 13       		.uleb128 0x13
+ 917 0034 00       		.byte	0
+ 918 0035 00       		.byte	0
+ 919 0036 05       		.uleb128 0x5
+ 920 0037 35       		.uleb128 0x35
+ 921 0038 00       		.byte	0
+ 922 0039 49       		.uleb128 0x49
+ 923 003a 13       		.uleb128 0x13
+ 924 003b 00       		.byte	0
+ 925 003c 00       		.byte	0
+ 926 003d 06       		.uleb128 0x6
+ 927 003e 2E       		.uleb128 0x2e
+ 928 003f 01       		.byte	0x1
+ 929 0040 3F       		.uleb128 0x3f
+ 930 0041 19       		.uleb128 0x19
+ 931 0042 03       		.uleb128 0x3
+ 932 0043 0E       		.uleb128 0xe
+ 933 0044 3A       		.uleb128 0x3a
+ 934 0045 0B       		.uleb128 0xb
+ 935 0046 3B       		.uleb128 0x3b
+ 936 0047 0B       		.uleb128 0xb
+ 937 0048 27       		.uleb128 0x27
+ 938 0049 19       		.uleb128 0x19
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 25
+
+
+ 939 004a 11       		.uleb128 0x11
+ 940 004b 01       		.uleb128 0x1
+ 941 004c 12       		.uleb128 0x12
+ 942 004d 06       		.uleb128 0x6
+ 943 004e 40       		.uleb128 0x40
+ 944 004f 18       		.uleb128 0x18
+ 945 0050 9742     		.uleb128 0x2117
+ 946 0052 19       		.uleb128 0x19
+ 947 0053 01       		.uleb128 0x1
+ 948 0054 13       		.uleb128 0x13
+ 949 0055 00       		.byte	0
+ 950 0056 00       		.byte	0
+ 951 0057 07       		.uleb128 0x7
+ 952 0058 34       		.uleb128 0x34
+ 953 0059 00       		.byte	0
+ 954 005a 03       		.uleb128 0x3
+ 955 005b 0E       		.uleb128 0xe
+ 956 005c 3A       		.uleb128 0x3a
+ 957 005d 0B       		.uleb128 0xb
+ 958 005e 3B       		.uleb128 0x3b
+ 959 005f 0B       		.uleb128 0xb
+ 960 0060 49       		.uleb128 0x49
+ 961 0061 13       		.uleb128 0x13
+ 962 0062 02       		.uleb128 0x2
+ 963 0063 17       		.uleb128 0x17
+ 964 0064 00       		.byte	0
+ 965 0065 00       		.byte	0
+ 966 0066 08       		.uleb128 0x8
+ 967 0067 898201   		.uleb128 0x4109
+ 968 006a 00       		.byte	0
+ 969 006b 11       		.uleb128 0x11
+ 970 006c 01       		.uleb128 0x1
+ 971 006d 31       		.uleb128 0x31
+ 972 006e 13       		.uleb128 0x13
+ 973 006f 00       		.byte	0
+ 974 0070 00       		.byte	0
+ 975 0071 09       		.uleb128 0x9
+ 976 0072 2E       		.uleb128 0x2e
+ 977 0073 01       		.byte	0x1
+ 978 0074 3F       		.uleb128 0x3f
+ 979 0075 19       		.uleb128 0x19
+ 980 0076 03       		.uleb128 0x3
+ 981 0077 0E       		.uleb128 0xe
+ 982 0078 3A       		.uleb128 0x3a
+ 983 0079 0B       		.uleb128 0xb
+ 984 007a 3B       		.uleb128 0x3b
+ 985 007b 0B       		.uleb128 0xb
+ 986 007c 27       		.uleb128 0x27
+ 987 007d 19       		.uleb128 0x19
+ 988 007e 49       		.uleb128 0x49
+ 989 007f 13       		.uleb128 0x13
+ 990 0080 11       		.uleb128 0x11
+ 991 0081 01       		.uleb128 0x1
+ 992 0082 12       		.uleb128 0x12
+ 993 0083 06       		.uleb128 0x6
+ 994 0084 40       		.uleb128 0x40
+ 995 0085 18       		.uleb128 0x18
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 26
+
+
+ 996 0086 9742     		.uleb128 0x2117
+ 997 0088 19       		.uleb128 0x19
+ 998 0089 01       		.uleb128 0x1
+ 999 008a 13       		.uleb128 0x13
+ 1000 008b 00       		.byte	0
+ 1001 008c 00       		.byte	0
+ 1002 008d 0A       		.uleb128 0xa
+ 1003 008e 05       		.uleb128 0x5
+ 1004 008f 00       		.byte	0
+ 1005 0090 03       		.uleb128 0x3
+ 1006 0091 0E       		.uleb128 0xe
+ 1007 0092 3A       		.uleb128 0x3a
+ 1008 0093 0B       		.uleb128 0xb
+ 1009 0094 3B       		.uleb128 0x3b
+ 1010 0095 0B       		.uleb128 0xb
+ 1011 0096 49       		.uleb128 0x49
+ 1012 0097 13       		.uleb128 0x13
+ 1013 0098 02       		.uleb128 0x2
+ 1014 0099 17       		.uleb128 0x17
+ 1015 009a 00       		.byte	0
+ 1016 009b 00       		.byte	0
+ 1017 009c 0B       		.uleb128 0xb
+ 1018 009d 2E       		.uleb128 0x2e
+ 1019 009e 01       		.byte	0x1
+ 1020 009f 3F       		.uleb128 0x3f
+ 1021 00a0 19       		.uleb128 0x19
+ 1022 00a1 03       		.uleb128 0x3
+ 1023 00a2 0E       		.uleb128 0xe
+ 1024 00a3 3A       		.uleb128 0x3a
+ 1025 00a4 0B       		.uleb128 0xb
+ 1026 00a5 3B       		.uleb128 0x3b
+ 1027 00a6 05       		.uleb128 0x5
+ 1028 00a7 27       		.uleb128 0x27
+ 1029 00a8 19       		.uleb128 0x19
+ 1030 00a9 11       		.uleb128 0x11
+ 1031 00aa 01       		.uleb128 0x1
+ 1032 00ab 12       		.uleb128 0x12
+ 1033 00ac 06       		.uleb128 0x6
+ 1034 00ad 40       		.uleb128 0x40
+ 1035 00ae 18       		.uleb128 0x18
+ 1036 00af 9742     		.uleb128 0x2117
+ 1037 00b1 19       		.uleb128 0x19
+ 1038 00b2 01       		.uleb128 0x1
+ 1039 00b3 13       		.uleb128 0x13
+ 1040 00b4 00       		.byte	0
+ 1041 00b5 00       		.byte	0
+ 1042 00b6 0C       		.uleb128 0xc
+ 1043 00b7 05       		.uleb128 0x5
+ 1044 00b8 00       		.byte	0
+ 1045 00b9 03       		.uleb128 0x3
+ 1046 00ba 0E       		.uleb128 0xe
+ 1047 00bb 3A       		.uleb128 0x3a
+ 1048 00bc 0B       		.uleb128 0xb
+ 1049 00bd 3B       		.uleb128 0x3b
+ 1050 00be 05       		.uleb128 0x5
+ 1051 00bf 49       		.uleb128 0x49
+ 1052 00c0 13       		.uleb128 0x13
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 27
+
+
+ 1053 00c1 02       		.uleb128 0x2
+ 1054 00c2 17       		.uleb128 0x17
+ 1055 00c3 00       		.byte	0
+ 1056 00c4 00       		.byte	0
+ 1057 00c5 0D       		.uleb128 0xd
+ 1058 00c6 898201   		.uleb128 0x4109
+ 1059 00c9 01       		.byte	0x1
+ 1060 00ca 11       		.uleb128 0x11
+ 1061 00cb 01       		.uleb128 0x1
+ 1062 00cc 31       		.uleb128 0x31
+ 1063 00cd 13       		.uleb128 0x13
+ 1064 00ce 00       		.byte	0
+ 1065 00cf 00       		.byte	0
+ 1066 00d0 0E       		.uleb128 0xe
+ 1067 00d1 8A8201   		.uleb128 0x410a
+ 1068 00d4 00       		.byte	0
+ 1069 00d5 02       		.uleb128 0x2
+ 1070 00d6 18       		.uleb128 0x18
+ 1071 00d7 9142     		.uleb128 0x2111
+ 1072 00d9 18       		.uleb128 0x18
+ 1073 00da 00       		.byte	0
+ 1074 00db 00       		.byte	0
+ 1075 00dc 0F       		.uleb128 0xf
+ 1076 00dd 2E       		.uleb128 0x2e
+ 1077 00de 00       		.byte	0
+ 1078 00df 3F       		.uleb128 0x3f
+ 1079 00e0 19       		.uleb128 0x19
+ 1080 00e1 03       		.uleb128 0x3
+ 1081 00e2 0E       		.uleb128 0xe
+ 1082 00e3 3A       		.uleb128 0x3a
+ 1083 00e4 0B       		.uleb128 0xb
+ 1084 00e5 3B       		.uleb128 0x3b
+ 1085 00e6 05       		.uleb128 0x5
+ 1086 00e7 27       		.uleb128 0x27
+ 1087 00e8 19       		.uleb128 0x19
+ 1088 00e9 49       		.uleb128 0x49
+ 1089 00ea 13       		.uleb128 0x13
+ 1090 00eb 11       		.uleb128 0x11
+ 1091 00ec 01       		.uleb128 0x1
+ 1092 00ed 12       		.uleb128 0x12
+ 1093 00ee 06       		.uleb128 0x6
+ 1094 00ef 40       		.uleb128 0x40
+ 1095 00f0 18       		.uleb128 0x18
+ 1096 00f1 9742     		.uleb128 0x2117
+ 1097 00f3 19       		.uleb128 0x19
+ 1098 00f4 00       		.byte	0
+ 1099 00f5 00       		.byte	0
+ 1100 00f6 10       		.uleb128 0x10
+ 1101 00f7 05       		.uleb128 0x5
+ 1102 00f8 00       		.byte	0
+ 1103 00f9 03       		.uleb128 0x3
+ 1104 00fa 0E       		.uleb128 0xe
+ 1105 00fb 3A       		.uleb128 0x3a
+ 1106 00fc 0B       		.uleb128 0xb
+ 1107 00fd 3B       		.uleb128 0x3b
+ 1108 00fe 05       		.uleb128 0x5
+ 1109 00ff 49       		.uleb128 0x49
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 28
+
+
+ 1110 0100 13       		.uleb128 0x13
+ 1111 0101 02       		.uleb128 0x2
+ 1112 0102 18       		.uleb128 0x18
+ 1113 0103 00       		.byte	0
+ 1114 0104 00       		.byte	0
+ 1115 0105 11       		.uleb128 0x11
+ 1116 0106 2E       		.uleb128 0x2e
+ 1117 0107 01       		.byte	0x1
+ 1118 0108 3F       		.uleb128 0x3f
+ 1119 0109 19       		.uleb128 0x19
+ 1120 010a 03       		.uleb128 0x3
+ 1121 010b 0E       		.uleb128 0xe
+ 1122 010c 3A       		.uleb128 0x3a
+ 1123 010d 0B       		.uleb128 0xb
+ 1124 010e 3B       		.uleb128 0x3b
+ 1125 010f 05       		.uleb128 0x5
+ 1126 0110 27       		.uleb128 0x27
+ 1127 0111 19       		.uleb128 0x19
+ 1128 0112 49       		.uleb128 0x49
+ 1129 0113 13       		.uleb128 0x13
+ 1130 0114 11       		.uleb128 0x11
+ 1131 0115 01       		.uleb128 0x1
+ 1132 0116 12       		.uleb128 0x12
+ 1133 0117 06       		.uleb128 0x6
+ 1134 0118 40       		.uleb128 0x40
+ 1135 0119 18       		.uleb128 0x18
+ 1136 011a 9742     		.uleb128 0x2117
+ 1137 011c 19       		.uleb128 0x19
+ 1138 011d 01       		.uleb128 0x1
+ 1139 011e 13       		.uleb128 0x13
+ 1140 011f 00       		.byte	0
+ 1141 0120 00       		.byte	0
+ 1142 0121 12       		.uleb128 0x12
+ 1143 0122 34       		.uleb128 0x34
+ 1144 0123 00       		.byte	0
+ 1145 0124 03       		.uleb128 0x3
+ 1146 0125 0E       		.uleb128 0xe
+ 1147 0126 3A       		.uleb128 0x3a
+ 1148 0127 0B       		.uleb128 0xb
+ 1149 0128 3B       		.uleb128 0x3b
+ 1150 0129 05       		.uleb128 0x5
+ 1151 012a 49       		.uleb128 0x49
+ 1152 012b 13       		.uleb128 0x13
+ 1153 012c 02       		.uleb128 0x2
+ 1154 012d 17       		.uleb128 0x17
+ 1155 012e 00       		.byte	0
+ 1156 012f 00       		.byte	0
+ 1157 0130 13       		.uleb128 0x13
+ 1158 0131 34       		.uleb128 0x34
+ 1159 0132 00       		.byte	0
+ 1160 0133 03       		.uleb128 0x3
+ 1161 0134 0E       		.uleb128 0xe
+ 1162 0135 3A       		.uleb128 0x3a
+ 1163 0136 0B       		.uleb128 0xb
+ 1164 0137 3B       		.uleb128 0x3b
+ 1165 0138 05       		.uleb128 0x5
+ 1166 0139 49       		.uleb128 0x49
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 29
+
+
+ 1167 013a 13       		.uleb128 0x13
+ 1168 013b 02       		.uleb128 0x2
+ 1169 013c 18       		.uleb128 0x18
+ 1170 013d 00       		.byte	0
+ 1171 013e 00       		.byte	0
+ 1172 013f 14       		.uleb128 0x14
+ 1173 0140 34       		.uleb128 0x34
+ 1174 0141 00       		.byte	0
+ 1175 0142 03       		.uleb128 0x3
+ 1176 0143 0E       		.uleb128 0xe
+ 1177 0144 3A       		.uleb128 0x3a
+ 1178 0145 0B       		.uleb128 0xb
+ 1179 0146 3B       		.uleb128 0x3b
+ 1180 0147 0B       		.uleb128 0xb
+ 1181 0148 49       		.uleb128 0x49
+ 1182 0149 13       		.uleb128 0x13
+ 1183 014a 3F       		.uleb128 0x3f
+ 1184 014b 19       		.uleb128 0x19
+ 1185 014c 02       		.uleb128 0x2
+ 1186 014d 18       		.uleb128 0x18
+ 1187 014e 00       		.byte	0
+ 1188 014f 00       		.byte	0
+ 1189 0150 15       		.uleb128 0x15
+ 1190 0151 2E       		.uleb128 0x2e
+ 1191 0152 00       		.byte	0
+ 1192 0153 3F       		.uleb128 0x3f
+ 1193 0154 19       		.uleb128 0x19
+ 1194 0155 3C       		.uleb128 0x3c
+ 1195 0156 19       		.uleb128 0x19
+ 1196 0157 6E       		.uleb128 0x6e
+ 1197 0158 0E       		.uleb128 0xe
+ 1198 0159 03       		.uleb128 0x3
+ 1199 015a 0E       		.uleb128 0xe
+ 1200 015b 3A       		.uleb128 0x3a
+ 1201 015c 0B       		.uleb128 0xb
+ 1202 015d 3B       		.uleb128 0x3b
+ 1203 015e 0B       		.uleb128 0xb
+ 1204 015f 00       		.byte	0
+ 1205 0160 00       		.byte	0
+ 1206 0161 00       		.byte	0
+ 1207              		.section	.debug_loc,"",%progbits
+ 1208              	.Ldebug_loc0:
+ 1209              	.LLST0:
+ 1210 0000 06000000 		.4byte	.LVL0
+ 1211 0004 13000000 		.4byte	.LVL1-1
+ 1212 0008 0100     		.2byte	0x1
+ 1213 000a 50       		.byte	0x50
+ 1214 000b 00000000 		.4byte	0
+ 1215 000f 00000000 		.4byte	0
+ 1216              	.LLST1:
+ 1217 0013 06000000 		.4byte	.LVL3
+ 1218 0017 13000000 		.4byte	.LVL4-1
+ 1219 001b 0100     		.2byte	0x1
+ 1220 001d 50       		.byte	0x50
+ 1221 001e 00000000 		.4byte	0
+ 1222 0022 00000000 		.4byte	0
+ 1223              	.LLST2:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 30
+
+
+ 1224 0026 00000000 		.4byte	.LVL6
+ 1225 002a 18000000 		.4byte	.LVL8
+ 1226 002e 0100     		.2byte	0x1
+ 1227 0030 50       		.byte	0x50
+ 1228 0031 18000000 		.4byte	.LVL8
+ 1229 0035 1A000000 		.4byte	.LVL9
+ 1230 0039 0400     		.2byte	0x4
+ 1231 003b F3       		.byte	0xf3
+ 1232 003c 01       		.uleb128 0x1
+ 1233 003d 50       		.byte	0x50
+ 1234 003e 9F       		.byte	0x9f
+ 1235 003f 1A000000 		.4byte	.LVL9
+ 1236 0043 1C000000 		.4byte	.LVL10
+ 1237 0047 0100     		.2byte	0x1
+ 1238 0049 50       		.byte	0x50
+ 1239 004a 1C000000 		.4byte	.LVL10
+ 1240 004e 1E000000 		.4byte	.LVL11
+ 1241 0052 0400     		.2byte	0x4
+ 1242 0054 F3       		.byte	0xf3
+ 1243 0055 01       		.uleb128 0x1
+ 1244 0056 50       		.byte	0x50
+ 1245 0057 9F       		.byte	0x9f
+ 1246 0058 1E000000 		.4byte	.LVL11
+ 1247 005c 20000000 		.4byte	.LVL12
+ 1248 0060 0100     		.2byte	0x1
+ 1249 0062 50       		.byte	0x50
+ 1250 0063 20000000 		.4byte	.LVL12
+ 1251 0067 22000000 		.4byte	.LVL13
+ 1252 006b 0400     		.2byte	0x4
+ 1253 006d F3       		.byte	0xf3
+ 1254 006e 01       		.uleb128 0x1
+ 1255 006f 50       		.byte	0x50
+ 1256 0070 9F       		.byte	0x9f
+ 1257 0071 22000000 		.4byte	.LVL13
+ 1258 0075 24000000 		.4byte	.LVL14
+ 1259 0079 0100     		.2byte	0x1
+ 1260 007b 50       		.byte	0x50
+ 1261 007c 24000000 		.4byte	.LVL14
+ 1262 0080 48000000 		.4byte	.LFE6
+ 1263 0084 0400     		.2byte	0x4
+ 1264 0086 F3       		.byte	0xf3
+ 1265 0087 01       		.uleb128 0x1
+ 1266 0088 50       		.byte	0x50
+ 1267 0089 9F       		.byte	0x9f
+ 1268 008a 00000000 		.4byte	0
+ 1269 008e 00000000 		.4byte	0
+ 1270              	.LLST3:
+ 1271 0092 02000000 		.4byte	.LVL7
+ 1272 0096 1A000000 		.4byte	.LVL9
+ 1273 009a 0300     		.2byte	0x3
+ 1274 009c 09       		.byte	0x9
+ 1275 009d FE       		.byte	0xfe
+ 1276 009e 9F       		.byte	0x9f
+ 1277 009f 1A000000 		.4byte	.LVL9
+ 1278 00a3 1E000000 		.4byte	.LVL11
+ 1279 00a7 0200     		.2byte	0x2
+ 1280 00a9 31       		.byte	0x31
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 31
+
+
+ 1281 00aa 9F       		.byte	0x9f
+ 1282 00ab 1E000000 		.4byte	.LVL11
+ 1283 00af 24000000 		.4byte	.LVL14
+ 1284 00b3 0300     		.2byte	0x3
+ 1285 00b5 09       		.byte	0x9
+ 1286 00b6 FE       		.byte	0xfe
+ 1287 00b7 9F       		.byte	0x9f
+ 1288 00b8 24000000 		.4byte	.LVL14
+ 1289 00bc 38000000 		.4byte	.LVL15
+ 1290 00c0 0100     		.2byte	0x1
+ 1291 00c2 50       		.byte	0x50
+ 1292 00c3 3A000000 		.4byte	.LVL16
+ 1293 00c7 3E000000 		.4byte	.LVL17
+ 1294 00cb 0200     		.2byte	0x2
+ 1295 00cd 31       		.byte	0x31
+ 1296 00ce 9F       		.byte	0x9f
+ 1297 00cf 3E000000 		.4byte	.LVL17
+ 1298 00d3 48000000 		.4byte	.LFE6
+ 1299 00d7 0100     		.2byte	0x1
+ 1300 00d9 50       		.byte	0x50
+ 1301 00da 00000000 		.4byte	0
+ 1302 00de 00000000 		.4byte	0
+ 1303              	.LLST4:
+ 1304 00e2 00000000 		.4byte	.LVL19
+ 1305 00e6 10000000 		.4byte	.LVL20
+ 1306 00ea 0100     		.2byte	0x1
+ 1307 00ec 50       		.byte	0x50
+ 1308 00ed 10000000 		.4byte	.LVL20
+ 1309 00f1 1C000000 		.4byte	.LFE7
+ 1310 00f5 0400     		.2byte	0x4
+ 1311 00f7 F3       		.byte	0xf3
+ 1312 00f8 01       		.uleb128 0x1
+ 1313 00f9 50       		.byte	0x50
+ 1314 00fa 9F       		.byte	0x9f
+ 1315 00fb 00000000 		.4byte	0
+ 1316 00ff 00000000 		.4byte	0
+ 1317              	.LLST5:
+ 1318 0103 00000000 		.4byte	.LVL25
+ 1319 0107 06000000 		.4byte	.LVL27
+ 1320 010b 0100     		.2byte	0x1
+ 1321 010d 50       		.byte	0x50
+ 1322 010e 06000000 		.4byte	.LVL27
+ 1323 0112 1C000000 		.4byte	.LFE10
+ 1324 0116 0400     		.2byte	0x4
+ 1325 0118 F3       		.byte	0xf3
+ 1326 0119 01       		.uleb128 0x1
+ 1327 011a 50       		.byte	0x50
+ 1328 011b 9F       		.byte	0x9f
+ 1329 011c 00000000 		.4byte	0
+ 1330 0120 00000000 		.4byte	0
+ 1331              	.LLST6:
+ 1332 0124 04000000 		.4byte	.LVL26
+ 1333 0128 10000000 		.4byte	.LVL29
+ 1334 012c 0200     		.2byte	0x2
+ 1335 012e 41       		.byte	0x41
+ 1336 012f 9F       		.byte	0x9f
+ 1337 0130 10000000 		.4byte	.LVL29
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 32
+
+
+ 1338 0134 14000000 		.4byte	.LVL30
+ 1339 0138 0200     		.2byte	0x2
+ 1340 013a 30       		.byte	0x30
+ 1341 013b 9F       		.byte	0x9f
+ 1342 013c 14000000 		.4byte	.LVL30
+ 1343 0140 16000000 		.4byte	.LVL31
+ 1344 0144 0200     		.2byte	0x2
+ 1345 0146 41       		.byte	0x41
+ 1346 0147 9F       		.byte	0x9f
+ 1347 0148 16000000 		.4byte	.LVL31
+ 1348 014c 1C000000 		.4byte	.LFE10
+ 1349 0150 0100     		.2byte	0x1
+ 1350 0152 50       		.byte	0x50
+ 1351 0153 00000000 		.4byte	0
+ 1352 0157 00000000 		.4byte	0
+ 1353              		.section	.debug_aranges,"",%progbits
+ 1354 0000 7C000000 		.4byte	0x7c
+ 1355 0004 0200     		.2byte	0x2
+ 1356 0006 00000000 		.4byte	.Ldebug_info0
+ 1357 000a 04       		.byte	0x4
+ 1358 000b 00       		.byte	0
+ 1359 000c 0000     		.2byte	0
+ 1360 000e 0000     		.2byte	0
+ 1361 0010 00000000 		.4byte	.LFB4
+ 1362 0014 1C000000 		.4byte	.LFE4-.LFB4
+ 1363 0018 00000000 		.4byte	.LFB1
+ 1364 001c 18000000 		.4byte	.LFE1-.LFB1
+ 1365 0020 00000000 		.4byte	.LFB5
+ 1366 0024 1C000000 		.4byte	.LFE5-.LFB5
+ 1367 0028 00000000 		.4byte	.LFB3
+ 1368 002c 18000000 		.4byte	.LFE3-.LFB3
+ 1369 0030 00000000 		.4byte	.LFB6
+ 1370 0034 48000000 		.4byte	.LFE6-.LFB6
+ 1371 0038 00000000 		.4byte	.LFB7
+ 1372 003c 1C000000 		.4byte	.LFE7-.LFB7
+ 1373 0040 00000000 		.4byte	.LFB2
+ 1374 0044 0A000000 		.4byte	.LFE2-.LFB2
+ 1375 0048 00000000 		.4byte	.LFB0
+ 1376 004c 1C000000 		.4byte	.LFE0-.LFB0
+ 1377 0050 00000000 		.4byte	.LFB8
+ 1378 0054 10000000 		.4byte	.LFE8-.LFB8
+ 1379 0058 00000000 		.4byte	.LFB9
+ 1380 005c 0C000000 		.4byte	.LFE9-.LFB9
+ 1381 0060 00000000 		.4byte	.LFB10
+ 1382 0064 1C000000 		.4byte	.LFE10-.LFB10
+ 1383 0068 00000000 		.4byte	.LFB11
+ 1384 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1385 0070 00000000 		.4byte	.LFB12
+ 1386 0074 24000000 		.4byte	.LFE12-.LFB12
+ 1387 0078 00000000 		.4byte	0
+ 1388 007c 00000000 		.4byte	0
+ 1389              		.section	.debug_ranges,"",%progbits
+ 1390              	.Ldebug_ranges0:
+ 1391 0000 00000000 		.4byte	.LFB4
+ 1392 0004 1C000000 		.4byte	.LFE4
+ 1393 0008 00000000 		.4byte	.LFB1
+ 1394 000c 18000000 		.4byte	.LFE1
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 33
+
+
+ 1395 0010 00000000 		.4byte	.LFB5
+ 1396 0014 1C000000 		.4byte	.LFE5
+ 1397 0018 00000000 		.4byte	.LFB3
+ 1398 001c 18000000 		.4byte	.LFE3
+ 1399 0020 00000000 		.4byte	.LFB6
+ 1400 0024 48000000 		.4byte	.LFE6
+ 1401 0028 00000000 		.4byte	.LFB7
+ 1402 002c 1C000000 		.4byte	.LFE7
+ 1403 0030 00000000 		.4byte	.LFB2
+ 1404 0034 0A000000 		.4byte	.LFE2
+ 1405 0038 00000000 		.4byte	.LFB0
+ 1406 003c 1C000000 		.4byte	.LFE0
+ 1407 0040 00000000 		.4byte	.LFB8
+ 1408 0044 10000000 		.4byte	.LFE8
+ 1409 0048 00000000 		.4byte	.LFB9
+ 1410 004c 0C000000 		.4byte	.LFE9
+ 1411 0050 00000000 		.4byte	.LFB10
+ 1412 0054 1C000000 		.4byte	.LFE10
+ 1413 0058 00000000 		.4byte	.LFB11
+ 1414 005c 0C000000 		.4byte	.LFE11
+ 1415 0060 00000000 		.4byte	.LFB12
+ 1416 0064 24000000 		.4byte	.LFE12
+ 1417 0068 00000000 		.4byte	0
+ 1418 006c 00000000 		.4byte	0
+ 1419              		.section	.debug_line,"",%progbits
+ 1420              	.Ldebug_line0:
+ 1421 0000 64010000 		.section	.debug_str,"MS",%progbits,1
+ 1421      02005400 
+ 1421      00000201 
+ 1421      FB0E0D00 
+ 1421      01010101 
+ 1422              	.LASF17:
+ 1423 0000 53686966 		.ascii	"ShiftReg_fwd_EnableInt\000"
+ 1423      74526567 
+ 1423      5F667764 
+ 1423      5F456E61 
+ 1423      626C6549 
+ 1424              	.LASF13:
+ 1425 0017 63797374 		.ascii	"cystatus\000"
+ 1425      61747573 
+ 1425      00
+ 1426              	.LASF39:
+ 1427 0020 433A5C55 		.ascii	"C:\\Users\\Walaa\\Documents\\PSoC Creator\\unicon_w"
+ 1427      73657273 
+ 1427      5C57616C 
+ 1427      61615C44 
+ 1427      6F63756D 
+ 1428 004e 6F726B73 		.ascii	"orkspace\\PSoC_Unicon.cydsn\000"
+ 1428      70616365 
+ 1428      5C50536F 
+ 1428      435F556E 
+ 1428      69636F6E 
+ 1429              	.LASF31:
+ 1430 0069 53686966 		.ascii	"ShiftReg_fwd_WriteData\000"
+ 1430      74526567 
+ 1430      5F667764 
+ 1430      5F577269 
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 34
+
+
+ 1430      74654461 
+ 1431              	.LASF4:
+ 1432 0080 6C6F6E67 		.ascii	"long int\000"
+ 1432      20696E74 
+ 1432      00
+ 1433              	.LASF3:
+ 1434 0089 73686F72 		.ascii	"short unsigned int\000"
+ 1434      7420756E 
+ 1434      7369676E 
+ 1434      65642069 
+ 1434      6E7400
+ 1435              	.LASF32:
+ 1436 009c 53686966 		.ascii	"ShiftReg_fwd_GetIntStatus\000"
+ 1436      74526567 
+ 1436      5F667764 
+ 1436      5F476574 
+ 1436      496E7453 
+ 1437              	.LASF33:
+ 1438 00b6 53686966 		.ascii	"ShiftReg_fwd_ReadData\000"
+ 1438      74526567 
+ 1438      5F667764 
+ 1438      5F526561 
+ 1438      64446174 
+ 1439              	.LASF9:
+ 1440 00cc 666C6F61 		.ascii	"float\000"
+ 1440      7400
+ 1441              	.LASF34:
+ 1442 00d2 53686966 		.ascii	"ShiftReg_fwd_ReadRegValue\000"
+ 1442      74526567 
+ 1442      5F667764 
+ 1442      5F526561 
+ 1442      64526567 
+ 1443              	.LASF7:
+ 1444 00ec 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1444      206C6F6E 
+ 1444      6720756E 
+ 1444      7369676E 
+ 1444      65642069 
+ 1445              	.LASF1:
+ 1446 0103 756E7369 		.ascii	"unsigned char\000"
+ 1446      676E6564 
+ 1446      20636861 
+ 1446      7200
+ 1447              	.LASF27:
+ 1448 0111 53686966 		.ascii	"ShiftReg_fwd_Start\000"
+ 1448      74526567 
+ 1448      5F667764 
+ 1448      5F537461 
+ 1448      727400
+ 1449              	.LASF21:
+ 1450 0124 53686966 		.ascii	"ShiftReg_fwd_Stop\000"
+ 1450      74526567 
+ 1450      5F667764 
+ 1450      5F53746F 
+ 1450      7000
+ 1451              	.LASF14:
+ 1452 0136 72656738 		.ascii	"reg8\000"
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 35
+
+
+ 1452      00
+ 1453              	.LASF20:
+ 1454 013b 696E7465 		.ascii	"interruptState\000"
+ 1454      72727570 
+ 1454      74537461 
+ 1454      746500
+ 1455              	.LASF19:
+ 1456 014a 53686966 		.ascii	"ShiftReg_fwd_DisableInt\000"
+ 1456      74526567 
+ 1456      5F667764 
+ 1456      5F446973 
+ 1456      61626C65 
+ 1457              	.LASF12:
+ 1458 0162 75696E74 		.ascii	"uint8\000"
+ 1458      3800
+ 1459              	.LASF24:
+ 1460 0168 6669666F 		.ascii	"fifoId\000"
+ 1460      496400
+ 1461              	.LASF38:
+ 1462 016f 47656E65 		.ascii	"Generated_Source\\PSoC5\\ShiftReg_fwd.c\000"
+ 1462      72617465 
+ 1462      645F536F 
+ 1462      75726365 
+ 1462      5C50536F 
+ 1463              	.LASF18:
+ 1464 0195 53686966 		.ascii	"ShiftReg_fwd_Enable\000"
+ 1464      74526567 
+ 1464      5F667764 
+ 1464      5F456E61 
+ 1464      626C6500 
+ 1465              	.LASF10:
+ 1466 01a9 646F7562 		.ascii	"double\000"
+ 1466      6C6500
+ 1467              	.LASF25:
+ 1468 01b0 696E7465 		.ascii	"interruptSource\000"
+ 1468      72727570 
+ 1468      74536F75 
+ 1468      72636500 
+ 1469              	.LASF29:
+ 1470 01c0 73686966 		.ascii	"shiftData\000"
+ 1470      74446174 
+ 1470      6100
+ 1471              	.LASF35:
+ 1472 01ca 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1472      74657243 
+ 1472      72697469 
+ 1472      63616C53 
+ 1472      65637469 
+ 1473              	.LASF5:
+ 1474 01e1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1474      20756E73 
+ 1474      69676E65 
+ 1474      6420696E 
+ 1474      7400
+ 1475              	.LASF8:
+ 1476 01f3 756E7369 		.ascii	"unsigned int\000"
+ 1476      676E6564 
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 36
+
+
+ 1476      20696E74 
+ 1476      00
+ 1477              	.LASF36:
+ 1478 0200 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1478      69744372 
+ 1478      69746963 
+ 1478      616C5365 
+ 1478      6374696F 
+ 1479              	.LASF40:
+ 1480 0216 53686966 		.ascii	"ShiftReg_fwd_initVar\000"
+ 1480      74526567 
+ 1480      5F667764 
+ 1480      5F696E69 
+ 1480      74566172 
+ 1481              	.LASF22:
+ 1482 022b 72657375 		.ascii	"result\000"
+ 1482      6C7400
+ 1483              	.LASF37:
+ 1484 0232 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1484      43313120 
+ 1484      352E342E 
+ 1484      31203230 
+ 1484      31363036 
+ 1485 0265 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1485      20726576 
+ 1485      6973696F 
+ 1485      6E203233 
+ 1485      37373135 
+ 1486 0298 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1486      66756E63 
+ 1486      74696F6E 
+ 1486      2D736563 
+ 1486      74696F6E 
+ 1487              	.LASF16:
+ 1488 02c0 73697A65 		.ascii	"sizetype\000"
+ 1488      74797065 
+ 1488      00
+ 1489              	.LASF6:
+ 1490 02c9 6C6F6E67 		.ascii	"long long int\000"
+ 1490      206C6F6E 
+ 1490      6720696E 
+ 1490      7400
+ 1491              	.LASF30:
+ 1492 02d7 53686966 		.ascii	"ShiftReg_fwd_GetFIFOStatus\000"
+ 1492      74526567 
+ 1492      5F667764 
+ 1492      5F476574 
+ 1492      4649464F 
+ 1493              	.LASF11:
+ 1494 02f2 63686172 		.ascii	"char\000"
+ 1494      00
+ 1495              	.LASF2:
+ 1496 02f7 73686F72 		.ascii	"short int\000"
+ 1496      7420696E 
+ 1496      7400
+ 1497              	.LASF28:
+ 1498 0301 53686966 		.ascii	"ShiftReg_fwd_WriteRegValue\000"
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccFBN80Z.s 			page 37
+
+
+ 1498      74526567 
+ 1498      5F667764 
+ 1498      5F577269 
+ 1498      74655265 
+ 1499              	.LASF23:
+ 1500 031c 53686966 		.ascii	"ShiftReg_fwd_SetIntMode\000"
+ 1500      74526567 
+ 1500      5F667764 
+ 1500      5F536574 
+ 1500      496E744D 
+ 1501              	.LASF15:
+ 1502 0334 6C6F6E67 		.ascii	"long double\000"
+ 1502      20646F75 
+ 1502      626C6500 
+ 1503              	.LASF0:
+ 1504 0340 7369676E 		.ascii	"signed char\000"
+ 1504      65642063 
+ 1504      68617200 
+ 1505              	.LASF26:
+ 1506 034c 53686966 		.ascii	"ShiftReg_fwd_Init\000"
+ 1506      74526567 
+ 1506      5F667764 
+ 1506      5F496E69 
+ 1506      7400
+ 1507              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
