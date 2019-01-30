@@ -24,7 +24,7 @@ public class ControllerActivity extends AppCompatActivity {
     private static final int SERVER_PORT = 8000;
     private static final String SERVER_IP = "10.0.0.34";
     private static final String default_op = "";
-    private static final int REFRESH_RATE = 1000;
+    private static final int REFRESH_RATE = 1;
     volatile boolean finished = false;
 
     private static volatile String output = default_op;
@@ -104,7 +104,7 @@ public class ControllerActivity extends AppCompatActivity {
                 e.printStackTrace(); }
 
             if (output != "") {
-                out.println(output);
+                out.print(output);
             }
             output = default_op;
 

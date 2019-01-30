@@ -5,4 +5,10 @@
     <string name="title_activity_start">StartActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="app_title">The Universal Controller</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="x">X</string>
+    <string name="y">Y</string>
+    <string name="z">Z</string>
 </resources>

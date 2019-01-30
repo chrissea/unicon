@@ -1,6 +1,7 @@
 package com.example.androidapp_unicon;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,17 @@ import android.view.View;
  * status bar and navigation/system bar) with user interaction.
  */
 public class StartActivity extends AppCompatActivity {
+
+
+    public void onGameCube(View view) {
+        Intent intent = new Intent(this, ControllerActivity.class);
+        startActivity(intent);
+    }
+
+    public void onN64(View view) {
+    }
+
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -106,6 +118,7 @@ public class StartActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
     }
 
     @Override

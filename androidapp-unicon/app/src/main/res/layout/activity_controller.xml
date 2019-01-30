@@ -1,46 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     tools:context=".ControllerActivity">
 
     <Button
         android:id="@+id/Left"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onLeft"
+        android:text="@string/left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></Button>
+
+    <Button
+        android:id="@+id/Right"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="onRight"
+        android:text="@string/right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></Button>
+
+    <Button
+        android:id="@+id/X"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="onX"
+        android:text="@string/x"
+        app:layout_constraintEnd_toStartOf="@+id/Y"
+        app:layout_constraintTop_toTopOf="@+id/guideline"></Button>
+
+    <Button
+        android:id="@+id/Y"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onY"
+        android:text="@string/y"
+        app:layout_constraintStart_toEndOf="@+id/X"
+        app:layout_constraintTop_toTopOf="@+id/guideline"></Button>
+
+    <Button
+        android:id="@+id/Z"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onZ"
+        android:text="@string/z"
+        app:layout_constraintStart_toEndOf="@+id/Y"
+        app:layout_constraintTop_toTopOf="@+id/guideline"></Button>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onLeft"
-        android:text="Left"></Button>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="236dp" />
 
-    <Button
-    android:id="@+id/Right"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="onRight"
-    android:text="Right"></Button>
-
-    <Button
-    android:id="@+id/X"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="onX"
-    android:text="X"></Button>
-
-    <Button
-    android:id="@+id/Y"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="onY"
-    android:text="Y"></Button>
-
-    <Button
-    android:id="@+id/Z"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="onZ"
-    android:text="Z"></Button>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
