@@ -1,0 +1,813 @@
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.RX_INT,"ax",%progbits
+  20              		.align	2
+  21              		.global	RX_INT
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	RX_INT, %function
+  25              	RX_INT:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdlib.h>
+  14:main.c        **** #include <CyLib.h>
+  15:main.c        **** 
+  16:main.c        **** //serial receive ISR
+  17:main.c        **** CY_ISR(RX_INT){
+  28              		.loc 1 17 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  18:main.c        ****     uint8_t RxData = UART_ReadRxData();
+  36              		.loc 1 18 0
+  37 0002 FFF7FEFF 		bl	UART_ReadRxData
+  38              	.LVL0:
+  19:main.c        ****     LCD_PutChar(RxData);
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 2
+
+
+  39              		.loc 1 19 0
+  40 0006 FFF7FEFF 		bl	LCD_PutChar
+  41              	.LVL1:
+  42 000a 08BD     		pop	{r3, pc}
+  43              		.cfi_endproc
+  44              	.LFE63:
+  45              		.size	RX_INT, .-RX_INT
+  46              		.section	.text.main,"ax",%progbits
+  47              		.align	2
+  48              		.global	main
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	main, %function
+  52              	main:
+  53              	.LFB64:
+  20:main.c        **** }
+  21:main.c        **** 
+  22:main.c        **** int main(void)
+  23:main.c        **** {
+  54              		.loc 1 23 0
+  55              		.cfi_startproc
+  56              		@ Volatile: function does not return.
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 08B5     		push	{r3, lr}
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 3, -8
+  62              		.cfi_offset 14, -4
+  24:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  63              		.loc 1 24 0
+  64              		.syntax unified
+  65              	@ 24 "main.c" 1
+  66 0002 62B6     		CPSIE   i
+  67              	@ 0 "" 2
+  25:main.c        ****     
+  26:main.c        ****     rx_int_StartEx(RX_INT);  // start RX interrupt (look for CY_ISR with RX_INT address)
+  68              		.loc 1 26 0
+  69              		.thumb
+  70              		.syntax unified
+  71 0004 0848     		ldr	r0, .L6
+  72 0006 FFF7FEFF 		bl	rx_int_StartEx
+  73              	.LVL2:
+  27:main.c        ****     //UART_SetRxInterruptMode(UART_RX_STS_FIFO_NOTEMPTY);
+  28:main.c        ****     UART_Start();
+  74              		.loc 1 28 0
+  75 000a FFF7FEFF 		bl	UART_Start
+  76              	.LVL3:
+  29:main.c        ****     UART_ClearRxBuffer();
+  77              		.loc 1 29 0
+  78 000e FFF7FEFF 		bl	UART_ClearRxBuffer
+  79              	.LVL4:
+  30:main.c        ****     
+  31:main.c        ****     ShiftReg_fwd_Init();
+  80              		.loc 1 31 0
+  81 0012 FFF7FEFF 		bl	ShiftReg_fwd_Init
+  82              	.LVL5:
+  32:main.c        ****     ShiftReg_rev_Init();
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 3
+
+
+  83              		.loc 1 32 0
+  84 0016 FFF7FEFF 		bl	ShiftReg_rev_Init
+  85              	.LVL6:
+  33:main.c        ****     
+  34:main.c        ****     LCD_Start();					    // initialize lcd
+  86              		.loc 1 34 0
+  87 001a FFF7FEFF 		bl	LCD_Start
+  88              	.LVL7:
+  35:main.c        **** 	LCD_ClearDisplay();
+  89              		.loc 1 35 0
+  90 001e 0120     		movs	r0, #1
+  91 0020 FFF7FEFF 		bl	LCD_WriteControl
+  92              	.LVL8:
+  93              	.L4:
+  94 0024 FEE7     		b	.L4
+  95              	.L7:
+  96 0026 00BF     		.align	2
+  97              	.L6:
+  98 0028 00000000 		.word	RX_INT
+  99              		.cfi_endproc
+ 100              	.LFE64:
+ 101              		.size	main, .-main
+ 102              		.text
+ 103              	.Letext0:
+ 104              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 105              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 106              		.file 4 "Generated_Source\\PSoC5/UART.h"
+ 107              		.file 5 "Generated_Source\\PSoC5/LCD.h"
+ 108              		.file 6 "Generated_Source\\PSoC5/rx_int.h"
+ 109              		.file 7 "Generated_Source\\PSoC5/ShiftReg_fwd.h"
+ 110              		.file 8 "Generated_Source\\PSoC5/ShiftReg_rev.h"
+ 111              		.file 9 "Generated_Source\\PSoC5/core_cm3.h"
+ 112              		.section	.debug_info,"",%progbits
+ 113              	.Ldebug_info0:
+ 114 0000 CF010000 		.4byte	0x1cf
+ 115 0004 0400     		.2byte	0x4
+ 116 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 117 000a 04       		.byte	0x4
+ 118 000b 01       		.uleb128 0x1
+ 119 000c A6000000 		.4byte	.LASF27
+ 120 0010 0C       		.byte	0xc
+ 121 0011 F3010000 		.4byte	.LASF28
+ 122 0015 1B000000 		.4byte	.LASF29
+ 123 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 124 001d 00000000 		.4byte	0
+ 125 0021 00000000 		.4byte	.Ldebug_line0
+ 126 0025 02       		.uleb128 0x2
+ 127 0026 01       		.byte	0x1
+ 128 0027 06       		.byte	0x6
+ 129 0028 37020000 		.4byte	.LASF0
+ 130 002c 03       		.uleb128 0x3
+ 131 002d 00000000 		.4byte	.LASF4
+ 132 0031 02       		.byte	0x2
+ 133 0032 1D       		.byte	0x1d
+ 134 0033 37000000 		.4byte	0x37
+ 135 0037 02       		.uleb128 0x2
+ 136 0038 01       		.byte	0x1
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 4
+
+
+ 137 0039 08       		.byte	0x8
+ 138 003a 98000000 		.4byte	.LASF1
+ 139 003e 02       		.uleb128 0x2
+ 140 003f 02       		.byte	0x2
+ 141 0040 05       		.byte	0x5
+ 142 0041 06020000 		.4byte	.LASF2
+ 143 0045 02       		.uleb128 0x2
+ 144 0046 02       		.byte	0x2
+ 145 0047 07       		.byte	0x7
+ 146 0048 4A010000 		.4byte	.LASF3
+ 147 004c 03       		.uleb128 0x3
+ 148 004d 64000000 		.4byte	.LASF5
+ 149 0051 02       		.byte	0x2
+ 150 0052 3F       		.byte	0x3f
+ 151 0053 57000000 		.4byte	0x57
+ 152 0057 02       		.uleb128 0x2
+ 153 0058 04       		.byte	0x4
+ 154 0059 05       		.byte	0x5
+ 155 005a 22020000 		.4byte	.LASF6
+ 156 005e 02       		.uleb128 0x2
+ 157 005f 04       		.byte	0x4
+ 158 0060 07       		.byte	0x7
+ 159 0061 75010000 		.4byte	.LASF7
+ 160 0065 02       		.uleb128 0x2
+ 161 0066 08       		.byte	0x8
+ 162 0067 05       		.byte	0x5
+ 163 0068 E5010000 		.4byte	.LASF8
+ 164 006c 02       		.uleb128 0x2
+ 165 006d 08       		.byte	0x8
+ 166 006e 07       		.byte	0x7
+ 167 006f 99010000 		.4byte	.LASF9
+ 168 0073 04       		.uleb128 0x4
+ 169 0074 04       		.byte	0x4
+ 170 0075 05       		.byte	0x5
+ 171 0076 696E7400 		.ascii	"int\000"
+ 172 007a 02       		.uleb128 0x2
+ 173 007b 04       		.byte	0x4
+ 174 007c 07       		.byte	0x7
+ 175 007d 8C010000 		.4byte	.LASF10
+ 176 0081 03       		.uleb128 0x3
+ 177 0082 B0010000 		.4byte	.LASF11
+ 178 0086 03       		.byte	0x3
+ 179 0087 18       		.byte	0x18
+ 180 0088 2C000000 		.4byte	0x2c
+ 181 008c 03       		.uleb128 0x3
+ 182 008d D4010000 		.4byte	.LASF12
+ 183 0091 03       		.byte	0x3
+ 184 0092 2C       		.byte	0x2c
+ 185 0093 4C000000 		.4byte	0x4c
+ 186 0097 02       		.uleb128 0x2
+ 187 0098 04       		.byte	0x4
+ 188 0099 04       		.byte	0x4
+ 189 009a 88000000 		.4byte	.LASF13
+ 190 009e 02       		.uleb128 0x2
+ 191 009f 08       		.byte	0x8
+ 192 00a0 04       		.byte	0x4
+ 193 00a1 81000000 		.4byte	.LASF14
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 5
+
+
+ 194 00a5 02       		.uleb128 0x2
+ 195 00a6 01       		.byte	0x1
+ 196 00a7 08       		.byte	0x8
+ 197 00a8 FA010000 		.4byte	.LASF15
+ 198 00ac 02       		.uleb128 0x2
+ 199 00ad 08       		.byte	0x8
+ 200 00ae 04       		.byte	0x4
+ 201 00af 2B020000 		.4byte	.LASF16
+ 202 00b3 02       		.uleb128 0x2
+ 203 00b4 04       		.byte	0x4
+ 204 00b5 07       		.byte	0x7
+ 205 00b6 DC010000 		.4byte	.LASF17
+ 206 00ba 05       		.uleb128 0x5
+ 207 00bb FF010000 		.4byte	.LASF30
+ 208 00bf 01       		.byte	0x1
+ 209 00c0 11       		.byte	0x11
+ 210 00c1 00000000 		.4byte	.LFB63
+ 211 00c5 0C000000 		.4byte	.LFE63-.LFB63
+ 212 00c9 01       		.uleb128 0x1
+ 213 00ca 9C       		.byte	0x9c
+ 214 00cb F1000000 		.4byte	0xf1
+ 215 00cf 06       		.uleb128 0x6
+ 216 00d0 34010000 		.4byte	.LASF31
+ 217 00d4 01       		.byte	0x1
+ 218 00d5 12       		.byte	0x12
+ 219 00d6 81000000 		.4byte	0x81
+ 220 00da 00000000 		.4byte	.LLST0
+ 221 00de 07       		.uleb128 0x7
+ 222 00df 06000000 		.4byte	.LVL0
+ 223 00e3 6F010000 		.4byte	0x16f
+ 224 00e7 07       		.uleb128 0x7
+ 225 00e8 0A000000 		.4byte	.LVL1
+ 226 00ec 7A010000 		.4byte	0x17a
+ 227 00f0 00       		.byte	0
+ 228 00f1 08       		.uleb128 0x8
+ 229 00f2 87010000 		.4byte	.LASF32
+ 230 00f6 01       		.byte	0x1
+ 231 00f7 16       		.byte	0x16
+ 232 00f8 73000000 		.4byte	0x73
+ 233 00fc 00000000 		.4byte	.LFB64
+ 234 0100 2C000000 		.4byte	.LFE64-.LFB64
+ 235 0104 01       		.uleb128 0x1
+ 236 0105 9C       		.byte	0x9c
+ 237 0106 5E010000 		.4byte	0x15e
+ 238 010a 09       		.uleb128 0x9
+ 239 010b 0A000000 		.4byte	.LVL2
+ 240 010f 85010000 		.4byte	0x185
+ 241 0113 21010000 		.4byte	0x121
+ 242 0117 0A       		.uleb128 0xa
+ 243 0118 01       		.uleb128 0x1
+ 244 0119 50       		.byte	0x50
+ 245 011a 05       		.uleb128 0x5
+ 246 011b 03       		.byte	0x3
+ 247 011c 00000000 		.4byte	RX_INT
+ 248 0120 00       		.byte	0
+ 249 0121 07       		.uleb128 0x7
+ 250 0122 0E000000 		.4byte	.LVL3
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 6
+
+
+ 251 0126 90010000 		.4byte	0x190
+ 252 012a 07       		.uleb128 0x7
+ 253 012b 12000000 		.4byte	.LVL4
+ 254 012f 9B010000 		.4byte	0x19b
+ 255 0133 07       		.uleb128 0x7
+ 256 0134 16000000 		.4byte	.LVL5
+ 257 0138 A6010000 		.4byte	0x1a6
+ 258 013c 07       		.uleb128 0x7
+ 259 013d 1A000000 		.4byte	.LVL6
+ 260 0141 B1010000 		.4byte	0x1b1
+ 261 0145 07       		.uleb128 0x7
+ 262 0146 1E000000 		.4byte	.LVL7
+ 263 014a BC010000 		.4byte	0x1bc
+ 264 014e 0B       		.uleb128 0xb
+ 265 014f 24000000 		.4byte	.LVL8
+ 266 0153 C7010000 		.4byte	0x1c7
+ 267 0157 0A       		.uleb128 0xa
+ 268 0158 01       		.uleb128 0x1
+ 269 0159 50       		.byte	0x50
+ 270 015a 01       		.uleb128 0x1
+ 271 015b 31       		.byte	0x31
+ 272 015c 00       		.byte	0
+ 273 015d 00       		.byte	0
+ 274 015e 0C       		.uleb128 0xc
+ 275 015f 68010000 		.4byte	.LASF33
+ 276 0163 09       		.byte	0x9
+ 277 0164 1207     		.2byte	0x712
+ 278 0166 6A010000 		.4byte	0x16a
+ 279 016a 0D       		.uleb128 0xd
+ 280 016b 8C000000 		.4byte	0x8c
+ 281 016f 0E       		.uleb128 0xe
+ 282 0170 C4010000 		.4byte	.LASF18
+ 283 0174 C4010000 		.4byte	.LASF18
+ 284 0178 04       		.byte	0x4
+ 285 0179 6F       		.byte	0x6f
+ 286 017a 0E       		.uleb128 0xe
+ 287 017b B8010000 		.4byte	.LASF19
+ 288 017f B8010000 		.4byte	.LASF19
+ 289 0183 05       		.byte	0x5
+ 290 0184 3E       		.byte	0x3e
+ 291 0185 0E       		.uleb128 0xe
+ 292 0186 3B010000 		.4byte	.LASF20
+ 293 018a 3B010000 		.4byte	.LASF20
+ 294 018e 06       		.byte	0x6
+ 295 018f 18       		.byte	0x18
+ 296 0190 0E       		.uleb128 0xe
+ 297 0191 5D010000 		.4byte	.LASF21
+ 298 0195 5D010000 		.4byte	.LASF21
+ 299 0199 04       		.byte	0x4
+ 300 019a 54       		.byte	0x54
+ 301 019b 0E       		.uleb128 0xe
+ 302 019c 6E000000 		.4byte	.LASF22
+ 303 01a0 6E000000 		.4byte	.LASF22
+ 304 01a4 04       		.byte	0x4
+ 305 01a5 75       		.byte	0x75
+ 306 01a6 0E       		.uleb128 0xe
+ 307 01a7 43020000 		.4byte	.LASF23
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 7
+
+
+ 308 01ab 43020000 		.4byte	.LASF23
+ 309 01af 07       		.byte	0x7
+ 310 01b0 3E       		.byte	0x3e
+ 311 01b1 0E       		.uleb128 0xe
+ 312 01b2 10020000 		.4byte	.LASF24
+ 313 01b6 10020000 		.4byte	.LASF24
+ 314 01ba 08       		.byte	0x8
+ 315 01bb 3E       		.byte	0x3e
+ 316 01bc 0E       		.uleb128 0xe
+ 317 01bd 8E000000 		.4byte	.LASF25
+ 318 01c1 8E000000 		.4byte	.LASF25
+ 319 01c5 05       		.byte	0x5
+ 320 01c6 38       		.byte	0x38
+ 321 01c7 0E       		.uleb128 0xe
+ 322 01c8 0A000000 		.4byte	.LASF26
+ 323 01cc 0A000000 		.4byte	.LASF26
+ 324 01d0 05       		.byte	0x5
+ 325 01d1 3A       		.byte	0x3a
+ 326 01d2 00       		.byte	0
+ 327              		.section	.debug_abbrev,"",%progbits
+ 328              	.Ldebug_abbrev0:
+ 329 0000 01       		.uleb128 0x1
+ 330 0001 11       		.uleb128 0x11
+ 331 0002 01       		.byte	0x1
+ 332 0003 25       		.uleb128 0x25
+ 333 0004 0E       		.uleb128 0xe
+ 334 0005 13       		.uleb128 0x13
+ 335 0006 0B       		.uleb128 0xb
+ 336 0007 03       		.uleb128 0x3
+ 337 0008 0E       		.uleb128 0xe
+ 338 0009 1B       		.uleb128 0x1b
+ 339 000a 0E       		.uleb128 0xe
+ 340 000b 55       		.uleb128 0x55
+ 341 000c 17       		.uleb128 0x17
+ 342 000d 11       		.uleb128 0x11
+ 343 000e 01       		.uleb128 0x1
+ 344 000f 10       		.uleb128 0x10
+ 345 0010 17       		.uleb128 0x17
+ 346 0011 00       		.byte	0
+ 347 0012 00       		.byte	0
+ 348 0013 02       		.uleb128 0x2
+ 349 0014 24       		.uleb128 0x24
+ 350 0015 00       		.byte	0
+ 351 0016 0B       		.uleb128 0xb
+ 352 0017 0B       		.uleb128 0xb
+ 353 0018 3E       		.uleb128 0x3e
+ 354 0019 0B       		.uleb128 0xb
+ 355 001a 03       		.uleb128 0x3
+ 356 001b 0E       		.uleb128 0xe
+ 357 001c 00       		.byte	0
+ 358 001d 00       		.byte	0
+ 359 001e 03       		.uleb128 0x3
+ 360 001f 16       		.uleb128 0x16
+ 361 0020 00       		.byte	0
+ 362 0021 03       		.uleb128 0x3
+ 363 0022 0E       		.uleb128 0xe
+ 364 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 8
+
+
+ 365 0024 0B       		.uleb128 0xb
+ 366 0025 3B       		.uleb128 0x3b
+ 367 0026 0B       		.uleb128 0xb
+ 368 0027 49       		.uleb128 0x49
+ 369 0028 13       		.uleb128 0x13
+ 370 0029 00       		.byte	0
+ 371 002a 00       		.byte	0
+ 372 002b 04       		.uleb128 0x4
+ 373 002c 24       		.uleb128 0x24
+ 374 002d 00       		.byte	0
+ 375 002e 0B       		.uleb128 0xb
+ 376 002f 0B       		.uleb128 0xb
+ 377 0030 3E       		.uleb128 0x3e
+ 378 0031 0B       		.uleb128 0xb
+ 379 0032 03       		.uleb128 0x3
+ 380 0033 08       		.uleb128 0x8
+ 381 0034 00       		.byte	0
+ 382 0035 00       		.byte	0
+ 383 0036 05       		.uleb128 0x5
+ 384 0037 2E       		.uleb128 0x2e
+ 385 0038 01       		.byte	0x1
+ 386 0039 3F       		.uleb128 0x3f
+ 387 003a 19       		.uleb128 0x19
+ 388 003b 03       		.uleb128 0x3
+ 389 003c 0E       		.uleb128 0xe
+ 390 003d 3A       		.uleb128 0x3a
+ 391 003e 0B       		.uleb128 0xb
+ 392 003f 3B       		.uleb128 0x3b
+ 393 0040 0B       		.uleb128 0xb
+ 394 0041 27       		.uleb128 0x27
+ 395 0042 19       		.uleb128 0x19
+ 396 0043 11       		.uleb128 0x11
+ 397 0044 01       		.uleb128 0x1
+ 398 0045 12       		.uleb128 0x12
+ 399 0046 06       		.uleb128 0x6
+ 400 0047 40       		.uleb128 0x40
+ 401 0048 18       		.uleb128 0x18
+ 402 0049 9742     		.uleb128 0x2117
+ 403 004b 19       		.uleb128 0x19
+ 404 004c 01       		.uleb128 0x1
+ 405 004d 13       		.uleb128 0x13
+ 406 004e 00       		.byte	0
+ 407 004f 00       		.byte	0
+ 408 0050 06       		.uleb128 0x6
+ 409 0051 34       		.uleb128 0x34
+ 410 0052 00       		.byte	0
+ 411 0053 03       		.uleb128 0x3
+ 412 0054 0E       		.uleb128 0xe
+ 413 0055 3A       		.uleb128 0x3a
+ 414 0056 0B       		.uleb128 0xb
+ 415 0057 3B       		.uleb128 0x3b
+ 416 0058 0B       		.uleb128 0xb
+ 417 0059 49       		.uleb128 0x49
+ 418 005a 13       		.uleb128 0x13
+ 419 005b 02       		.uleb128 0x2
+ 420 005c 17       		.uleb128 0x17
+ 421 005d 00       		.byte	0
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 9
+
+
+ 422 005e 00       		.byte	0
+ 423 005f 07       		.uleb128 0x7
+ 424 0060 898201   		.uleb128 0x4109
+ 425 0063 00       		.byte	0
+ 426 0064 11       		.uleb128 0x11
+ 427 0065 01       		.uleb128 0x1
+ 428 0066 31       		.uleb128 0x31
+ 429 0067 13       		.uleb128 0x13
+ 430 0068 00       		.byte	0
+ 431 0069 00       		.byte	0
+ 432 006a 08       		.uleb128 0x8
+ 433 006b 2E       		.uleb128 0x2e
+ 434 006c 01       		.byte	0x1
+ 435 006d 3F       		.uleb128 0x3f
+ 436 006e 19       		.uleb128 0x19
+ 437 006f 03       		.uleb128 0x3
+ 438 0070 0E       		.uleb128 0xe
+ 439 0071 3A       		.uleb128 0x3a
+ 440 0072 0B       		.uleb128 0xb
+ 441 0073 3B       		.uleb128 0x3b
+ 442 0074 0B       		.uleb128 0xb
+ 443 0075 27       		.uleb128 0x27
+ 444 0076 19       		.uleb128 0x19
+ 445 0077 49       		.uleb128 0x49
+ 446 0078 13       		.uleb128 0x13
+ 447 0079 8701     		.uleb128 0x87
+ 448 007b 19       		.uleb128 0x19
+ 449 007c 11       		.uleb128 0x11
+ 450 007d 01       		.uleb128 0x1
+ 451 007e 12       		.uleb128 0x12
+ 452 007f 06       		.uleb128 0x6
+ 453 0080 40       		.uleb128 0x40
+ 454 0081 18       		.uleb128 0x18
+ 455 0082 9742     		.uleb128 0x2117
+ 456 0084 19       		.uleb128 0x19
+ 457 0085 01       		.uleb128 0x1
+ 458 0086 13       		.uleb128 0x13
+ 459 0087 00       		.byte	0
+ 460 0088 00       		.byte	0
+ 461 0089 09       		.uleb128 0x9
+ 462 008a 898201   		.uleb128 0x4109
+ 463 008d 01       		.byte	0x1
+ 464 008e 11       		.uleb128 0x11
+ 465 008f 01       		.uleb128 0x1
+ 466 0090 31       		.uleb128 0x31
+ 467 0091 13       		.uleb128 0x13
+ 468 0092 01       		.uleb128 0x1
+ 469 0093 13       		.uleb128 0x13
+ 470 0094 00       		.byte	0
+ 471 0095 00       		.byte	0
+ 472 0096 0A       		.uleb128 0xa
+ 473 0097 8A8201   		.uleb128 0x410a
+ 474 009a 00       		.byte	0
+ 475 009b 02       		.uleb128 0x2
+ 476 009c 18       		.uleb128 0x18
+ 477 009d 9142     		.uleb128 0x2111
+ 478 009f 18       		.uleb128 0x18
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 10
+
+
+ 479 00a0 00       		.byte	0
+ 480 00a1 00       		.byte	0
+ 481 00a2 0B       		.uleb128 0xb
+ 482 00a3 898201   		.uleb128 0x4109
+ 483 00a6 01       		.byte	0x1
+ 484 00a7 11       		.uleb128 0x11
+ 485 00a8 01       		.uleb128 0x1
+ 486 00a9 31       		.uleb128 0x31
+ 487 00aa 13       		.uleb128 0x13
+ 488 00ab 00       		.byte	0
+ 489 00ac 00       		.byte	0
+ 490 00ad 0C       		.uleb128 0xc
+ 491 00ae 34       		.uleb128 0x34
+ 492 00af 00       		.byte	0
+ 493 00b0 03       		.uleb128 0x3
+ 494 00b1 0E       		.uleb128 0xe
+ 495 00b2 3A       		.uleb128 0x3a
+ 496 00b3 0B       		.uleb128 0xb
+ 497 00b4 3B       		.uleb128 0x3b
+ 498 00b5 05       		.uleb128 0x5
+ 499 00b6 49       		.uleb128 0x49
+ 500 00b7 13       		.uleb128 0x13
+ 501 00b8 3F       		.uleb128 0x3f
+ 502 00b9 19       		.uleb128 0x19
+ 503 00ba 3C       		.uleb128 0x3c
+ 504 00bb 19       		.uleb128 0x19
+ 505 00bc 00       		.byte	0
+ 506 00bd 00       		.byte	0
+ 507 00be 0D       		.uleb128 0xd
+ 508 00bf 35       		.uleb128 0x35
+ 509 00c0 00       		.byte	0
+ 510 00c1 49       		.uleb128 0x49
+ 511 00c2 13       		.uleb128 0x13
+ 512 00c3 00       		.byte	0
+ 513 00c4 00       		.byte	0
+ 514 00c5 0E       		.uleb128 0xe
+ 515 00c6 2E       		.uleb128 0x2e
+ 516 00c7 00       		.byte	0
+ 517 00c8 3F       		.uleb128 0x3f
+ 518 00c9 19       		.uleb128 0x19
+ 519 00ca 3C       		.uleb128 0x3c
+ 520 00cb 19       		.uleb128 0x19
+ 521 00cc 6E       		.uleb128 0x6e
+ 522 00cd 0E       		.uleb128 0xe
+ 523 00ce 03       		.uleb128 0x3
+ 524 00cf 0E       		.uleb128 0xe
+ 525 00d0 3A       		.uleb128 0x3a
+ 526 00d1 0B       		.uleb128 0xb
+ 527 00d2 3B       		.uleb128 0x3b
+ 528 00d3 0B       		.uleb128 0xb
+ 529 00d4 00       		.byte	0
+ 530 00d5 00       		.byte	0
+ 531 00d6 00       		.byte	0
+ 532              		.section	.debug_loc,"",%progbits
+ 533              	.Ldebug_loc0:
+ 534              	.LLST0:
+ 535 0000 06000000 		.4byte	.LVL0
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 11
+
+
+ 536 0004 09000000 		.4byte	.LVL1-1
+ 537 0008 0100     		.2byte	0x1
+ 538 000a 50       		.byte	0x50
+ 539 000b 00000000 		.4byte	0
+ 540 000f 00000000 		.4byte	0
+ 541              		.section	.debug_aranges,"",%progbits
+ 542 0000 24000000 		.4byte	0x24
+ 543 0004 0200     		.2byte	0x2
+ 544 0006 00000000 		.4byte	.Ldebug_info0
+ 545 000a 04       		.byte	0x4
+ 546 000b 00       		.byte	0
+ 547 000c 0000     		.2byte	0
+ 548 000e 0000     		.2byte	0
+ 549 0010 00000000 		.4byte	.LFB63
+ 550 0014 0C000000 		.4byte	.LFE63-.LFB63
+ 551 0018 00000000 		.4byte	.LFB64
+ 552 001c 2C000000 		.4byte	.LFE64-.LFB64
+ 553 0020 00000000 		.4byte	0
+ 554 0024 00000000 		.4byte	0
+ 555              		.section	.debug_ranges,"",%progbits
+ 556              	.Ldebug_ranges0:
+ 557 0000 00000000 		.4byte	.LFB63
+ 558 0004 0C000000 		.4byte	.LFE63
+ 559 0008 00000000 		.4byte	.LFB64
+ 560 000c 2C000000 		.4byte	.LFE64
+ 561 0010 00000000 		.4byte	0
+ 562 0014 00000000 		.4byte	0
+ 563              		.section	.debug_line,"",%progbits
+ 564              	.Ldebug_line0:
+ 565 0000 B0010000 		.section	.debug_str,"MS",%progbits,1
+ 565      02008201 
+ 565      00000201 
+ 565      FB0E0D00 
+ 565      01010101 
+ 566              	.LASF4:
+ 567 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 567      6E74385F 
+ 567      7400
+ 568              	.LASF26:
+ 569 000a 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 569      57726974 
+ 569      65436F6E 
+ 569      74726F6C 
+ 569      00
+ 570              	.LASF29:
+ 571 001b 433A5C55 		.ascii	"C:\\Users\\Walaa\\Documents\\PSoC Creator\\unicon_w"
+ 571      73657273 
+ 571      5C57616C 
+ 571      61615C44 
+ 571      6F63756D 
+ 572 0049 6F726B73 		.ascii	"orkspace\\PSoC_Unicon.cydsn\000"
+ 572      70616365 
+ 572      5C50536F 
+ 572      435F556E 
+ 572      69636F6E 
+ 573              	.LASF5:
+ 574 0064 5F5F696E 		.ascii	"__int32_t\000"
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 12
+
+
+ 574      7433325F 
+ 574      7400
+ 575              	.LASF22:
+ 576 006e 55415254 		.ascii	"UART_ClearRxBuffer\000"
+ 576      5F436C65 
+ 576      61725278 
+ 576      42756666 
+ 576      657200
+ 577              	.LASF14:
+ 578 0081 646F7562 		.ascii	"double\000"
+ 578      6C6500
+ 579              	.LASF13:
+ 580 0088 666C6F61 		.ascii	"float\000"
+ 580      7400
+ 581              	.LASF25:
+ 582 008e 4C43445F 		.ascii	"LCD_Start\000"
+ 582      53746172 
+ 582      7400
+ 583              	.LASF1:
+ 584 0098 756E7369 		.ascii	"unsigned char\000"
+ 584      676E6564 
+ 584      20636861 
+ 584      7200
+ 585              	.LASF27:
+ 586 00a6 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 586      43313120 
+ 586      352E342E 
+ 586      31203230 
+ 586      31363036 
+ 587 00d9 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 587      20726576 
+ 587      6973696F 
+ 587      6E203233 
+ 587      37373135 
+ 588 010c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 588      66756E63 
+ 588      74696F6E 
+ 588      2D736563 
+ 588      74696F6E 
+ 589              	.LASF31:
+ 590 0134 52784461 		.ascii	"RxData\000"
+ 590      746100
+ 591              	.LASF20:
+ 592 013b 72785F69 		.ascii	"rx_int_StartEx\000"
+ 592      6E745F53 
+ 592      74617274 
+ 592      457800
+ 593              	.LASF3:
+ 594 014a 73686F72 		.ascii	"short unsigned int\000"
+ 594      7420756E 
+ 594      7369676E 
+ 594      65642069 
+ 594      6E7400
+ 595              	.LASF21:
+ 596 015d 55415254 		.ascii	"UART_Start\000"
+ 596      5F537461 
+ 596      727400
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 13
+
+
+ 597              	.LASF33:
+ 598 0168 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 598      52784275 
+ 598      66666572 
+ 598      00
+ 599              	.LASF7:
+ 600 0175 6C6F6E67 		.ascii	"long unsigned int\000"
+ 600      20756E73 
+ 600      69676E65 
+ 600      6420696E 
+ 600      7400
+ 601              	.LASF32:
+ 602 0187 6D61696E 		.ascii	"main\000"
+ 602      00
+ 603              	.LASF10:
+ 604 018c 756E7369 		.ascii	"unsigned int\000"
+ 604      676E6564 
+ 604      20696E74 
+ 604      00
+ 605              	.LASF9:
+ 606 0199 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 606      206C6F6E 
+ 606      6720756E 
+ 606      7369676E 
+ 606      65642069 
+ 607              	.LASF11:
+ 608 01b0 75696E74 		.ascii	"uint8_t\000"
+ 608      385F7400 
+ 609              	.LASF19:
+ 610 01b8 4C43445F 		.ascii	"LCD_PutChar\000"
+ 610      50757443 
+ 610      68617200 
+ 611              	.LASF18:
+ 612 01c4 55415254 		.ascii	"UART_ReadRxData\000"
+ 612      5F526561 
+ 612      64527844 
+ 612      61746100 
+ 613              	.LASF12:
+ 614 01d4 696E7433 		.ascii	"int32_t\000"
+ 614      325F7400 
+ 615              	.LASF17:
+ 616 01dc 73697A65 		.ascii	"sizetype\000"
+ 616      74797065 
+ 616      00
+ 617              	.LASF8:
+ 618 01e5 6C6F6E67 		.ascii	"long long int\000"
+ 618      206C6F6E 
+ 618      6720696E 
+ 618      7400
+ 619              	.LASF28:
+ 620 01f3 6D61696E 		.ascii	"main.c\000"
+ 620      2E6300
+ 621              	.LASF15:
+ 622 01fa 63686172 		.ascii	"char\000"
+ 622      00
+ 623              	.LASF30:
+ 624 01ff 52585F49 		.ascii	"RX_INT\000"
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\ccCbOZNA.s 			page 14
+
+
+ 624      4E5400
+ 625              	.LASF2:
+ 626 0206 73686F72 		.ascii	"short int\000"
+ 626      7420696E 
+ 626      7400
+ 627              	.LASF24:
+ 628 0210 53686966 		.ascii	"ShiftReg_rev_Init\000"
+ 628      74526567 
+ 628      5F726576 
+ 628      5F496E69 
+ 628      7400
+ 629              	.LASF6:
+ 630 0222 6C6F6E67 		.ascii	"long int\000"
+ 630      20696E74 
+ 630      00
+ 631              	.LASF16:
+ 632 022b 6C6F6E67 		.ascii	"long double\000"
+ 632      20646F75 
+ 632      626C6500 
+ 633              	.LASF0:
+ 634 0237 7369676E 		.ascii	"signed char\000"
+ 634      65642063 
+ 634      68617200 
+ 635              	.LASF23:
+ 636 0243 53686966 		.ascii	"ShiftReg_fwd_Init\000"
+ 636      74526567 
+ 636      5F667764 
+ 636      5F496E69 
+ 636      7400
+ 637              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
