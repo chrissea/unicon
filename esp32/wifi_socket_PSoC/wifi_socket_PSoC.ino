@@ -52,17 +52,18 @@ void loop() {
   WiFiClient client = wifiServer.available();
  
   while (client) {
-    //if (client.connected()){
-      //Serial.println("Client connected");
-    //}
+    if (client.connected()){
+      Serial.println("Client connected");
+    }
     while (client.connected()) {
       while (client.available()) {
         char c = client.read();
-        //Serial.println(c);
+        //Serial.print(c);
         
         if (UART_PSOC.availableForWrite()) {
           UART_PSOC.write(c);
           //Serial.print("Sending to psoc: ");
+          Serial.print(": ");
           Serial.println(c);
         }
         if (UART_PSOC.available()) {

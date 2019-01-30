@@ -103,8 +103,9 @@ public class ControllerActivity extends AppCompatActivity {
             catch (Exception e) {
                 e.printStackTrace(); }
 
-            if (output != "") {
+            if (!output.equals("")) {
                 out.print(output);
+                out.flush();
             }
             output = default_op;
 
