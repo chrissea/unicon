@@ -39,32 +39,25 @@ public class ControllerActivity extends AppCompatActivity {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
 
-            int x = (int) event.getX();
-            int y = (int) event.getY();
+//            int x = (int) event.getX();
+//            int y = (int) event.getY();
 
             char button;
 
             switch (v.getId()) {
                 case (R.id.LEFT):
-                    button = "l";
                     break;
                 case (R.id.RIGHT):
-                    //stuff
                     break;
                 case (R.id.A):
-                    //stuff
                     break;
                 case (R.id.B):
-                    //stuff
                     break;
                 case (R.id.X):
-                    //stuff
                     break;
                 case (R.id.Y):
-                    //stuff
                     break;
                 case (R.id.Z):
-                    //stuff
                     break;
             }
 
@@ -73,7 +66,7 @@ public class ControllerActivity extends AppCompatActivity {
                     Log.i("TAG", "touched down");
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    Log.i("TAG", "moving: (" + x + ", " + y + ")");
+//                    Log.i("TAG", "moving: (" + x + ", " + y + ")");
                     break;
                 case MotionEvent.ACTION_UP:
                     Log.i("TAG", "touched up");
@@ -101,7 +94,7 @@ public class ControllerActivity extends AppCompatActivity {
         new Thread(new ClientThread()).start();
     }
 
-    //public void onLeft(View view) { output += "L"; }
+    public void onLeft(View view) { output += "L"; }
 
     public void onRight(View view) {
         output += "R";
