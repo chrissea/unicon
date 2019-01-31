@@ -10,7 +10,7 @@
     tools:context=".ControllerActivity">
 
     <Button
-        android:id="@+id/Left"
+        android:id="@+id/LEFT"
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"></Button>
 
     <Button
-        android:id="@+id/Right"
+        android:id="@+id/RIGHT"
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
@@ -67,17 +67,38 @@
         app:layout_constraintStart_toEndOf="@+id/Y"
         app:layout_constraintTop_toTopOf="@+id/guideline"></Button>
 
+
     <Button
-        android:id="@+id/Z"
+        android:id="@+id/A"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:onClick="onZ"
-        android:text="@string/z"
-        app:layout_constraintStart_toEndOf="@+id/Y"
-        app:layout_constraintTop_toTopOf="@+id/guideline"></Button>
+        android:onClick="onA"
+        android:text="@string/b"></Button>
+
+    <Button
+        android:id="@+id/B"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onB"
+        android:text="@string/b"></Button>
+
+    <Button
+        android:id="@+id/START"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onStart"
+        android:text="@string/start"></Button>
+
+
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
