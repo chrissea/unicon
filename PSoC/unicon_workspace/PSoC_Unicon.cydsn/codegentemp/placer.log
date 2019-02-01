@@ -6,7 +6,7 @@
 
 #Build Date:         Dec  5 2017 15:35:27
 
-#File Generated:     Jan 29 2019 20:46:46
+#File Generated:     Feb 1 2019 17:38:22
 
 #Purpose:            
 
@@ -44,18 +44,18 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	11
-    Number of Sequential MCs    	:	26
-    Number of DPs               	:	5
-    Number of Controls          	:	3
-    Number of Status            	:	4
+    Number of Combinational MCs 	:	14
+    Number of Sequential MCs    	:	42
+    Number of DPs               	:	13
+    Number of Controls          	:	5
+    Number of Status            	:	6
     Number of SyncCells         	:	0
     Number of count7cells       	:	1
 
 Device Utilization Summary after Packing
-    Macrocells                  :	37/192
-    UDBS                        :	6/24
-    IOs                         :	12/72
+    Macrocells                  :	56/192
+    UDBS                        :	16/24
+    IOs                         :	10/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,14 +79,17 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 7
-Clock: CyBUS_CLK            | Frequency:  55.1 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: CyBUS_CLK            | Frequency:  25.0 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: Shift_Clock          | Frequency:  21.6 MHz | Target:   1.0 MHz
-Clock: UART_IntClock        | Frequency:  55.1 MHz | Target:   0.5 MHz
+Clock: N64_Shift_Clock      | Frequency:  25.0 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: System_Clock_Slow    | Frequency: N/A       | Target:   8.0 MHz
+Clock: UART_IntClock        | Frequency:  53.6 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -98,33 +101,36 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 7
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: CyBUS_CLK            | Frequency:   1.2 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: Shift_Clock          | Frequency:  21.6 MHz | Target:   1.0 MHz
-Clock: UART_IntClock        | Frequency:   2.8 MHz | Target:   0.5 MHz
+Clock: N64_Shift_Clock      | Frequency:   1.2 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: System_Clock_Slow    | Frequency: N/A       | Target:   8.0 MHz
+Clock: UART_IntClock        | Frequency:   3.0 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.1 (sec)
+D2088: Phase 7, elapsed time : 0.4 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	11
-    Number of Sequential MCs    	:	26
-    Number of DPs               	:	5
-    Number of Controls          	:	3
-    Number of Status            	:	4
+    Number of Combinational MCs 	:	14
+    Number of Sequential MCs    	:	42
+    Number of DPs               	:	13
+    Number of Controls          	:	5
+    Number of Status            	:	6
     Number of SyncCells         	:	0
     Number of count7cells       	:	1
-    Number of IOs       	:	12
+    Number of IOs       	:	10
 
 Device Utilization Summary
-    Macrocells                  :	37/192
-    IOs                         :	12/72
+    Macrocells                  :	56/192
+    IOs                         :	10/72
 
 
 
@@ -140,14 +146,17 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 7
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: CyBUS_CLK            | Frequency:   1.2 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: Shift_Clock          | Frequency:  23.2 MHz | Target:   1.0 MHz
-Clock: UART_IntClock        | Frequency:   2.8 MHz | Target:   0.5 MHz
+Clock: N64_Shift_Clock      | Frequency:   1.2 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: System_Clock_Slow    | Frequency: N/A       | Target:   8.0 MHz
+Clock: UART_IntClock        | Frequency:   3.0 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -166,14 +175,17 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 7
-Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: CyBUS_CLK            | Frequency:   1.2 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: Shift_Clock          | Frequency:  22.9 MHz | Target:   1.0 MHz
-Clock: UART_IntClock        | Frequency:   2.7 MHz | Target:   0.5 MHz
+Clock: N64_Shift_Clock      | Frequency:   1.2 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: System_Clock_Slow    | Frequency: N/A       | Target:   8.0 MHz
+Clock: UART_IntClock        | Frequency:   2.8 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -185,33 +197,36 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 7
-Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: CyBUS_CLK            | Frequency:   1.2 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: Shift_Clock          | Frequency:  22.9 MHz | Target:   1.0 MHz
-Clock: UART_IntClock        | Frequency:   2.7 MHz | Target:   0.5 MHz
+Clock: N64_Shift_Clock      | Frequency:   1.2 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: System_Clock_Slow    | Frequency: N/A       | Target:   8.0 MHz
+Clock: UART_IntClock        | Frequency:   3.0 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.2 (sec)
+D2088: Phase 7, elapsed time : 0.8 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	11
-    Number of Sequential MCs    	:	26
-    Number of DPs               	:	5
-    Number of Controls          	:	3
-    Number of Status            	:	4
+    Number of Combinational MCs 	:	14
+    Number of Sequential MCs    	:	42
+    Number of DPs               	:	13
+    Number of Controls          	:	5
+    Number of Status            	:	6
     Number of SyncCells         	:	0
     Number of count7cells       	:	1
-    Number of IOs       	:	12
+    Number of IOs       	:	10
 
 Device Utilization Summary
-    Macrocells                  :	37/192
-    IOs                         :	12/72
+    Macrocells                  :	56/192
+    IOs                         :	10/72
 
 
 
@@ -227,13 +242,16 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 7
-Clock: CyBUS_CLK            | Frequency:   2.9 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: CyBUS_CLK            | Frequency:   1.2 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: Shift_Clock          | Frequency:  23.2 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock      | Frequency:   1.2 MHz | Target:   1.0 MHz
+Clock: N64_Shift_Clock(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: System_Clock_Slow    | Frequency: N/A       | Target:   8.0 MHz
 Clock: UART_IntClock        | Frequency:   2.9 MHz | Target:   0.5 MHz
 
 ======================================================================
@@ -245,5 +263,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.0 sec.
+I2076: Total run-time: 2.0 sec.
 
