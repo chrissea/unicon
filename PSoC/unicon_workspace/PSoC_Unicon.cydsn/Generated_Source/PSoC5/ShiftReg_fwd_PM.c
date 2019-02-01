@@ -21,11 +21,11 @@ static ShiftReg_fwd_BACKUP_STRUCT ShiftReg_fwd_backup =
 {
     ShiftReg_fwd_DISABLED,
 
-    ((uint8) ShiftReg_fwd_DEFAULT_A0),
-    ((uint8) ShiftReg_fwd_DEFAULT_A1),
+    ((uint32) ShiftReg_fwd_DEFAULT_A0),
+    ((uint32) ShiftReg_fwd_DEFAULT_A1),
 
     #if(CY_UDB_V0)
-        ((uint8) ShiftReg_fwd_INT_SRC),
+        ((uint32) ShiftReg_fwd_INT_SRC),
     #endif /* (CY_UDB_V0) */
 };
 
@@ -50,8 +50,8 @@ static ShiftReg_fwd_BACKUP_STRUCT ShiftReg_fwd_backup =
 void ShiftReg_fwd_SaveConfig(void) 
 {
     /* Store working registers A0 and A1 */
-    ShiftReg_fwd_backup.saveSrA0Reg   = CY_GET_REG8(ShiftReg_fwd_SHIFT_REG_LSB_PTR);
-    ShiftReg_fwd_backup.saveSrA1Reg   = CY_GET_REG8(ShiftReg_fwd_SHIFT_REG_VALUE_LSB_PTR);
+    ShiftReg_fwd_backup.saveSrA0Reg   = CY_GET_REG32(ShiftReg_fwd_SHIFT_REG_LSB_PTR);
+    ShiftReg_fwd_backup.saveSrA1Reg   = CY_GET_REG32(ShiftReg_fwd_SHIFT_REG_VALUE_LSB_PTR);
 
     #if(CY_UDB_V0)
         ShiftReg_fwd_backup.saveSrIntMask = ShiftReg_fwd_SR_STATUS_MASK;
@@ -76,8 +76,8 @@ void ShiftReg_fwd_SaveConfig(void)
 void ShiftReg_fwd_RestoreConfig(void) 
 {
     /* Restore working registers A0 and A1 */
-    CY_SET_REG8(ShiftReg_fwd_SHIFT_REG_LSB_PTR, ShiftReg_fwd_backup.saveSrA0Reg);
-    CY_SET_REG8(ShiftReg_fwd_SHIFT_REG_VALUE_LSB_PTR, ShiftReg_fwd_backup.saveSrA1Reg);
+    CY_SET_REG32(ShiftReg_fwd_SHIFT_REG_LSB_PTR, ShiftReg_fwd_backup.saveSrA0Reg);
+    CY_SET_REG32(ShiftReg_fwd_SHIFT_REG_VALUE_LSB_PTR, ShiftReg_fwd_backup.saveSrA1Reg);
 
     #if(CY_UDB_V0)
         ShiftReg_fwd_SR_STATUS_MASK = ((uint8) ShiftReg_fwd_backup.saveSrIntMask);

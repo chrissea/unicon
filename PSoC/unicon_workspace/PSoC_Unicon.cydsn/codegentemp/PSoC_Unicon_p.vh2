@@ -1,12 +1,9 @@
 -- Project:   PSoC_Unicon
--- Generated: 01/29/2019 20:46:46
+-- Generated: 02/01/2019 17:38:22
 -- PSoC Creator  4.2
 
 ENTITY PSoC_Unicon IS
     PORT(
-        Controller_1(0)_PAD : INOUT std_ulogic;
-        Console_1(0)_PAD : INOUT std_ulogic;
-        Communication_State(0)_PAD : IN std_ulogic;
         From_ESP(0)_PAD : IN std_ulogic;
         To_ESP(0)_PAD : OUT std_ulogic;
         \LCD:LCDPort(0)_PAD\ : OUT std_ulogic;
@@ -15,7 +12,8 @@ ENTITY PSoC_Unicon IS
         \LCD:LCDPort(3)_PAD\ : OUT std_ulogic;
         \LCD:LCDPort(4)_PAD\ : OUT std_ulogic;
         \LCD:LCDPort(5)_PAD\ : OUT std_ulogic;
-        \LCD:LCDPort(6)_PAD\ : OUT std_ulogic);
+        \LCD:LCDPort(6)_PAD\ : OUT std_ulogic;
+        Console_2(0)_PAD : INOUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -39,26 +37,30 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Unicon IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
-    SIGNAL Communication_State(0)__PA : bit;
-    SIGNAL Console_1(0)__PA : bit;
-    SIGNAL Controller_1(0)__PA : bit;
+    SIGNAL Console_2(0)__PA : bit;
     SIGNAL From_ESP(0)__PA : bit;
+    SIGNAL Net_1001 : bit;
     SIGNAL Net_108 : bit;
+    SIGNAL Net_1104 : bit;
     SIGNAL Net_113 : bit;
     SIGNAL Net_115 : bit;
-    SIGNAL Net_20 : bit;
-    SIGNAL Net_24 : bit;
-    SIGNAL Net_41 : bit;
-    SIGNAL Net_43 : bit;
-    SIGNAL Net_46 : bit;
-    SIGNAL Net_67 : bit;
+    SIGNAL Net_1169 : bit;
+    SIGNAL Net_1175 : bit;
+    SIGNAL Net_1177 : bit;
+    SIGNAL Net_1190 : bit;
+    SIGNAL Net_1202 : bit;
+    SIGNAL Net_1204 : bit;
+    SIGNAL Net_1209 : bit;
+    SIGNAL Net_1213 : bit;
+    SIGNAL Net_1387 : bit;
+    SIGNAL Net_1388 : bit;
+    ATTRIBUTE POWER OF Net_1388 : SIGNAL IS true;
+    SIGNAL Net_1391 : bit;
+    SIGNAL Net_1395 : bit;
+    SIGNAL Net_221 : bit;
+    SIGNAL Net_943 : bit;
+    SIGNAL Net_989 : bit;
     SIGNAL To_ESP(0)__PA : bit;
-    SIGNAL \FreqDiv_fwd:count_0\ : bit;
-    SIGNAL \FreqDiv_fwd:count_1\ : bit;
-    SIGNAL \FreqDiv_fwd:count_2\ : bit;
-    SIGNAL \FreqDiv_fwd:count_3\ : bit;
-    SIGNAL \FreqDiv_fwd:count_4\ : bit;
-    SIGNAL \FreqDiv_fwd:not_last_reset\ : bit;
     SIGNAL \\\LCD:LCDPort(0)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(1)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(2)\\__PA\ : bit;
@@ -66,34 +68,12 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Unicon IS
     SIGNAL \\\LCD:LCDPort(4)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(5)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(6)\\__PA\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_1\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_2\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_3\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_4\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_5\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_6\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:control_7\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:ctrl_clk_enable\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:load_reg\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:status_0\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:status_3\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:status_4\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:status_5\ : bit;
-    SIGNAL \ShiftReg_fwd:bSR:status_6\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_1\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_2\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_3\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_4\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_5\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_6\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:control_7\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:ctrl_clk_enable\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:load_reg\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:status_0\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:status_3\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:status_4\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:status_5\ : bit;
-    SIGNAL \ShiftReg_rev:bSR:status_6\ : bit;
+    SIGNAL \N64_Bit_Clock:count_0\ : bit;
+    SIGNAL \N64_Bit_Clock:count_1\ : bit;
+    SIGNAL \N64_Bit_Clock:not_last_reset\ : bit;
+    SIGNAL \Timer_1:Net_261\ : bit;
+    SIGNAL \Timer_2:Net_261\ : bit;
+    SIGNAL \Timer_2:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
     SIGNAL \UART:BUART:pollcount_0\ : bit;
     SIGNAL \UART:BUART:pollcount_1\ : bit;
@@ -136,20 +116,171 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Unicon IS
     ATTRIBUTE udbclken_assigned OF \UART:Net_9\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \UART:Net_9\ : SIGNAL IS true;
     SIGNAL \UART:Net_9_local\ : bit;
+    SIGNAL \count_time_to_transmit:Net_42\ : bit;
+    SIGNAL \count_time_to_transmit:Net_47\ : bit;
+    SIGNAL \detect_comm_state_1:last\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_1\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_2\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_3\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_4\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_5\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_6\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:control_7\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:ctrl_clk_enable\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ce0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ce0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:status_3\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:status_4\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:status_5\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:status_6\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_1\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_2\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_3\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_4\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_5\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_6\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:control_7\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:ctrl_clk_enable\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:load_reg\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ce0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ce0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ce0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:status_0\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:status_3\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:status_4\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:status_5\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:status_6\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_1\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_2\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_3\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_4\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_5\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_6\ : bit;
+    SIGNAL \n64_one_bit:bSR:control_7\ : bit;
+    SIGNAL \n64_one_bit:bSR:ctrl_clk_enable\ : bit;
+    SIGNAL \n64_one_bit:bSR:status_3\ : bit;
+    SIGNAL \n64_one_bit:bSR:status_4\ : bit;
+    SIGNAL \n64_one_bit:bSR:status_5\ : bit;
+    SIGNAL \n64_one_bit:bSR:status_6\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_1\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_2\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_3\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_4\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_5\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_6\ : bit;
+    SIGNAL \n64_zero_bit:bSR:control_7\ : bit;
+    SIGNAL \n64_zero_bit:bSR:ctrl_clk_enable\ : bit;
+    SIGNAL \n64_zero_bit:bSR:status_3\ : bit;
+    SIGNAL \n64_zero_bit:bSR:status_4\ : bit;
+    SIGNAL \n64_zero_bit:bSR:status_5\ : bit;
+    SIGNAL \n64_zero_bit:bSR:status_6\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
-    SIGNAL shift_clk : bit;
-    ATTRIBUTE udbclken_assigned OF shift_clk : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF shift_clk : SIGNAL IS true;
-    SIGNAL shift_clk_local : bit;
-    SIGNAL tmpOE__Controller_1_net_0 : bit;
-    ATTRIBUTE POWER OF tmpOE__Controller_1_net_0 : SIGNAL IS true;
-    SIGNAL tmpOE__bufoe_1_net_0 : bit;
-    SIGNAL tmpOE__bufoe_2_net_0 : bit;
+    SIGNAL cy_tff_2 : bit;
+    SIGNAL cydff_1 : bit;
+    SIGNAL cydff_10 : bit;
+    SIGNAL cydff_14 : bit;
+    SIGNAL cydff_15 : bit;
+    SIGNAL cydff_16 : bit;
+    SIGNAL cydff_2 : bit;
+    SIGNAL cydff_3 : bit;
+    SIGNAL cydff_4 : bit;
+    SIGNAL cydff_5 : bit;
+    SIGNAL cydff_6 : bit;
+    SIGNAL cydff_7 : bit;
+    SIGNAL cydff_8 : bit;
+    SIGNAL cydff_9 : bit;
+    SIGNAL n64_bit_clk : bit;
+    SIGNAL n64_shift_clk : bit;
+    ATTRIBUTE udbclken_assigned OF n64_shift_clk : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF n64_shift_clk : SIGNAL IS true;
+    SIGNAL n64_shift_clk_local : bit;
+    SIGNAL start_rcv : bit;
+    SIGNAL switch_msg : bit;
+    SIGNAL sys_clk_slow : bit;
+    ATTRIBUTE global_signal OF sys_clk_slow : SIGNAL IS true;
+    SIGNAL sys_clk_slow_local : bit;
+    SIGNAL tmpOE__bufoe_3_net_0 : bit;
+    SIGNAL transmit_tc : bit;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
+    SIGNAL \ClockBlock.dclk_glb_ff_1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ce0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cl0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.z0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ff0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ce1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cl1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.z1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ff1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.co_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.sol_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cfbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.sor__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cmsbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cl0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.z0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ff0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ce1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cl1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.z1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ff1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.co_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.sol_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cfbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.sor__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cmsbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cl0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.z0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ff0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ce1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cl1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.z1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ff1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.co_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.sol_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cfbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3.sor__sig\ : bit;
+    SIGNAL \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3.cmsbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cl0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.z0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ff0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ce1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cl1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.z1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ff1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.co_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.sol_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cfbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.sor__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cmsbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cl0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.z0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ff0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ce1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cl1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.z1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ff1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.co_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.sol_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cfbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.sor__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cmsbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cl0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.z0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ff0__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ce1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cl1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.z1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ff1__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.co_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.sol_msb__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cfbo__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3.sor__sig\ : bit;
+    SIGNAL \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF From_ESP(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF From_ESP(0) : LABEL IS "P3[7]";
     ATTRIBUTE lib_model OF To_ESP(0) : LABEL IS "iocell2";
@@ -168,54 +299,85 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Unicon IS
     ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell9";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF \ShiftReg_fwd:bSR:status_0\ : LABEL IS "macrocell1";
-    ATTRIBUTE lib_model OF tmpOE__bufoe_1_net_0 : LABEL IS "macrocell2";
-    ATTRIBUTE lib_model OF \ShiftReg_rev:bSR:status_0\ : LABEL IS "macrocell3";
-    ATTRIBUTE lib_model OF Net_108 : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_status_2\ : LABEL IS "macrocell7";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_counter_load\ : LABEL IS "macrocell8";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_postpoll\ : LABEL IS "macrocell9";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_4\ : LABEL IS "macrocell10";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_5\ : LABEL IS "macrocell11";
-    ATTRIBUTE lib_model OF \ShiftReg_fwd:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell1";
-    ATTRIBUTE lib_model OF \ShiftReg_fwd:bSR:StsReg\ : LABEL IS "statusicell1";
-    ATTRIBUTE lib_model OF \ShiftReg_fwd:bSR:sC8:BShiftRegDp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE lib_model OF \ShiftReg_rev:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell2";
-    ATTRIBUTE lib_model OF \ShiftReg_rev:bSR:StsReg\ : LABEL IS "statusicell2";
-    ATTRIBUTE lib_model OF \ShiftReg_rev:bSR:sC8:BShiftRegDp:u0\ : LABEL IS "datapathcell2";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell4";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell3";
-    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell4";
-    ATTRIBUTE lib_model OF Net_20 : LABEL IS "macrocell12";
-    ATTRIBUTE lib_model OF \ShiftReg_fwd:bSR:load_reg\ : LABEL IS "macrocell13";
-    ATTRIBUTE lib_model OF \FreqDiv_fwd:not_last_reset\ : LABEL IS "macrocell14";
-    ATTRIBUTE lib_model OF \FreqDiv_fwd:count_4\ : LABEL IS "macrocell15";
-    ATTRIBUTE lib_model OF \FreqDiv_fwd:count_3\ : LABEL IS "macrocell16";
-    ATTRIBUTE lib_model OF \FreqDiv_fwd:count_2\ : LABEL IS "macrocell17";
-    ATTRIBUTE lib_model OF \FreqDiv_fwd:count_1\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \FreqDiv_fwd:count_0\ : LABEL IS "macrocell19";
-    ATTRIBUTE lib_model OF Net_43 : LABEL IS "macrocell20";
-    ATTRIBUTE lib_model OF \ShiftReg_rev:bSR:load_reg\ : LABEL IS "macrocell21";
-    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell22";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell23";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell24";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell25";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell26";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell27";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell28";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell29";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell30";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell31";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell32";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell33";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell34";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell35";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell36";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell37";
+    ATTRIBUTE lib_model OF Net_943 : LABEL IS "macrocell1";
+    ATTRIBUTE lib_model OF Net_108 : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_status_2\ : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_counter_load\ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_postpoll\ : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_4\ : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_5\ : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:status_0\ : LABEL IS "macrocell10";
+    ATTRIBUTE lib_model OF start_rcv : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF Net_1395 : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell1";
+    ATTRIBUTE lib_model OF __ZERO__ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell2";
+    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell1";
+    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell3";
+    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell2";
+    ATTRIBUTE lib_model OF \n64_one_bit:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell1";
+    ATTRIBUTE lib_model OF \n64_one_bit:bSR:StsReg\ : LABEL IS "statusicell3";
+    ATTRIBUTE lib_model OF \n64_one_bit:bSR:sC8:BShiftRegDp:u0\ : LABEL IS "datapathcell4";
+    ATTRIBUTE lib_model OF \n64_zero_bit:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell2";
+    ATTRIBUTE lib_model OF \n64_zero_bit:bSR:StsReg\ : LABEL IS "statusicell4";
+    ATTRIBUTE lib_model OF \n64_zero_bit:bSR:sC8:BShiftRegDp:u0\ : LABEL IS "datapathcell5";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell3";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:StsReg\ : LABEL IS "statusicell5";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0\ : LABEL IS "datapathcell6";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1\ : LABEL IS "datapathcell7";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2\ : LABEL IS "datapathcell8";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3\ : LABEL IS "datapathcell9";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_buttonstate:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell4";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_buttonstate:bSR:StsReg\ : LABEL IS "statusicell6";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0\ : LABEL IS "datapathcell10";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1\ : LABEL IS "datapathcell11";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2\ : LABEL IS "datapathcell12";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3\ : LABEL IS "datapathcell13";
+    ATTRIBUTE lib_model OF cydff_7 : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF cydff_6 : LABEL IS "macrocell16";
+    ATTRIBUTE lib_model OF n64_bit_clk : LABEL IS "macrocell17";
+    ATTRIBUTE lib_model OF cydff_5 : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF cydff_1 : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF cydff_2 : LABEL IS "macrocell20";
+    ATTRIBUTE lib_model OF cydff_3 : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF cydff_4 : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF cydff_15 : LABEL IS "macrocell23";
+    ATTRIBUTE lib_model OF cy_tff_2 : LABEL IS "macrocell24";
+    ATTRIBUTE lib_model OF cydff_10 : LABEL IS "macrocell25";
+    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell26";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell27";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell28";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell29";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell30";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell31";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell32";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell33";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell34";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell35";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell36";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell37";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell38";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell39";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell40";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell41";
+    ATTRIBUTE lib_model OF cydff_14 : LABEL IS "macrocell42";
+    ATTRIBUTE lib_model OF cydff_8 : LABEL IS "macrocell43";
+    ATTRIBUTE lib_model OF \N64_Bit_Clock:not_last_reset\ : LABEL IS "macrocell44";
+    ATTRIBUTE lib_model OF \N64_Bit_Clock:count_1\ : LABEL IS "macrocell45";
+    ATTRIBUTE lib_model OF \N64_Bit_Clock:count_0\ : LABEL IS "macrocell46";
+    ATTRIBUTE lib_model OF \n64_ShiftReg_commack:bSR:load_reg\ : LABEL IS "macrocell47";
+    ATTRIBUTE lib_model OF \detect_comm_state_1:last\ : LABEL IS "macrocell48";
+    ATTRIBUTE lib_model OF cydff_16 : LABEL IS "macrocell49";
+    ATTRIBUTE lib_model OF cydff_9 : LABEL IS "macrocell50";
+    ATTRIBUTE lib_model OF tmpOE__bufoe_3_net_0 : LABEL IS "macrocell51";
+    ATTRIBUTE lib_model OF switch_msg : LABEL IS "macrocell52";
+    ATTRIBUTE lib_model OF Net_1204 : LABEL IS "macrocell53";
+    ATTRIBUTE lib_model OF Net_1202 : LABEL IS "macrocell54";
+    ATTRIBUTE lib_model OF Net_1175 : LABEL IS "macrocell55";
+    ATTRIBUTE lib_model OF Net_1177 : LABEL IS "macrocell56";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -540,6 +702,17 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Unicon IS
     ATTRIBUTE udb_clk OF statusicell : COMPONENT IS "clock";
     ATTRIBUTE udb_clken OF statusicell : COMPONENT IS "clk_en";
     ATTRIBUTE udb_reset OF statusicell : COMPONENT IS "reset";
+    COMPONENT timercell
+        PORT (
+            clock : IN std_ulogic;
+            kill : IN std_ulogic;
+            enable : IN std_ulogic;
+            capture : IN std_ulogic;
+            timer_reset : IN std_ulogic;
+            tc : OUT std_ulogic;
+            cmp : OUT std_ulogic;
+            irq : OUT std_ulogic);
+    END COMPONENT;
 BEGIN
 
     ClockBlock:clockblockcell
@@ -557,287 +730,14 @@ BEGIN
             clk_bus => ClockBlock_BUS_CLK_local,
             dsi_clkin_div => open,
             dsi_glb_div => open,
-            dclk_glb_0 => shift_clk,
-            dclk_0 => shift_clk_local,
-            dclk_glb_1 => \UART:Net_9\,
-            dclk_1 => \UART:Net_9_local\);
-
-    Controller_1:logicalport
-        GENERIC MAP(
-            drive_mode => "111",
-            ibuf_enabled => "1",
-            id => "8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
-            init_dr_st => "1",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "B",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Controller_1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Controller_1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Controller_1(0)__PA,
-            oe => tmpOE__bufoe_2_net_0,
-            fb => Net_67,
-            pin_input => Net_46,
-            pad_out => Controller_1(0)_PAD,
-            pad_in => Controller_1(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Console_1:logicalport
-        GENERIC MAP(
-            drive_mode => "111",
-            ibuf_enabled => "1",
-            id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
-            init_dr_st => "1",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "B",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Console_1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Console_1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Console_1(0)__PA,
-            oe => tmpOE__bufoe_1_net_0,
-            fb => Net_41,
-            pin_input => Net_24,
-            pad_out => Console_1(0)_PAD,
-            pad_in => Console_1(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Communication_State:logicalport
-        GENERIC MAP(
-            drive_mode => "001",
-            ibuf_enabled => "1",
-            id => "212a7282-1522-448a-89f2-23dc09ad8b83",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "I",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Communication_State(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Communication_State",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Communication_State(0)__PA,
-            oe => open,
-            fb => tmpOE__bufoe_2_net_0,
-            pad_in => Communication_State(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
+            dclk_glb_0 => sys_clk_slow,
+            dclk_0 => sys_clk_slow_local,
+            dclk_glb_1 => n64_shift_clk,
+            dclk_1 => n64_shift_clk_local,
+            dclk_glb_2 => \UART:Net_9\,
+            dclk_2 => \UART:Net_9_local\,
+            clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
+            dclk_glb_ff_1 => \ClockBlock.dclk_glb_ff_1__sig\);
 
     From_ESP:logicalport
         GENERIC MAP(
@@ -1227,34 +1127,109 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \ShiftReg_fwd:bSR:status_0\:macrocell
+    Console_2:logicalport
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
+            drive_mode => "010",
+            ibuf_enabled => "1",
+            id => "6e1b7473-6e5e-47cd-b91b-99c26e2c4161",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "0",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "B",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
         PORT MAP(
-            q => \ShiftReg_fwd:bSR:status_0\,
-            main_0 => Net_20,
-            main_1 => \ShiftReg_fwd:bSR:load_reg\);
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
 
-    tmpOE__bufoe_1_net_0:macrocell
+    Console_2(0):iocell
         GENERIC MAP(
-            eqn_main => "(!main_0)",
-            regmode => 0,
-            clken_mode => 1)
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Console_2",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            q => tmpOE__bufoe_1_net_0,
-            main_0 => tmpOE__bufoe_2_net_0);
+            pa_out => Console_2(0)__PA,
+            oe => tmpOE__bufoe_3_net_0,
+            fb => Net_1169,
+            pin_input => cydff_6,
+            pad_out => Console_2(0)_PAD,
+            pad_in => Console_2(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
-    \ShiftReg_rev:bSR:status_0\:macrocell
+    Net_943:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1)",
+            eqn_main => "(!main_0 * !main_1 * !main_2)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => \ShiftReg_rev:bSR:status_0\,
-            main_0 => Net_43,
-            main_1 => \ShiftReg_rev:bSR:load_reg\);
+            q => Net_943,
+            main_0 => transmit_tc,
+            main_1 => Net_1213,
+            main_2 => Net_221);
 
     Net_108:macrocell
         GENERIC MAP(
@@ -1342,177 +1317,50 @@ BEGIN
             main_0 => \UART:BUART:rx_fifonotempty\,
             main_1 => \UART:BUART:rx_state_stop1_reg\);
 
-    \ShiftReg_fwd:bSR:SyncCtl:CtrlReg\:controlcell
+    \n64_ShiftReg_commack:bSR:status_0\:macrocell
         GENERIC MAP(
-            cy_ctrl_mode_0 => "00000001",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clk_inv => '0',
+            eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            clock => shift_clk,
-            control_7 => \ShiftReg_fwd:bSR:control_7\,
-            control_6 => \ShiftReg_fwd:bSR:control_6\,
-            control_5 => \ShiftReg_fwd:bSR:control_5\,
-            control_4 => \ShiftReg_fwd:bSR:control_4\,
-            control_3 => \ShiftReg_fwd:bSR:control_3\,
-            control_2 => \ShiftReg_fwd:bSR:control_2\,
-            control_1 => \ShiftReg_fwd:bSR:control_1\,
-            control_0 => \ShiftReg_fwd:bSR:ctrl_clk_enable\,
-            busclk => ClockBlock_BUS_CLK);
+            q => \n64_ShiftReg_commack:bSR:status_0\,
+            main_0 => cy_tff_2,
+            main_1 => \n64_ShiftReg_commack:bSR:load_reg\);
 
-    \ShiftReg_fwd:bSR:StsReg\:statusicell
+    start_rcv:macrocell
         GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "0000111",
-            cy_md_select => "0000111",
-            clk_inv => '0',
+            eqn_main => "(!main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            clock => shift_clk,
-            status_6 => \ShiftReg_fwd:bSR:status_6\,
-            status_5 => \ShiftReg_fwd:bSR:status_5\,
-            status_4 => \ShiftReg_fwd:bSR:status_4\,
-            status_3 => \ShiftReg_fwd:bSR:status_3\,
-            status_2 => open,
-            status_1 => Net_20,
-            status_0 => \ShiftReg_fwd:bSR:status_0\);
+            q => start_rcv,
+            main_0 => cydff_10,
+            main_1 => Net_1175);
 
-    \ShiftReg_fwd:bSR:sC8:BShiftRegDp:u0\:datapathcell
+    Net_1395:macrocell
         GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101001001000111100000000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '0',
+            eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            clock => shift_clk,
-            cs_addr_2 => \ShiftReg_fwd:bSR:ctrl_clk_enable\,
-            cs_addr_1 => \ShiftReg_fwd:bSR:status_0\,
-            route_si => Net_67,
-            f1_load => Net_20,
-            so_comb => Net_24,
-            f0_bus_stat_comb => \ShiftReg_fwd:bSR:status_4\,
-            f0_blk_stat_comb => \ShiftReg_fwd:bSR:status_3\,
-            f1_bus_stat_comb => \ShiftReg_fwd:bSR:status_6\,
-            f1_blk_stat_comb => \ShiftReg_fwd:bSR:status_5\,
-            busclk => ClockBlock_BUS_CLK);
+            q => Net_1395,
+            main_0 => tmpOE__bufoe_3_net_0);
 
-    \ShiftReg_rev:bSR:SyncCtl:CtrlReg\:controlcell
+    n64_init_isr:interrupt
         GENERIC MAP(
-            cy_ctrl_mode_0 => "00000001",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            clock => shift_clk,
-            control_7 => \ShiftReg_rev:bSR:control_7\,
-            control_6 => \ShiftReg_rev:bSR:control_6\,
-            control_5 => \ShiftReg_rev:bSR:control_5\,
-            control_4 => \ShiftReg_rev:bSR:control_4\,
-            control_3 => \ShiftReg_rev:bSR:control_3\,
-            control_2 => \ShiftReg_rev:bSR:control_2\,
-            control_1 => \ShiftReg_rev:bSR:control_1\,
-            control_0 => \ShiftReg_rev:bSR:ctrl_clk_enable\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \ShiftReg_rev:bSR:StsReg\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "0000111",
-            cy_md_select => "0000111",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            clock => shift_clk,
-            status_6 => \ShiftReg_rev:bSR:status_6\,
-            status_5 => \ShiftReg_rev:bSR:status_5\,
-            status_4 => \ShiftReg_rev:bSR:status_4\,
-            status_3 => \ShiftReg_rev:bSR:status_3\,
-            status_2 => open,
-            status_1 => Net_43,
-            status_0 => \ShiftReg_rev:bSR:status_0\);
-
-    \ShiftReg_rev:bSR:sC8:BShiftRegDp:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101001001000111100000000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            clock => shift_clk,
-            cs_addr_2 => \ShiftReg_rev:bSR:ctrl_clk_enable\,
-            cs_addr_1 => \ShiftReg_rev:bSR:status_0\,
-            route_si => Net_41,
-            f1_load => Net_43,
-            so_comb => Net_46,
-            f0_bus_stat_comb => \ShiftReg_rev:bSR:status_4\,
-            f0_blk_stat_comb => \ShiftReg_rev:bSR:status_3\,
-            f1_bus_stat_comb => \ShiftReg_rev:bSR:status_6\,
-            f1_blk_stat_comb => \ShiftReg_rev:bSR:status_5\,
-            busclk => ClockBlock_BUS_CLK);
-
-    Console_fb:interrupt
-        GENERIC MAP(
-            int_type => "10",
+            int_type => "00",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_41,
+            interrupt => Net_1391,
             clock => ClockBlock_BUS_CLK);
 
-    Controller_fb:interrupt
+    __ONE__:macrocell
         GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
+            eqn_main => "1'b0",
+            regmode => 0,
+            clken_mode => 1)
         PORT MAP(
-            interrupt => Net_67,
-            clock => ClockBlock_BUS_CLK);
+            q => __ONE__);
 
     \UART:BUART:sTX:TxShifter:u0\:datapathcell
         GENERIC MAP(
@@ -1551,6 +1399,14 @@ BEGIN
             f0_bus_stat_comb => \UART:BUART:tx_fifo_notfull\,
             f0_blk_stat_comb => \UART:BUART:tx_fifo_empty\,
             busclk => ClockBlock_BUS_CLK);
+
+    __ZERO__:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => __ZERO__);
 
     \UART:BUART:sTX:sCLOCK:TxBitClkGen\:datapathcell
         GENERIC MAP(
@@ -1686,7 +1542,7 @@ BEGIN
             status_0 => open,
             interrupt => Net_115);
 
-    rx_int:interrupt
+    uart_rx_int:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
@@ -1694,136 +1550,880 @@ BEGIN
             interrupt => Net_115,
             clock => ClockBlock_BUS_CLK);
 
-    Net_20:macrocell
+    \n64_one_bit:bSR:SyncCtl:CtrlReg\:controlcell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1) + (!main_0 * main_2 * main_3 * main_4 * main_5 * main_6) + (main_0 * main_1 * !main_2 * main_3 * main_4 * main_5 * main_6)",
-            regmode => 2,
+            cy_ctrl_mode_0 => "00000001",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => Net_20,
-            clock_0 => shift_clk,
-            main_0 => Net_20,
-            main_1 => \FreqDiv_fwd:not_last_reset\,
-            main_2 => \FreqDiv_fwd:count_4\,
-            main_3 => \FreqDiv_fwd:count_3\,
-            main_4 => \FreqDiv_fwd:count_2\,
-            main_5 => \FreqDiv_fwd:count_1\,
-            main_6 => \FreqDiv_fwd:count_0\);
+            clock => n64_shift_clk,
+            control_7 => \n64_one_bit:bSR:control_7\,
+            control_6 => \n64_one_bit:bSR:control_6\,
+            control_5 => \n64_one_bit:bSR:control_5\,
+            control_4 => \n64_one_bit:bSR:control_4\,
+            control_3 => \n64_one_bit:bSR:control_3\,
+            control_2 => \n64_one_bit:bSR:control_2\,
+            control_1 => \n64_one_bit:bSR:control_1\,
+            control_0 => \n64_one_bit:bSR:ctrl_clk_enable\,
+            busclk => ClockBlock_BUS_CLK);
 
-    \ShiftReg_fwd:bSR:load_reg\:macrocell
+    \n64_one_bit:bSR:StsReg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "0000111",
+            cy_md_select => "0000111",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => n64_shift_clk,
+            status_6 => \n64_one_bit:bSR:status_6\,
+            status_5 => \n64_one_bit:bSR:status_5\,
+            status_4 => \n64_one_bit:bSR:status_4\,
+            status_3 => \n64_one_bit:bSR:status_3\,
+            status_2 => open,
+            status_1 => open,
+            status_0 => open);
+
+    \n64_one_bit:bSR:sC8:BShiftRegDp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101001001000101100000000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_one_bit:bSR:ctrl_clk_enable\,
+            route_si => Net_989,
+            so_comb => Net_989,
+            f0_bus_stat_comb => \n64_one_bit:bSR:status_4\,
+            f0_blk_stat_comb => \n64_one_bit:bSR:status_3\,
+            f1_bus_stat_comb => \n64_one_bit:bSR:status_6\,
+            f1_blk_stat_comb => \n64_one_bit:bSR:status_5\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \n64_zero_bit:bSR:SyncCtl:CtrlReg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000001",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => n64_shift_clk,
+            control_7 => \n64_zero_bit:bSR:control_7\,
+            control_6 => \n64_zero_bit:bSR:control_6\,
+            control_5 => \n64_zero_bit:bSR:control_5\,
+            control_4 => \n64_zero_bit:bSR:control_4\,
+            control_3 => \n64_zero_bit:bSR:control_3\,
+            control_2 => \n64_zero_bit:bSR:control_2\,
+            control_1 => \n64_zero_bit:bSR:control_1\,
+            control_0 => \n64_zero_bit:bSR:ctrl_clk_enable\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \n64_zero_bit:bSR:StsReg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "0000111",
+            cy_md_select => "0000111",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => n64_shift_clk,
+            status_6 => \n64_zero_bit:bSR:status_6\,
+            status_5 => \n64_zero_bit:bSR:status_5\,
+            status_4 => \n64_zero_bit:bSR:status_4\,
+            status_3 => \n64_zero_bit:bSR:status_3\,
+            status_2 => open,
+            status_1 => open,
+            status_0 => open);
+
+    \n64_zero_bit:bSR:sC8:BShiftRegDp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101001001000101100000000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_zero_bit:bSR:ctrl_clk_enable\,
+            route_si => Net_1104,
+            so_comb => Net_1104,
+            f0_bus_stat_comb => \n64_zero_bit:bSR:status_4\,
+            f0_blk_stat_comb => \n64_zero_bit:bSR:status_3\,
+            f1_bus_stat_comb => \n64_zero_bit:bSR:status_6\,
+            f1_blk_stat_comb => \n64_zero_bit:bSR:status_5\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \n64_ShiftReg_commack:bSR:SyncCtl:CtrlReg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000001",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            control_7 => \n64_ShiftReg_commack:bSR:control_7\,
+            control_6 => \n64_ShiftReg_commack:bSR:control_6\,
+            control_5 => \n64_ShiftReg_commack:bSR:control_5\,
+            control_4 => \n64_ShiftReg_commack:bSR:control_4\,
+            control_3 => \n64_ShiftReg_commack:bSR:control_3\,
+            control_2 => \n64_ShiftReg_commack:bSR:control_2\,
+            control_1 => \n64_ShiftReg_commack:bSR:control_1\,
+            control_0 => \n64_ShiftReg_commack:bSR:ctrl_clk_enable\,
+            clk_en => n64_bit_clk,
+            busclk => ClockBlock_BUS_CLK);
+
+    \n64_ShiftReg_commack:bSR:StsReg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "0000111",
+            cy_md_select => "0000111",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            status_6 => \n64_ShiftReg_commack:bSR:status_6\,
+            status_5 => \n64_ShiftReg_commack:bSR:status_5\,
+            status_4 => \n64_ShiftReg_commack:bSR:status_4\,
+            status_3 => \n64_ShiftReg_commack:bSR:status_3\,
+            status_2 => open,
+            status_1 => open,
+            status_0 => \n64_ShiftReg_commack:bSR:status_0\,
+            interrupt => Net_221,
+            clk_en => n64_bit_clk);
+
+    \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111101001000011100000000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_commack:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            so_comb => Net_1190,
+            clk_en => n64_bit_clk,
+            busclk => ClockBlock_BUS_CLK,
+            ce0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ce0__sig\,
+            cl0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cl0__sig\,
+            z0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.z0__sig\,
+            ff0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ff0__sig\,
+            ce1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ce1__sig\,
+            cl1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cl1__sig\,
+            z1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.z1__sig\,
+            ff1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ff1__sig\,
+            co_msb => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.co_msb__sig\,
+            sol_msb => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.sol_msb__sig\,
+            cfbo => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cfbo__sig\,
+            sil => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.sor__sig\,
+            cmsbi => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cmsbo__sig\);
+
+    \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111101001000011100100000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_commack:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            busclk => ClockBlock_BUS_CLK,
+            clk_en => n64_bit_clk,
+            ce0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ce0__sig\,
+            cl0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cl0__sig\,
+            z0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.z0__sig\,
+            ff0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ff0__sig\,
+            ce1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ce1__sig\,
+            cl1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cl1__sig\,
+            z1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.z1__sig\,
+            ff1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.ff1__sig\,
+            ci => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.co_msb__sig\,
+            sir => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.sol_msb__sig\,
+            cfbi => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0.cfbo__sig\,
+            sor => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.sor__sig\,
+            cmsbo => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cmsbo__sig\,
+            ce0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ce0__sig\,
+            cl0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cl0__sig\,
+            z0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.z0__sig\,
+            ff0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ff0__sig\,
+            ce1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ce1__sig\,
+            cl1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cl1__sig\,
+            z1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.z1__sig\,
+            ff1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ff1__sig\,
+            co_msb => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.co_msb__sig\,
+            sol_msb => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.sol_msb__sig\,
+            cfbo => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cfbo__sig\,
+            sil => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.sor__sig\,
+            cmsbi => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cmsbo__sig\);
+
+    \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111101001000011100100000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_commack:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            busclk => ClockBlock_BUS_CLK,
+            clk_en => n64_bit_clk,
+            ce0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ce0__sig\,
+            cl0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cl0__sig\,
+            z0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.z0__sig\,
+            ff0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ff0__sig\,
+            ce1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ce1__sig\,
+            cl1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cl1__sig\,
+            z1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.z1__sig\,
+            ff1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.ff1__sig\,
+            ci => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.co_msb__sig\,
+            sir => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.sol_msb__sig\,
+            cfbi => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1.cfbo__sig\,
+            sor => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.sor__sig\,
+            cmsbo => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cmsbo__sig\,
+            ce0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ce0__sig\,
+            cl0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cl0__sig\,
+            z0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.z0__sig\,
+            ff0 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ff0__sig\,
+            ce1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ce1__sig\,
+            cl1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cl1__sig\,
+            z1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.z1__sig\,
+            ff1 => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ff1__sig\,
+            co_msb => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.co_msb__sig\,
+            sol_msb => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.sol_msb__sig\,
+            cfbo => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cfbo__sig\,
+            sil => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3.sor__sig\,
+            cmsbi => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3.cmsbo__sig\);
+
+    \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101001001000111100100000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_commack:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            f0_bus_stat_comb => \n64_ShiftReg_commack:bSR:status_4\,
+            f0_blk_stat_comb => \n64_ShiftReg_commack:bSR:status_3\,
+            f1_bus_stat_comb => \n64_ShiftReg_commack:bSR:status_6\,
+            f1_blk_stat_comb => \n64_ShiftReg_commack:bSR:status_5\,
+            busclk => ClockBlock_BUS_CLK,
+            clk_en => n64_bit_clk,
+            ce0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ce0__sig\,
+            cl0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cl0__sig\,
+            z0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.z0__sig\,
+            ff0i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ff0__sig\,
+            ce1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ce1__sig\,
+            cl1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cl1__sig\,
+            z1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.z1__sig\,
+            ff1i => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.ff1__sig\,
+            ci => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.co_msb__sig\,
+            sir => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.sol_msb__sig\,
+            cfbi => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2.cfbo__sig\,
+            sor => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3.sor__sig\,
+            cmsbo => \n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3.cmsbo__sig\);
+
+    \n64_ShiftReg_buttonstate:bSR:SyncCtl:CtrlReg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000001",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            control_7 => \n64_ShiftReg_buttonstate:bSR:control_7\,
+            control_6 => \n64_ShiftReg_buttonstate:bSR:control_6\,
+            control_5 => \n64_ShiftReg_buttonstate:bSR:control_5\,
+            control_4 => \n64_ShiftReg_buttonstate:bSR:control_4\,
+            control_3 => \n64_ShiftReg_buttonstate:bSR:control_3\,
+            control_2 => \n64_ShiftReg_buttonstate:bSR:control_2\,
+            control_1 => \n64_ShiftReg_buttonstate:bSR:control_1\,
+            control_0 => \n64_ShiftReg_buttonstate:bSR:ctrl_clk_enable\,
+            clk_en => n64_bit_clk,
+            busclk => ClockBlock_BUS_CLK);
+
+    \n64_ShiftReg_buttonstate:bSR:StsReg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "0000111",
+            cy_md_select => "0000111",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            status_6 => \n64_ShiftReg_buttonstate:bSR:status_6\,
+            status_5 => \n64_ShiftReg_buttonstate:bSR:status_5\,
+            status_4 => \n64_ShiftReg_buttonstate:bSR:status_4\,
+            status_3 => \n64_ShiftReg_buttonstate:bSR:status_3\,
+            status_2 => open,
+            status_1 => open,
+            status_0 => \n64_ShiftReg_commack:bSR:status_0\,
+            interrupt => Net_1213,
+            clk_en => n64_bit_clk);
+
+    \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111101001000011100000000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_buttonstate:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            so_comb => Net_1001,
+            clk_en => n64_bit_clk,
+            busclk => ClockBlock_BUS_CLK,
+            ce0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ce0__sig\,
+            cl0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cl0__sig\,
+            z0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.z0__sig\,
+            ff0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ff0__sig\,
+            ce1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ce1__sig\,
+            cl1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cl1__sig\,
+            z1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.z1__sig\,
+            ff1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ff1__sig\,
+            co_msb => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.co_msb__sig\,
+            sol_msb => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.sol_msb__sig\,
+            cfbo => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cfbo__sig\,
+            sil => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.sor__sig\,
+            cmsbi => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cmsbo__sig\);
+
+    \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111101001000011100100000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_buttonstate:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            busclk => ClockBlock_BUS_CLK,
+            clk_en => n64_bit_clk,
+            ce0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ce0__sig\,
+            cl0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cl0__sig\,
+            z0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.z0__sig\,
+            ff0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ff0__sig\,
+            ce1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ce1__sig\,
+            cl1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cl1__sig\,
+            z1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.z1__sig\,
+            ff1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.ff1__sig\,
+            ci => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.co_msb__sig\,
+            sir => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.sol_msb__sig\,
+            cfbi => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0.cfbo__sig\,
+            sor => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.sor__sig\,
+            cmsbo => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cmsbo__sig\,
+            ce0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ce0__sig\,
+            cl0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cl0__sig\,
+            z0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.z0__sig\,
+            ff0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ff0__sig\,
+            ce1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ce1__sig\,
+            cl1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cl1__sig\,
+            z1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.z1__sig\,
+            ff1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ff1__sig\,
+            co_msb => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.co_msb__sig\,
+            sol_msb => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.sol_msb__sig\,
+            cfbo => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cfbo__sig\,
+            sil => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.sor__sig\,
+            cmsbi => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cmsbo__sig\);
+
+    \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111101001000011100100000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_buttonstate:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            busclk => ClockBlock_BUS_CLK,
+            clk_en => n64_bit_clk,
+            ce0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ce0__sig\,
+            cl0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cl0__sig\,
+            z0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.z0__sig\,
+            ff0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ff0__sig\,
+            ce1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ce1__sig\,
+            cl1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cl1__sig\,
+            z1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.z1__sig\,
+            ff1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.ff1__sig\,
+            ci => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.co_msb__sig\,
+            sir => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.sol_msb__sig\,
+            cfbi => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1.cfbo__sig\,
+            sor => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.sor__sig\,
+            cmsbo => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cmsbo__sig\,
+            ce0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ce0__sig\,
+            cl0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cl0__sig\,
+            z0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.z0__sig\,
+            ff0 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ff0__sig\,
+            ce1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ce1__sig\,
+            cl1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cl1__sig\,
+            z1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.z1__sig\,
+            ff1 => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ff1__sig\,
+            co_msb => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.co_msb__sig\,
+            sol_msb => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.sol_msb__sig\,
+            cfbo => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cfbo__sig\,
+            sil => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3.sor__sig\,
+            cmsbi => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3.cmsbo__sig\);
+
+    \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010100101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101001001000111100100000000000011100",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            clock => n64_shift_clk,
+            cs_addr_2 => \n64_ShiftReg_buttonstate:bSR:ctrl_clk_enable\,
+            cs_addr_1 => \n64_ShiftReg_commack:bSR:status_0\,
+            route_si => __ONE__,
+            f0_bus_stat_comb => \n64_ShiftReg_buttonstate:bSR:status_4\,
+            f0_blk_stat_comb => \n64_ShiftReg_buttonstate:bSR:status_3\,
+            f1_bus_stat_comb => \n64_ShiftReg_buttonstate:bSR:status_6\,
+            f1_blk_stat_comb => \n64_ShiftReg_buttonstate:bSR:status_5\,
+            busclk => ClockBlock_BUS_CLK,
+            clk_en => n64_bit_clk,
+            ce0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ce0__sig\,
+            cl0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cl0__sig\,
+            z0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.z0__sig\,
+            ff0i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ff0__sig\,
+            ce1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ce1__sig\,
+            cl1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cl1__sig\,
+            z1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.z1__sig\,
+            ff1i => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.ff1__sig\,
+            ci => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.co_msb__sig\,
+            sir => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.sol_msb__sig\,
+            cfbi => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2.cfbo__sig\,
+            sor => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3.sor__sig\,
+            cmsbo => \n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3.cmsbo__sig\);
+
+    n64_comm_state_isr:interrupt
+        GENERIC MAP(
+            int_type => "00",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_1395,
+            clock => ClockBlock_BUS_CLK);
+
+    \count_time_to_transmit:CounterHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.clk_bus_glb_ff__sig\,
+            kill => open,
+            enable => __ZERO__,
+            capture => open,
+            timer_reset => start_rcv,
+            tc => transmit_tc,
+            cmp => \count_time_to_transmit:Net_47\,
+            irq => \count_time_to_transmit:Net_42\);
+
+    \Timer_1:TimerHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.clk_bus_glb_ff__sig\,
+            kill => open,
+            enable => cydff_15,
+            capture => open,
+            timer_reset => open,
+            tc => Net_1387,
+            cmp => \Timer_1:Net_261\,
+            irq => Net_1391);
+
+    \Timer_2:TimerHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.dclk_glb_ff_1__sig\,
+            kill => open,
+            enable => cydff_16,
+            capture => open,
+            timer_reset => cydff_14,
+            tc => Net_1209,
+            cmp => \Timer_2:Net_261\,
+            irq => \Timer_2:Net_57\);
+
+    cydff_7:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ShiftReg_fwd:bSR:load_reg\,
-            clock_0 => shift_clk,
-            main_0 => Net_20);
+            q => cydff_7,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => Net_1387);
 
-    \FreqDiv_fwd:not_last_reset\:macrocell
+    cydff_6:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_2) + (main_0 * main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => cydff_6,
+            clock_0 => n64_shift_clk,
+            main_0 => cydff_5,
+            main_1 => cydff_1,
+            main_2 => cydff_2);
+
+    n64_bit_clk:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_3) + (main_1 * !main_2 * main_3)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => n64_bit_clk,
+            main_1 => \N64_Bit_Clock:not_last_reset\,
+            main_2 => \N64_Bit_Clock:count_1\,
+            main_3 => \N64_Bit_Clock:count_0\);
+
+    cydff_5:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_2) + (main_1 * main_2)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => cydff_5,
+            clk_en => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => cydff_3,
+            main_1 => cydff_4,
+            main_2 => switch_msg);
+
+    cydff_1:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => cydff_1,
+            clock_0 => n64_shift_clk,
+            main_0 => Net_989);
+
+    cydff_2:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => cydff_2,
+            clock_0 => n64_shift_clk,
+            main_0 => Net_1104);
+
+    cydff_3:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => cydff_3,
+            clk_en => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => Net_1190);
+
+    cydff_4:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => cydff_4,
+            clk_en => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => Net_1001);
+
+    cydff_15:macrocell
         GENERIC MAP(
             eqn_main => "1'b0",
             regmode => 1,
             clk_inv => '0',
-            clken_mode => 1)
+            clken_inv => '0',
+            clken_mode => 2)
         PORT MAP(
-            q => \FreqDiv_fwd:not_last_reset\,
-            clock_0 => shift_clk);
+            q => cydff_15,
+            clk_en => start_rcv,
+            clock_0 => ClockBlock_BUS_CLK);
 
-    \FreqDiv_fwd:count_4\:macrocell
+    cy_tff_2:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4)",
+            eqn_main => "1'b0",
             regmode => 2,
             clk_inv => '0',
-            clken_mode => 1)
+            clken_inv => '0',
+            clken_mode => 2)
         PORT MAP(
-            q => \FreqDiv_fwd:count_4\,
-            clock_0 => shift_clk,
-            main_0 => \FreqDiv_fwd:not_last_reset\,
-            main_1 => \FreqDiv_fwd:count_3\,
-            main_2 => \FreqDiv_fwd:count_2\,
-            main_3 => \FreqDiv_fwd:count_1\,
-            main_4 => \FreqDiv_fwd:count_0\);
+            q => cy_tff_2,
+            clk_en => Net_943,
+            clock_0 => n64_shift_clk);
 
-    \FreqDiv_fwd:count_3\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_fwd:count_3\,
-            clock_0 => shift_clk,
-            main_0 => \FreqDiv_fwd:not_last_reset\,
-            main_1 => \FreqDiv_fwd:count_2\,
-            main_2 => \FreqDiv_fwd:count_1\,
-            main_3 => \FreqDiv_fwd:count_0\);
-
-    \FreqDiv_fwd:count_2\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_fwd:count_2\,
-            clock_0 => shift_clk,
-            main_0 => \FreqDiv_fwd:not_last_reset\,
-            main_1 => \FreqDiv_fwd:count_1\,
-            main_2 => \FreqDiv_fwd:count_0\);
-
-    \FreqDiv_fwd:count_1\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_fwd:count_1\,
-            clock_0 => shift_clk,
-            main_0 => \FreqDiv_fwd:not_last_reset\,
-            main_1 => \FreqDiv_fwd:count_0\);
-
-    \FreqDiv_fwd:count_0\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_fwd:count_0\,
-            clock_0 => shift_clk,
-            main_0 => \FreqDiv_fwd:not_last_reset\);
-
-    Net_43:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_6) + (main_0 * !main_1 * main_2 * main_3 * main_4 * main_5 * main_6) + (main_1 * main_2 * main_3 * main_4 * main_5 * !main_6)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_43,
-            clock_0 => shift_clk,
-            main_0 => \FreqDiv_fwd:not_last_reset\,
-            main_1 => \FreqDiv_fwd:count_4\,
-            main_2 => \FreqDiv_fwd:count_3\,
-            main_3 => \FreqDiv_fwd:count_2\,
-            main_4 => \FreqDiv_fwd:count_1\,
-            main_5 => \FreqDiv_fwd:count_0\,
-            main_6 => Net_43);
-
-    \ShiftReg_rev:bSR:load_reg\:macrocell
+    cydff_10:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ShiftReg_rev:bSR:load_reg\,
-            clock_0 => shift_clk,
-            main_0 => Net_43);
+            q => cydff_10,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => Net_1169);
 
     \UART:BUART:txn\:macrocell
         GENERIC MAP(
@@ -2075,5 +2675,187 @@ BEGIN
             q => \UART:BUART:rx_last\,
             clock_0 => \UART:Net_9\,
             main_0 => Net_113);
+
+    cydff_14:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => cydff_14,
+            clock_0 => n64_shift_clk,
+            main_0 => Net_1204);
+
+    cydff_8:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => cydff_8,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => cydff_7,
+            main_1 => cydff_10);
+
+    \N64_Bit_Clock:not_last_reset\:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \N64_Bit_Clock:not_last_reset\,
+            clock_0 => n64_shift_clk);
+
+    \N64_Bit_Clock:count_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            regmode => 2,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \N64_Bit_Clock:count_1\,
+            clock_0 => n64_shift_clk,
+            main_0 => \N64_Bit_Clock:not_last_reset\,
+            main_1 => \N64_Bit_Clock:count_0\);
+
+    \N64_Bit_Clock:count_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 2,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \N64_Bit_Clock:count_0\,
+            clock_0 => n64_shift_clk,
+            main_0 => \N64_Bit_Clock:not_last_reset\);
+
+    \n64_ShiftReg_commack:bSR:load_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => \n64_ShiftReg_commack:bSR:load_reg\,
+            clk_en => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => cy_tff_2);
+
+    \detect_comm_state_1:last\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \detect_comm_state_1:last\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => tmpOE__bufoe_3_net_0);
+
+    cydff_16:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => cydff_16,
+            clk_en => cy_tff_2,
+            clock_0 => n64_shift_clk);
+
+    cydff_9:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => cydff_9,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => cydff_7,
+            main_1 => cy_tff_2);
+
+    tmpOE__bufoe_3_net_0:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1)",
+            regmode => 2,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => tmpOE__bufoe_3_net_0,
+            clock_0 => n64_shift_clk,
+            main_0 => cydff_14,
+            main_1 => Net_1209);
+
+    switch_msg:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 2,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => switch_msg,
+            clk_en => cydff_9,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => cydff_8);
+
+    Net_1204:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => Net_1204,
+            clk_en => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => Net_1202);
+
+    Net_1202:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => Net_1202,
+            clk_en => n64_bit_clk,
+            clock_0 => n64_shift_clk,
+            main_0 => \n64_ShiftReg_commack:bSR:load_reg\);
+
+    Net_1175:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_2) + (main_1 * !main_2)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_1175,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => cydff_10,
+            main_1 => Net_1175,
+            main_2 => Net_1177);
+
+    Net_1177:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_3) + (!main_1 * main_2)",
+            regmode => 2,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_1177,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => cydff_10,
+            main_1 => tmpOE__bufoe_3_net_0,
+            main_2 => \detect_comm_state_1:last\,
+            main_3 => Net_1175);
 
 END __DEFAULT__;

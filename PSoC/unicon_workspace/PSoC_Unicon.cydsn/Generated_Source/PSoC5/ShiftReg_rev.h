@@ -31,7 +31,7 @@
 #define ShiftReg_rev_FIFO_SIZE          (4u)
 #define ShiftReg_rev_USE_INPUT_FIFO     (1u)
 #define ShiftReg_rev_USE_OUTPUT_FIFO    (1u)
-#define ShiftReg_rev_SR_SIZE            (8u)
+#define ShiftReg_rev_SR_SIZE            (32u)
 
 
 /***************************************
@@ -43,11 +43,11 @@ typedef struct
 {
     uint8 enableState;
 
-    uint8 saveSrA0Reg;
-    uint8 saveSrA1Reg;
+    uint32 saveSrA0Reg;
+    uint32 saveSrA1Reg;
 
     #if(CY_UDB_V0)
-        uint8 saveSrIntMask;
+        uint32 saveSrIntMask;
     #endif /* (CY_UDB_V0) */
 
 } ShiftReg_rev_BACKUP_STRUCT;
@@ -69,18 +69,18 @@ void  ShiftReg_rev_EnableInt(void)                          ;
 void  ShiftReg_rev_DisableInt(void)                         ;
 void  ShiftReg_rev_SetIntMode(uint8 interruptSource)        ;
 uint8 ShiftReg_rev_GetIntStatus(void)                       ;
-void  ShiftReg_rev_WriteRegValue(uint8 shiftData) \
+void  ShiftReg_rev_WriteRegValue(uint32 shiftData) \
                                                                 ;
-uint8 ShiftReg_rev_ReadRegValue(void) ;
+uint32 ShiftReg_rev_ReadRegValue(void) ;
 uint8    ShiftReg_rev_GetFIFOStatus(uint8 fifoId)           ;
 
 #if(0u != ShiftReg_rev_USE_INPUT_FIFO)
-    cystatus ShiftReg_rev_WriteData(uint8 shiftData) \
+    cystatus ShiftReg_rev_WriteData(uint32 shiftData) \
                                                                 ;
 #endif /* (0u != ShiftReg_rev_USE_INPUT_FIFO) */
 
 #if(0u != ShiftReg_rev_USE_OUTPUT_FIFO)
-    uint8 ShiftReg_rev_ReadData(void) ;
+    uint32 ShiftReg_rev_ReadData(void) ;
 #endif /* (0u != ShiftReg_rev_USE_OUTPUT_FIFO) */
 
 
@@ -125,7 +125,7 @@ extern uint8 ShiftReg_rev_initVar;
 *    Initial Parameter Constants
 ***************************************/
 
-#define ShiftReg_rev_SR_MASK    (0xFFu) /* Unsigned is added to parameter */
+#define ShiftReg_rev_SR_MASK    (0xFFFFFFFFu) /* Unsigned is added to parameter */
 #define ShiftReg_rev_INT_SRC    (0u)
 #define ShiftReg_rev_DIRECTION  (1u)
 
@@ -154,74 +154,74 @@ extern uint8 ShiftReg_rev_initVar;
 
 /* A1 register: only used to implement capture function */
 #define ShiftReg_rev_SHIFT_REG_CAPTURE_PTR    ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A1_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A1_REG )
 
 #if(CY_PSOC3 || CY_PSOC5)
-    #define ShiftReg_rev_IN_FIFO_VAL_LSB_PTR        ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__F0_REG )
+    #define ShiftReg_rev_IN_FIFO_VAL_LSB_PTR        ( (reg32 *) \
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__F0_REG )
 
-    #define ShiftReg_rev_SHIFT_REG_LSB_PTR          ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A0_REG )
+    #define ShiftReg_rev_SHIFT_REG_LSB_PTR          ( (reg32 *) \
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A0_REG )
 
-    #define ShiftReg_rev_SHIFT_REG_VALUE_LSB_PTR    ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A1_REG )
+    #define ShiftReg_rev_SHIFT_REG_VALUE_LSB_PTR    ( (reg32 *) \
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A1_REG )
 
-    #define ShiftReg_rev_OUT_FIFO_VAL_LSB_PTR       ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__F1_REG )
+    #define ShiftReg_rev_OUT_FIFO_VAL_LSB_PTR       ( (reg32 *) \
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__F1_REG )
 
 #else
     #if(ShiftReg_rev_SR_SIZE <= 8u) /* 8bit - ShiftReg */
         #define ShiftReg_rev_IN_FIFO_VAL_LSB_PTR        ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__F0_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__F0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_LSB_PTR          ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A0_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_VALUE_LSB_PTR    ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A1_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A1_REG )
 
         #define ShiftReg_rev_OUT_FIFO_VAL_LSB_PTR       ( (reg8 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__F1_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__F1_REG )
 
     #elif(ShiftReg_rev_SR_SIZE <= 16u) /* 16bit - ShiftReg */
         #define ShiftReg_rev_IN_FIFO_VAL_LSB_PTR        ( (reg16 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__16BIT_F0_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__16BIT_F0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_LSB_PTR          ( (reg16 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__16BIT_A0_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__16BIT_A0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_VALUE_LSB_PTR    ( (reg16 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__16BIT_A1_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__16BIT_A1_REG )
 
         #define ShiftReg_rev_OUT_FIFO_VAL_LSB_PTR       ( (reg16 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__16BIT_F1_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__16BIT_F1_REG )
 
 
     #elif(ShiftReg_rev_SR_SIZE <= 24u) /* 24bit - ShiftReg */
         #define ShiftReg_rev_IN_FIFO_VAL_LSB_PTR        ( (reg32 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__F0_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__F0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_LSB_PTR          ( (reg32 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A0_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_VALUE_LSB_PTR    ( (reg32 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__A1_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__A1_REG )
 
         #define ShiftReg_rev_OUT_FIFO_VAL_LSB_PTR       ( (reg32 *) \
-                                        ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__F1_REG )
+                                        ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__F1_REG )
 
     #else /* 32bit - ShiftReg */
         #define ShiftReg_rev_IN_FIFO_VAL_LSB_PTR        ( (reg32 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__32BIT_F0_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__32BIT_F0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_LSB_PTR          ( (reg32 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__32BIT_A0_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__32BIT_A0_REG )
 
         #define ShiftReg_rev_SHIFT_REG_VALUE_LSB_PTR    ( (reg32 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__32BIT_A1_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__32BIT_A1_REG )
 
         #define ShiftReg_rev_OUT_FIFO_VAL_LSB_PTR       ( (reg32 *) \
-                                  ShiftReg_rev_bSR_sC8_BShiftRegDp_u0__32BIT_F1_REG )
+                                  ShiftReg_rev_bSR_sC32_BShiftRegDp_u0__32BIT_F1_REG )
 
     #endif  /* (ShiftReg_rev_SR_SIZE <= 8u) */
 #endif      /* (CY_PSOC3 || CY_PSOC5) */

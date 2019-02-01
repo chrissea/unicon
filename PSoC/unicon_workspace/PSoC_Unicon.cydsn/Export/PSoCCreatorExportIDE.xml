@@ -91,27 +91,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Shift_Clock.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Shift_Clock.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Controller_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Controller_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Controller_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ShiftReg_fwd.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ShiftReg_fwd.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ShiftReg_fwd_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ShiftReg_rev.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ShiftReg_rev.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ShiftReg_rev_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_fb.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_fb.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Controller_fb.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Controller_fb.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Communication_State_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Communication_State.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Communication_State.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_PM.c</File>
@@ -125,8 +104,40 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LCD_LCDPort_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LCD_LCDPort.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LCD_LCDPort.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rx_int.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rx_int.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Console_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_ShiftReg_commack.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_ShiftReg_commack.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_ShiftReg_commack_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\N64_Shift_Clock.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\N64_Shift_Clock.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_ShiftReg_buttonstate.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_ShiftReg_buttonstate.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_ShiftReg_buttonstate_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_one_bit.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_one_bit.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_one_bit_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_zero_bit.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_zero_bit.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_zero_bit_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\count_time_to_transmit.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\count_time_to_transmit.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\count_time_to_transmit_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\System_Clock_Slow.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\System_Clock_Slow.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_comm_state_isr.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_comm_state_isr.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_1_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_init_isr.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\n64_init_isr.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\uart_rx_int.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\uart_rx_int.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_2_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Walaa\Documents\PSoC Creator\unicon_workspace\PSoC_Unicon.cydsn\Export\ARM_GCC_Generic">
