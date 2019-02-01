@@ -21,6 +21,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+
 public class ControllerActivity extends AppCompatActivity {
 
     private Socket socket;
@@ -34,30 +35,41 @@ public class ControllerActivity extends AppCompatActivity {
     private static volatile String output = default_op;
     private static byte[] bytes_op = null;
 
-    private View.OnTouchListener handleTouch = new View.OnTouchListener() {
+    private static boolean LEFTheld = false;
+    private static boolean RIGHTheld = false;
+    private static boolean Aheld = false;
+    private static boolean Bheld = false;
+    private static boolean Xheld = false;
+    private static boolean Yheld = false;
+    private static boolean Zheld = false;
 
+    private View.OnTouchListener handleTouch = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-
-//            int x = (int) event.getX();
-//            int y = (int) event.getY();
 
             char button;
 
             switch (v.getId()) {
                 case (R.id.LEFT):
+                    LEFTheld = !LEFTheld;
                     break;
                 case (R.id.RIGHT):
+                    RIGHTheld = !RIGHTheld;
                     break;
                 case (R.id.A):
+                    Aheld = !Aheld;
                     break;
                 case (R.id.B):
+                    Bheld = !Bheld;
                     break;
                 case (R.id.X):
+                    Xheld = !Xheld;
                     break;
                 case (R.id.Y):
+                    Yheld = !Yheld;
                     break;
                 case (R.id.Z):
+                    Zheld = !Zheld;
                     break;
             }
 
@@ -65,17 +77,22 @@ public class ControllerActivity extends AppCompatActivity {
                 case MotionEvent.ACTION_DOWN:
                     Log.i("TAG", "touched down");
                     break;
-                case MotionEvent.ACTION_MOVE:
-//                    Log.i("TAG", "moving: (" + x + ", " + y + ")");
-                    break;
                 case MotionEvent.ACTION_UP:
                     Log.i("TAG", "touched up");
                     break;
             }
-
             return true;
         }
     };
+
+
+//    JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
+//    joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
+//        @Override
+//        public void onMove(int angle, int strength) {
+//            // do whatever you want
+//        }
+//    });
 
 
     @Override
