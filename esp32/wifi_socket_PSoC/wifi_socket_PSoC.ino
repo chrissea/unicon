@@ -58,12 +58,15 @@ void loop() {
     while (client.connected()) {
       while (client.available()) {
         char c = client.read();
+        //client.read();
         //Serial.println(c);
         
         if (UART_PSOC.availableForWrite()) {
           UART_PSOC.write(c);
           //Serial.print("Sending to psoc: ");
-          Serial.println(c);
+          Serial.print(": ");
+          Serial.print(c);
+          Serial.print("\n");
         }
         if (UART_PSOC.available()) {
           char c = UART_PSOC.read();
@@ -81,6 +84,3 @@ void loop() {
     //Serial.println("Client disconnected");
   }
 }
-
-
-//    while (client.connected()) {client.available() > 0) {
