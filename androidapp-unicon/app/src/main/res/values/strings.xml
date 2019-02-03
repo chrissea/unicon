@@ -16,5 +16,10 @@
     <string name="x">X</string>
     <string name="y">Y</string>
     <string name="start">Start</string>
+    <string name="cu">CU</string>
+    <string name="cd">CD</string>
+    <string name="cl">CL</string>
+    <string name="cr">CR</string>
+
 
 </resources>
