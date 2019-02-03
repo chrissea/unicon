@@ -50,8 +50,16 @@ while True:
     print repr(data)
     print "end of data"
 
+    data.split("\n")
+    l = len(data[1])
+    print data[1]
+    print "length: " + str(l)
+
     for curr in data:
-    	when curr == 'n':
+      if len(curr) == l:
+        for button in l:
+          if button:
+            keyboard.press("abcdefghijklmnopqrstuvwxyz"[button])
 
 
 
