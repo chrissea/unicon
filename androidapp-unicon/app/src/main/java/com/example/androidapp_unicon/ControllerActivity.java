@@ -32,7 +32,7 @@ public class ControllerActivity extends AppCompatActivity {
     private Socket socket;
 
     private static final int SERVER_PORT = 8000;
-    private static final String SERVER_IP = "10.0.0.136";
+    private static final String SERVER_IP = "10.0.0.108";
     private static final String default_op = "";
     private static final int REFRESH_RATE = 100;
     //volatile boolean finished = false;
@@ -232,8 +232,23 @@ public class ControllerActivity extends AppCompatActivity {
             }
 
             while(connected) {
-                talkToServer(out);
+//                try {
+//                    Thread.sleep(REFRESH_RATE); }
+//                catch (Exception e) {
+//                    e.printStackTrace(); }
+
+                for (int i = 0; i < 9; i ++ ){
+                    if (sad[i]){
+                        out.print(1);
+                    } else {
+                        out.print(0);
+                    }
+                }
+                out.print(Math.round(x*100.0)/100.0);
+                out.println(Math.round(y*100.0)/100.0);
+
             }
+
 
         }
 
