@@ -40,7 +40,7 @@ r = 0
 z = 0
 s = 0
 
-# analog stick
+# analog stickf
 x = 0
 y = 0
 
@@ -48,7 +48,19 @@ while True:
   data = conn.recv(1024)
   if data:
     print repr(data)
-    print ""
+    print "end of data"
+
+    for curr in data:
+    	when curr == 'n':
+
+
+
+#{LEFTheld, RIGHTheld, Aheld, Bheld, Zheld, CUheld, CDheld, CLheld, CRheld};
+
+
+
+
+
 
 
 sock.close()

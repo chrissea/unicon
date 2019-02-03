@@ -232,10 +232,10 @@ public class ControllerActivity extends AppCompatActivity {
             }
 
             while(connected) {
-//                try {
-//                    Thread.sleep(REFRESH_RATE); }
-//                catch (Exception e) {
-//                    e.printStackTrace(); }
+                try {
+                    Thread.sleep(REFRESH_RATE); }
+                catch (Exception e) {
+                    e.printStackTrace(); }
 
                 for (int i = 0; i < 9; i ++ ){
                     if (sad[i]){
@@ -246,7 +246,6 @@ public class ControllerActivity extends AppCompatActivity {
                 }
                 out.print(Math.round(x*100.0)/100.0);
                 out.println(Math.round(y*100.0)/100.0);
-
             }
 
 
