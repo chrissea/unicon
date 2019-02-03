@@ -1,0 +1,1334 @@
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.UART_RX_INT,"ax",%progbits
+  20              		.align	2
+  21              		.global	UART_RX_INT
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	UART_RX_INT, %function
+  25              	UART_RX_INT:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdlib.h>
+  14:main.c        **** #include <CyLib.h>
+  15:main.c        **** 
+  16:main.c        **** #define GAMECUBE 0 
+  17:main.c        **** #define N64      1
+  18:main.c        **** 
+  19:main.c        **** #define RX_BYTE_NUM 6
+  20:main.c        **** 
+  21:main.c        **** uint8_t target_console;
+  22:main.c        **** uint8_t from_controller[RX_BYTE_NUM];
+  23:main.c        **** uint8_t to_console[RX_BYTE_NUM];
+  24:main.c        **** int controller_byte_counter = 0;
+  25:main.c        **** 
+  26:main.c        **** 
+  27:main.c        **** //serial receive ISR
+  28:main.c        **** CY_ISR(UART_RX_INT){
+  28              		.loc 1 28 0
+  29              		.cfi_startproc
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 2
+
+
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  29:main.c        ****     uint8_t RxData = UART_ReadRxData();
+  36              		.loc 1 29 0
+  37 0002 FFF7FEFF 		bl	UART_ReadRxData
+  38              	.LVL0:
+  39 0006 0446     		mov	r4, r0
+  40              	.LVL1:
+  30:main.c        ****     LCD_PutChar(RxData);
+  41              		.loc 1 30 0
+  42 0008 FFF7FEFF 		bl	LCD_PutChar
+  43              	.LVL2:
+  31:main.c        ****     
+  32:main.c        ****     from_controller[controller_byte_counter] =  RxData;
+  44              		.loc 1 32 0
+  45 000c 024B     		ldr	r3, .L3
+  46 000e 1B68     		ldr	r3, [r3]
+  47 0010 024A     		ldr	r2, .L3+4
+  48 0012 D454     		strb	r4, [r2, r3]
+  49 0014 10BD     		pop	{r4, pc}
+  50              	.LVL3:
+  51              	.L4:
+  52 0016 00BF     		.align	2
+  53              	.L3:
+  54 0018 00000000 		.word	.LANCHOR0
+  55 001c 00000000 		.word	from_controller
+  56              		.cfi_endproc
+  57              	.LFE63:
+  58              		.size	UART_RX_INT, .-UART_RX_INT
+  59              		.section	.text.n64_init_isr,"ax",%progbits
+  60              		.align	2
+  61              		.global	n64_init_isr
+  62              		.thumb
+  63              		.thumb_func
+  64              		.type	n64_init_isr, %function
+  65              	n64_init_isr:
+  66              	.LFB64:
+  33:main.c        ****     //controller_byte_counter++;
+  34:main.c        ****     // below is resetting the counter once full, but I've decided to do
+  35:main.c        ****     // that in the main loop below instead, when converting the data and
+  36:main.c        ****     // sending over to the console
+  37:main.c        ****     //controller_byte_counter += (controller_byte_counter == 6)? -6: 1;
+  38:main.c        **** }
+  39:main.c        **** 
+  40:main.c        **** // this timer should only run once
+  41:main.c        **** CY_ISR(n64_init_isr) {
+  67              		.loc 1 41 0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71 0000 08B5     		push	{r3, lr}
+  72              		.cfi_def_cfa_offset 8
+  73              		.cfi_offset 3, -8
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 3
+
+
+  74              		.cfi_offset 14, -4
+  42:main.c        ****     // disable timer1
+  43:main.c        ****     Timer_1_Stop();
+  75              		.loc 1 43 0
+  76 0002 FFF7FEFF 		bl	Timer_1_Stop
+  77              	.LVL4:
+  44:main.c        ****     // enable timer2
+  45:main.c        ****     Timer_2_Enable();
+  78              		.loc 1 45 0
+  79 0006 FFF7FEFF 		bl	Timer_2_Enable
+  80              	.LVL5:
+  46:main.c        ****     // enable counter
+  47:main.c        ****     count_time_to_transmit_Enable();
+  81              		.loc 1 47 0
+  82 000a FFF7FEFF 		bl	count_time_to_transmit_Enable
+  83              	.LVL6:
+  84 000e 08BD     		pop	{r3, pc}
+  85              		.cfi_endproc
+  86              	.LFE64:
+  87              		.size	n64_init_isr, .-n64_init_isr
+  88              		.section	.text.comm_state_isr,"ax",%progbits
+  89              		.align	2
+  90              		.global	comm_state_isr
+  91              		.thumb
+  92              		.thumb_func
+  93              		.type	comm_state_isr, %function
+  94              	comm_state_isr:
+  95              	.LFB65:
+  48:main.c        **** }
+  49:main.c        **** 
+  50:main.c        **** CY_ISR(comm_state_isr) {
+  96              		.loc 1 50 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100 0000 08B5     		push	{r3, lr}
+ 101              		.cfi_def_cfa_offset 8
+ 102              		.cfi_offset 3, -8
+ 103              		.cfi_offset 14, -4
+  51:main.c        ****     // constant value in this register
+  52:main.c        ****     n64_ShiftReg_commack_WriteRegValue(0x01050002);
+ 104              		.loc 1 52 0
+ 105 0002 0448     		ldr	r0, .L9
+ 106 0004 FFF7FEFF 		bl	n64_ShiftReg_commack_WriteRegValue
+ 107              	.LVL7:
+  53:main.c        ****     // update the value in the state register
+  54:main.c        ****     n64_ShiftReg_buttonstate_WriteData(0x10000000);
+ 108              		.loc 1 54 0
+ 109 0008 4FF08050 		mov	r0, #268435456
+ 110 000c FFF7FEFF 		bl	n64_ShiftReg_buttonstate_WriteData
+ 111              	.LVL8:
+ 112 0010 08BD     		pop	{r3, pc}
+ 113              	.L10:
+ 114 0012 00BF     		.align	2
+ 115              	.L9:
+ 116 0014 02000501 		.word	17104898
+ 117              		.cfi_endproc
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 4
+
+
+ 118              	.LFE65:
+ 119              		.size	comm_state_isr, .-comm_state_isr
+ 120              		.section	.text.main,"ax",%progbits
+ 121              		.align	2
+ 122              		.global	main
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.type	main, %function
+ 126              	main:
+ 127              	.LFB66:
+  55:main.c        **** }
+  56:main.c        **** 
+  57:main.c        **** int main(void)
+  58:main.c        **** {
+ 128              		.loc 1 58 0
+ 129              		.cfi_startproc
+ 130              		@ Volatile: function does not return.
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133 0000 08B5     		push	{r3, lr}
+ 134              		.cfi_def_cfa_offset 8
+ 135              		.cfi_offset 3, -8
+ 136              		.cfi_offset 14, -4
+  59:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 137              		.loc 1 59 0
+ 138              		.syntax unified
+ 139              	@ 59 "main.c" 1
+ 140 0002 62B6     		CPSIE   i
+ 141              	@ 0 "" 2
+  60:main.c        ****     
+  61:main.c        ****     uart_rx_int_StartEx(UART_RX_INT);  // start RX interrupt
+ 142              		.loc 1 61 0
+ 143              		.thumb
+ 144              		.syntax unified
+ 145 0004 1148     		ldr	r0, .L14
+ 146 0006 FFF7FEFF 		bl	uart_rx_int_StartEx
+ 147              	.LVL9:
+  62:main.c        ****     //UART_SetRxInterruptMode(UART_RX_STS_FIFO_NOTEMPTY);
+  63:main.c        ****     UART_Start();
+ 148              		.loc 1 63 0
+ 149 000a FFF7FEFF 		bl	UART_Start
+ 150              	.LVL10:
+  64:main.c        ****     UART_ClearRxBuffer();
+ 151              		.loc 1 64 0
+ 152 000e FFF7FEFF 		bl	UART_ClearRxBuffer
+ 153              	.LVL11:
+  65:main.c        ****     
+  66:main.c        ****     LCD_Start();					    // initialize lcd
+ 154              		.loc 1 66 0
+ 155 0012 FFF7FEFF 		bl	LCD_Start
+ 156              	.LVL12:
+  67:main.c        **** 	LCD_ClearDisplay();
+ 157              		.loc 1 67 0
+ 158 0016 0120     		movs	r0, #1
+ 159 0018 FFF7FEFF 		bl	LCD_WriteControl
+ 160              	.LVL13:
+  68:main.c        ****     
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 5
+
+
+  69:main.c        ****     // initialize all the N64 circuit components here
+  70:main.c        ****     n64_ShiftReg_buttonstate_Start();
+ 161              		.loc 1 70 0
+ 162 001c FFF7FEFF 		bl	n64_ShiftReg_buttonstate_Start
+ 163              	.LVL14:
+  71:main.c        ****     n64_ShiftReg_commack_Start();
+ 164              		.loc 1 71 0
+ 165 0020 FFF7FEFF 		bl	n64_ShiftReg_commack_Start
+ 166              	.LVL15:
+  72:main.c        ****     n64_one_bit_Start();
+ 167              		.loc 1 72 0
+ 168 0024 FFF7FEFF 		bl	n64_one_bit_Start
+ 169              	.LVL16:
+  73:main.c        ****     n64_zero_bit_Start();
+ 170              		.loc 1 73 0
+ 171 0028 FFF7FEFF 		bl	n64_zero_bit_Start
+ 172              	.LVL17:
+  74:main.c        ****     count_time_to_transmit_Start();
+ 173              		.loc 1 74 0
+ 174 002c FFF7FEFF 		bl	count_time_to_transmit_Start
+ 175              	.LVL18:
+  75:main.c        ****     n64_ShiftReg_commack_WriteRegValue(0x01050002);
+ 176              		.loc 1 75 0
+ 177 0030 0748     		ldr	r0, .L14+4
+ 178 0032 FFF7FEFF 		bl	n64_ShiftReg_commack_WriteRegValue
+ 179              	.LVL19:
+  76:main.c        ****     n64_one_bit_WriteRegValue(0b0111);
+ 180              		.loc 1 76 0
+ 181 0036 0720     		movs	r0, #7
+ 182 0038 FFF7FEFF 		bl	n64_one_bit_WriteRegValue
+ 183              	.LVL20:
+  77:main.c        ****     n64_zero_bit_WriteRegValue(0b0001);
+ 184              		.loc 1 77 0
+ 185 003c 0120     		movs	r0, #1
+ 186 003e FFF7FEFF 		bl	n64_zero_bit_WriteRegValue
+ 187              	.LVL21:
+  78:main.c        ****     
+  79:main.c        ****     // set up the comm state pin to interrupt on falling edge
+  80:main.c        ****     // in order to reload the ShiftReg_buttonstate with data
+  81:main.c        ****     
+  82:main.c        ****     
+  83:main.c        ****     // target console would be selected by user, but hard-coded for now
+  84:main.c        ****     target_console = GAMECUBE;
+ 188              		.loc 1 84 0
+ 189 0042 0022     		movs	r2, #0
+ 190 0044 034B     		ldr	r3, .L14+8
+ 191 0046 1A70     		strb	r2, [r3]
+ 192              	.L12:
+ 193 0048 FEE7     		b	.L12
+ 194              	.L15:
+ 195 004a 00BF     		.align	2
+ 196              	.L14:
+ 197 004c 00000000 		.word	UART_RX_INT
+ 198 0050 02000501 		.word	17104898
+ 199 0054 00000000 		.word	target_console
+ 200              		.cfi_endproc
+ 201              	.LFE66:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 6
+
+
+ 202              		.size	main, .-main
+ 203              		.global	controller_byte_counter
+ 204              		.comm	to_console,6,4
+ 205              		.comm	from_controller,6,4
+ 206              		.comm	target_console,1,1
+ 207              		.bss
+ 208              		.align	2
+ 209              		.set	.LANCHOR0,. + 0
+ 210              		.type	controller_byte_counter, %object
+ 211              		.size	controller_byte_counter, 4
+ 212              	controller_byte_counter:
+ 213 0000 00000000 		.space	4
+ 214              		.text
+ 215              	.Letext0:
+ 216              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 217              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 218              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 219              		.file 5 "Generated_Source\\PSoC5/UART.h"
+ 220              		.file 6 "Generated_Source\\PSoC5/LCD.h"
+ 221              		.file 7 "Generated_Source\\PSoC5/Timer_1.h"
+ 222              		.file 8 "Generated_Source\\PSoC5/Timer_2.h"
+ 223              		.file 9 "Generated_Source\\PSoC5/count_time_to_transmit.h"
+ 224              		.file 10 "Generated_Source\\PSoC5/n64_ShiftReg_commack.h"
+ 225              		.file 11 "Generated_Source\\PSoC5/n64_ShiftReg_buttonstate.h"
+ 226              		.file 12 "Generated_Source\\PSoC5/uart_rx_int.h"
+ 227              		.file 13 "Generated_Source\\PSoC5/n64_one_bit.h"
+ 228              		.file 14 "Generated_Source\\PSoC5/n64_zero_bit.h"
+ 229              		.section	.debug_info,"",%progbits
+ 230              	.Ldebug_info0:
+ 231 0000 5F030000 		.4byte	0x35f
+ 232 0004 0400     		.2byte	0x4
+ 233 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 234 000a 04       		.byte	0x4
+ 235 000b 01       		.uleb128 0x1
+ 236 000c 01010000 		.4byte	.LASF45
+ 237 0010 0C       		.byte	0xc
+ 238 0011 12030000 		.4byte	.LASF46
+ 239 0015 25000000 		.4byte	.LASF47
+ 240 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 241 001d 00000000 		.4byte	0
+ 242 0021 00000000 		.4byte	.Ldebug_line0
+ 243 0025 02       		.uleb128 0x2
+ 244 0026 01       		.byte	0x1
+ 245 0027 06       		.byte	0x6
+ 246 0028 3D030000 		.4byte	.LASF0
+ 247 002c 03       		.uleb128 0x3
+ 248 002d 00000000 		.4byte	.LASF4
+ 249 0031 02       		.byte	0x2
+ 250 0032 1D       		.byte	0x1d
+ 251 0033 37000000 		.4byte	0x37
+ 252 0037 02       		.uleb128 0x2
+ 253 0038 01       		.byte	0x1
+ 254 0039 08       		.byte	0x8
+ 255 003a 3F020000 		.4byte	.LASF1
+ 256 003e 02       		.uleb128 0x2
+ 257 003f 02       		.byte	0x2
+ 258 0040 05       		.byte	0x5
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 7
+
+
+ 259 0041 1E030000 		.4byte	.LASF2
+ 260 0045 02       		.uleb128 0x2
+ 261 0046 02       		.byte	0x2
+ 262 0047 07       		.byte	0x7
+ 263 0048 B3010000 		.4byte	.LASF3
+ 264 004c 03       		.uleb128 0x3
+ 265 004d 6E000000 		.4byte	.LASF5
+ 266 0051 02       		.byte	0x2
+ 267 0052 3F       		.byte	0x3f
+ 268 0053 57000000 		.4byte	0x57
+ 269 0057 02       		.uleb128 0x2
+ 270 0058 04       		.byte	0x4
+ 271 0059 05       		.byte	0x5
+ 272 005a 28030000 		.4byte	.LASF6
+ 273 005e 02       		.uleb128 0x2
+ 274 005f 04       		.byte	0x4
+ 275 0060 07       		.byte	0x7
+ 276 0061 A1010000 		.4byte	.LASF7
+ 277 0065 02       		.uleb128 0x2
+ 278 0066 08       		.byte	0x8
+ 279 0067 05       		.byte	0x5
+ 280 0068 04030000 		.4byte	.LASF8
+ 281 006c 02       		.uleb128 0x2
+ 282 006d 08       		.byte	0x8
+ 283 006e 07       		.byte	0x7
+ 284 006f 5A020000 		.4byte	.LASF9
+ 285 0073 04       		.uleb128 0x4
+ 286 0074 04       		.byte	0x4
+ 287 0075 05       		.byte	0x5
+ 288 0076 696E7400 		.ascii	"int\000"
+ 289 007a 02       		.uleb128 0x2
+ 290 007b 04       		.byte	0x4
+ 291 007c 07       		.byte	0x7
+ 292 007d 4D020000 		.4byte	.LASF10
+ 293 0081 03       		.uleb128 0x3
+ 294 0082 84000000 		.4byte	.LASF11
+ 295 0086 03       		.byte	0x3
+ 296 0087 18       		.byte	0x18
+ 297 0088 2C000000 		.4byte	0x2c
+ 298 008c 03       		.uleb128 0x3
+ 299 008d E4020000 		.4byte	.LASF12
+ 300 0091 03       		.byte	0x3
+ 301 0092 2C       		.byte	0x2c
+ 302 0093 4C000000 		.4byte	0x4c
+ 303 0097 02       		.uleb128 0x2
+ 304 0098 04       		.byte	0x4
+ 305 0099 04       		.byte	0x4
+ 306 009a BF000000 		.4byte	.LASF13
+ 307 009e 02       		.uleb128 0x2
+ 308 009f 08       		.byte	0x8
+ 309 00a0 04       		.byte	0x4
+ 310 00a1 05020000 		.4byte	.LASF14
+ 311 00a5 02       		.uleb128 0x2
+ 312 00a6 01       		.byte	0x1
+ 313 00a7 08       		.byte	0x8
+ 314 00a8 19030000 		.4byte	.LASF15
+ 315 00ac 02       		.uleb128 0x2
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 8
+
+
+ 316 00ad 08       		.byte	0x8
+ 317 00ae 04       		.byte	0x4
+ 318 00af 31030000 		.4byte	.LASF16
+ 319 00b3 02       		.uleb128 0x2
+ 320 00b4 04       		.byte	0x4
+ 321 00b5 07       		.byte	0x7
+ 322 00b6 EC020000 		.4byte	.LASF17
+ 323 00ba 05       		.uleb128 0x5
+ 324 00bb 9F000000 		.4byte	.LASF18
+ 325 00bf 01       		.byte	0x1
+ 326 00c0 1C       		.byte	0x1c
+ 327 00c1 00000000 		.4byte	.LFB63
+ 328 00c5 20000000 		.4byte	.LFE63-.LFB63
+ 329 00c9 01       		.uleb128 0x1
+ 330 00ca 9C       		.byte	0x9c
+ 331 00cb F8000000 		.4byte	0xf8
+ 332 00cf 06       		.uleb128 0x6
+ 333 00d0 8F010000 		.4byte	.LASF48
+ 334 00d4 01       		.byte	0x1
+ 335 00d5 1D       		.byte	0x1d
+ 336 00d6 81000000 		.4byte	0x81
+ 337 00da 00000000 		.4byte	.LLST0
+ 338 00de 07       		.uleb128 0x7
+ 339 00df 06000000 		.4byte	.LVL0
+ 340 00e3 91020000 		.4byte	0x291
+ 341 00e7 08       		.uleb128 0x8
+ 342 00e8 0C000000 		.4byte	.LVL2
+ 343 00ec 9C020000 		.4byte	0x29c
+ 344 00f0 09       		.uleb128 0x9
+ 345 00f1 01       		.uleb128 0x1
+ 346 00f2 50       		.byte	0x50
+ 347 00f3 02       		.uleb128 0x2
+ 348 00f4 74       		.byte	0x74
+ 349 00f5 00       		.sleb128 0
+ 350 00f6 00       		.byte	0
+ 351 00f7 00       		.byte	0
+ 352 00f8 05       		.uleb128 0x5
+ 353 00f9 70030000 		.4byte	.LASF19
+ 354 00fd 01       		.byte	0x1
+ 355 00fe 29       		.byte	0x29
+ 356 00ff 00000000 		.4byte	.LFB64
+ 357 0103 10000000 		.4byte	.LFE64-.LFB64
+ 358 0107 01       		.uleb128 0x1
+ 359 0108 9C       		.byte	0x9c
+ 360 0109 29010000 		.4byte	0x129
+ 361 010d 07       		.uleb128 0x7
+ 362 010e 06000000 		.4byte	.LVL4
+ 363 0112 A7020000 		.4byte	0x2a7
+ 364 0116 07       		.uleb128 0x7
+ 365 0117 0A000000 		.4byte	.LVL5
+ 366 011b B2020000 		.4byte	0x2b2
+ 367 011f 07       		.uleb128 0x7
+ 368 0120 0E000000 		.4byte	.LVL6
+ 369 0124 BD020000 		.4byte	0x2bd
+ 370 0128 00       		.byte	0
+ 371 0129 05       		.uleb128 0x5
+ 372 012a F6010000 		.4byte	.LASF20
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 9
+
+
+ 373 012e 01       		.byte	0x1
+ 374 012f 32       		.byte	0x32
+ 375 0130 00000000 		.4byte	.LFB65
+ 376 0134 18000000 		.4byte	.LFE65-.LFB65
+ 377 0138 01       		.uleb128 0x1
+ 378 0139 9C       		.byte	0x9c
+ 379 013a 67010000 		.4byte	0x167
+ 380 013e 0A       		.uleb128 0xa
+ 381 013f 08000000 		.4byte	.LVL7
+ 382 0143 C8020000 		.4byte	0x2c8
+ 383 0147 55010000 		.4byte	0x155
+ 384 014b 09       		.uleb128 0x9
+ 385 014c 01       		.uleb128 0x1
+ 386 014d 50       		.byte	0x50
+ 387 014e 05       		.uleb128 0x5
+ 388 014f 0C       		.byte	0xc
+ 389 0150 02000501 		.4byte	0x1050002
+ 390 0154 00       		.byte	0
+ 391 0155 08       		.uleb128 0x8
+ 392 0156 10000000 		.4byte	.LVL8
+ 393 015a D3020000 		.4byte	0x2d3
+ 394 015e 09       		.uleb128 0x9
+ 395 015f 01       		.uleb128 0x1
+ 396 0160 50       		.byte	0x50
+ 397 0161 03       		.uleb128 0x3
+ 398 0162 40       		.byte	0x40
+ 399 0163 48       		.byte	0x48
+ 400 0164 24       		.byte	0x24
+ 401 0165 00       		.byte	0
+ 402 0166 00       		.byte	0
+ 403 0167 0B       		.uleb128 0xb
+ 404 0168 0C020000 		.4byte	.LASF49
+ 405 016c 01       		.byte	0x1
+ 406 016d 39       		.byte	0x39
+ 407 016e 73000000 		.4byte	0x73
+ 408 0172 00000000 		.4byte	.LFB66
+ 409 0176 58000000 		.4byte	.LFE66-.LFB66
+ 410 017a 01       		.uleb128 0x1
+ 411 017b 9C       		.byte	0x9c
+ 412 017c 2C020000 		.4byte	0x22c
+ 413 0180 0A       		.uleb128 0xa
+ 414 0181 0A000000 		.4byte	.LVL9
+ 415 0185 DE020000 		.4byte	0x2de
+ 416 0189 97010000 		.4byte	0x197
+ 417 018d 09       		.uleb128 0x9
+ 418 018e 01       		.uleb128 0x1
+ 419 018f 50       		.byte	0x50
+ 420 0190 05       		.uleb128 0x5
+ 421 0191 03       		.byte	0x3
+ 422 0192 00000000 		.4byte	UART_RX_INT
+ 423 0196 00       		.byte	0
+ 424 0197 07       		.uleb128 0x7
+ 425 0198 0E000000 		.4byte	.LVL10
+ 426 019c E9020000 		.4byte	0x2e9
+ 427 01a0 07       		.uleb128 0x7
+ 428 01a1 12000000 		.4byte	.LVL11
+ 429 01a5 F4020000 		.4byte	0x2f4
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 10
+
+
+ 430 01a9 07       		.uleb128 0x7
+ 431 01aa 16000000 		.4byte	.LVL12
+ 432 01ae FF020000 		.4byte	0x2ff
+ 433 01b2 0A       		.uleb128 0xa
+ 434 01b3 1C000000 		.4byte	.LVL13
+ 435 01b7 0A030000 		.4byte	0x30a
+ 436 01bb C5010000 		.4byte	0x1c5
+ 437 01bf 09       		.uleb128 0x9
+ 438 01c0 01       		.uleb128 0x1
+ 439 01c1 50       		.byte	0x50
+ 440 01c2 01       		.uleb128 0x1
+ 441 01c3 31       		.byte	0x31
+ 442 01c4 00       		.byte	0
+ 443 01c5 07       		.uleb128 0x7
+ 444 01c6 20000000 		.4byte	.LVL14
+ 445 01ca 15030000 		.4byte	0x315
+ 446 01ce 07       		.uleb128 0x7
+ 447 01cf 24000000 		.4byte	.LVL15
+ 448 01d3 20030000 		.4byte	0x320
+ 449 01d7 07       		.uleb128 0x7
+ 450 01d8 28000000 		.4byte	.LVL16
+ 451 01dc 2B030000 		.4byte	0x32b
+ 452 01e0 07       		.uleb128 0x7
+ 453 01e1 2C000000 		.4byte	.LVL17
+ 454 01e5 36030000 		.4byte	0x336
+ 455 01e9 07       		.uleb128 0x7
+ 456 01ea 30000000 		.4byte	.LVL18
+ 457 01ee 41030000 		.4byte	0x341
+ 458 01f2 0A       		.uleb128 0xa
+ 459 01f3 36000000 		.4byte	.LVL19
+ 460 01f7 C8020000 		.4byte	0x2c8
+ 461 01fb 09020000 		.4byte	0x209
+ 462 01ff 09       		.uleb128 0x9
+ 463 0200 01       		.uleb128 0x1
+ 464 0201 50       		.byte	0x50
+ 465 0202 05       		.uleb128 0x5
+ 466 0203 0C       		.byte	0xc
+ 467 0204 02000501 		.4byte	0x1050002
+ 468 0208 00       		.byte	0
+ 469 0209 0A       		.uleb128 0xa
+ 470 020a 3C000000 		.4byte	.LVL20
+ 471 020e 4C030000 		.4byte	0x34c
+ 472 0212 1C020000 		.4byte	0x21c
+ 473 0216 09       		.uleb128 0x9
+ 474 0217 01       		.uleb128 0x1
+ 475 0218 50       		.byte	0x50
+ 476 0219 01       		.uleb128 0x1
+ 477 021a 37       		.byte	0x37
+ 478 021b 00       		.byte	0
+ 479 021c 08       		.uleb128 0x8
+ 480 021d 42000000 		.4byte	.LVL21
+ 481 0221 57030000 		.4byte	0x357
+ 482 0225 09       		.uleb128 0x9
+ 483 0226 01       		.uleb128 0x1
+ 484 0227 50       		.byte	0x50
+ 485 0228 01       		.uleb128 0x1
+ 486 0229 31       		.byte	0x31
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 11
+
+
+ 487 022a 00       		.byte	0
+ 488 022b 00       		.byte	0
+ 489 022c 0C       		.uleb128 0xc
+ 490 022d D1010000 		.4byte	.LASF21
+ 491 0231 04       		.byte	0x4
+ 492 0232 1207     		.2byte	0x712
+ 493 0234 38020000 		.4byte	0x238
+ 494 0238 0D       		.uleb128 0xd
+ 495 0239 8C000000 		.4byte	0x8c
+ 496 023d 0E       		.uleb128 0xe
+ 497 023e 98030000 		.4byte	.LASF22
+ 498 0242 01       		.byte	0x1
+ 499 0243 15       		.byte	0x15
+ 500 0244 81000000 		.4byte	0x81
+ 501 0248 05       		.uleb128 0x5
+ 502 0249 03       		.byte	0x3
+ 503 024a 00000000 		.4byte	target_console
+ 504 024e 0F       		.uleb128 0xf
+ 505 024f 81000000 		.4byte	0x81
+ 506 0253 5E020000 		.4byte	0x25e
+ 507 0257 10       		.uleb128 0x10
+ 508 0258 B3000000 		.4byte	0xb3
+ 509 025c 05       		.byte	0x5
+ 510 025d 00       		.byte	0
+ 511 025e 0E       		.uleb128 0xe
+ 512 025f 83020000 		.4byte	.LASF23
+ 513 0263 01       		.byte	0x1
+ 514 0264 16       		.byte	0x16
+ 515 0265 4E020000 		.4byte	0x24e
+ 516 0269 05       		.uleb128 0x5
+ 517 026a 03       		.byte	0x3
+ 518 026b 00000000 		.4byte	from_controller
+ 519 026f 0E       		.uleb128 0xe
+ 520 0270 96010000 		.4byte	.LASF24
+ 521 0274 01       		.byte	0x1
+ 522 0275 17       		.byte	0x17
+ 523 0276 4E020000 		.4byte	0x24e
+ 524 027a 05       		.uleb128 0x5
+ 525 027b 03       		.byte	0x3
+ 526 027c 00000000 		.4byte	to_console
+ 527 0280 0E       		.uleb128 0xe
+ 528 0281 DE010000 		.4byte	.LASF25
+ 529 0285 01       		.byte	0x1
+ 530 0286 18       		.byte	0x18
+ 531 0287 73000000 		.4byte	0x73
+ 532 028b 05       		.uleb128 0x5
+ 533 028c 03       		.byte	0x3
+ 534 028d 00000000 		.4byte	controller_byte_counter
+ 535 0291 11       		.uleb128 0x11
+ 536 0292 D4020000 		.4byte	.LASF26
+ 537 0296 D4020000 		.4byte	.LASF26
+ 538 029a 05       		.byte	0x5
+ 539 029b 6F       		.byte	0x6f
+ 540 029c 11       		.uleb128 0x11
+ 541 029d 78000000 		.4byte	.LASF27
+ 542 02a1 78000000 		.4byte	.LASF27
+ 543 02a5 06       		.byte	0x6
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 12
+
+
+ 544 02a6 3E       		.byte	0x3e
+ 545 02a7 11       		.uleb128 0x11
+ 546 02a8 63030000 		.4byte	.LASF28
+ 547 02ac 63030000 		.4byte	.LASF28
+ 548 02b0 07       		.byte	0x7
+ 549 02b1 5B       		.byte	0x5b
+ 550 02b2 11       		.uleb128 0x11
+ 551 02b3 F5020000 		.4byte	.LASF29
+ 552 02b7 F5020000 		.4byte	.LASF29
+ 553 02bb 08       		.byte	0x8
+ 554 02bc 8B       		.byte	0x8b
+ 555 02bd 11       		.uleb128 0x11
+ 556 02be 93020000 		.4byte	.LASF30
+ 557 02c2 93020000 		.4byte	.LASF30
+ 558 02c6 09       		.byte	0x9
+ 559 02c7 71       		.byte	0x71
+ 560 02c8 11       		.uleb128 0x11
+ 561 02c9 B1020000 		.4byte	.LASF31
+ 562 02cd B1020000 		.4byte	.LASF31
+ 563 02d1 0A       		.byte	0xa
+ 564 02d2 48       		.byte	0x48
+ 565 02d3 11       		.uleb128 0x11
+ 566 02d4 A7030000 		.4byte	.LASF32
+ 567 02d8 A7030000 		.4byte	.LASF32
+ 568 02dc 0B       		.byte	0xb
+ 569 02dd 4E       		.byte	0x4e
+ 570 02de 11       		.uleb128 0x11
+ 571 02df AB000000 		.4byte	.LASF33
+ 572 02e3 AB000000 		.4byte	.LASF33
+ 573 02e7 0C       		.byte	0xc
+ 574 02e8 18       		.byte	0x18
+ 575 02e9 11       		.uleb128 0x11
+ 576 02ea C6010000 		.4byte	.LASF34
+ 577 02ee C6010000 		.4byte	.LASF34
+ 578 02f2 05       		.byte	0x5
+ 579 02f3 54       		.byte	0x54
+ 580 02f4 11       		.uleb128 0x11
+ 581 02f5 8C000000 		.4byte	.LASF35
+ 582 02f9 8C000000 		.4byte	.LASF35
+ 583 02fd 05       		.byte	0x5
+ 584 02fe 75       		.byte	0x75
+ 585 02ff 11       		.uleb128 0x11
+ 586 0300 1B000000 		.4byte	.LASF36
+ 587 0304 1B000000 		.4byte	.LASF36
+ 588 0308 06       		.byte	0x6
+ 589 0309 38       		.byte	0x38
+ 590 030a 11       		.uleb128 0x11
+ 591 030b 0A000000 		.4byte	.LASF37
+ 592 030f 0A000000 		.4byte	.LASF37
+ 593 0313 06       		.byte	0x6
+ 594 0314 3A       		.byte	0x3a
+ 595 0315 11       		.uleb128 0x11
+ 596 0316 C5000000 		.4byte	.LASF38
+ 597 031a C5000000 		.4byte	.LASF38
+ 598 031e 0B       		.byte	0xb
+ 599 031f 3C       		.byte	0x3c
+ 600 0320 11       		.uleb128 0x11
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 13
+
+
+ 601 0321 11020000 		.4byte	.LASF39
+ 602 0325 11020000 		.4byte	.LASF39
+ 603 0329 0A       		.byte	0xa
+ 604 032a 3C       		.byte	0x3c
+ 605 032b 11       		.uleb128 0x11
+ 606 032c 71020000 		.4byte	.LASF40
+ 607 0330 71020000 		.4byte	.LASF40
+ 608 0334 0D       		.byte	0xd
+ 609 0335 3C       		.byte	0x3c
+ 610 0336 11       		.uleb128 0x11
+ 611 0337 2C020000 		.4byte	.LASF41
+ 612 033b 2C020000 		.4byte	.LASF41
+ 613 033f 0E       		.byte	0xe
+ 614 0340 3C       		.byte	0x3c
+ 615 0341 11       		.uleb128 0x11
+ 616 0342 E4000000 		.4byte	.LASF42
+ 617 0346 E4000000 		.4byte	.LASF42
+ 618 034a 09       		.byte	0x9
+ 619 034b 4F       		.byte	0x4f
+ 620 034c 11       		.uleb128 0x11
+ 621 034d 49030000 		.4byte	.LASF43
+ 622 0351 49030000 		.4byte	.LASF43
+ 623 0355 0D       		.byte	0xd
+ 624 0356 48       		.byte	0x48
+ 625 0357 11       		.uleb128 0x11
+ 626 0358 7D030000 		.4byte	.LASF44
+ 627 035c 7D030000 		.4byte	.LASF44
+ 628 0360 0E       		.byte	0xe
+ 629 0361 48       		.byte	0x48
+ 630 0362 00       		.byte	0
+ 631              		.section	.debug_abbrev,"",%progbits
+ 632              	.Ldebug_abbrev0:
+ 633 0000 01       		.uleb128 0x1
+ 634 0001 11       		.uleb128 0x11
+ 635 0002 01       		.byte	0x1
+ 636 0003 25       		.uleb128 0x25
+ 637 0004 0E       		.uleb128 0xe
+ 638 0005 13       		.uleb128 0x13
+ 639 0006 0B       		.uleb128 0xb
+ 640 0007 03       		.uleb128 0x3
+ 641 0008 0E       		.uleb128 0xe
+ 642 0009 1B       		.uleb128 0x1b
+ 643 000a 0E       		.uleb128 0xe
+ 644 000b 55       		.uleb128 0x55
+ 645 000c 17       		.uleb128 0x17
+ 646 000d 11       		.uleb128 0x11
+ 647 000e 01       		.uleb128 0x1
+ 648 000f 10       		.uleb128 0x10
+ 649 0010 17       		.uleb128 0x17
+ 650 0011 00       		.byte	0
+ 651 0012 00       		.byte	0
+ 652 0013 02       		.uleb128 0x2
+ 653 0014 24       		.uleb128 0x24
+ 654 0015 00       		.byte	0
+ 655 0016 0B       		.uleb128 0xb
+ 656 0017 0B       		.uleb128 0xb
+ 657 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 14
+
+
+ 658 0019 0B       		.uleb128 0xb
+ 659 001a 03       		.uleb128 0x3
+ 660 001b 0E       		.uleb128 0xe
+ 661 001c 00       		.byte	0
+ 662 001d 00       		.byte	0
+ 663 001e 03       		.uleb128 0x3
+ 664 001f 16       		.uleb128 0x16
+ 665 0020 00       		.byte	0
+ 666 0021 03       		.uleb128 0x3
+ 667 0022 0E       		.uleb128 0xe
+ 668 0023 3A       		.uleb128 0x3a
+ 669 0024 0B       		.uleb128 0xb
+ 670 0025 3B       		.uleb128 0x3b
+ 671 0026 0B       		.uleb128 0xb
+ 672 0027 49       		.uleb128 0x49
+ 673 0028 13       		.uleb128 0x13
+ 674 0029 00       		.byte	0
+ 675 002a 00       		.byte	0
+ 676 002b 04       		.uleb128 0x4
+ 677 002c 24       		.uleb128 0x24
+ 678 002d 00       		.byte	0
+ 679 002e 0B       		.uleb128 0xb
+ 680 002f 0B       		.uleb128 0xb
+ 681 0030 3E       		.uleb128 0x3e
+ 682 0031 0B       		.uleb128 0xb
+ 683 0032 03       		.uleb128 0x3
+ 684 0033 08       		.uleb128 0x8
+ 685 0034 00       		.byte	0
+ 686 0035 00       		.byte	0
+ 687 0036 05       		.uleb128 0x5
+ 688 0037 2E       		.uleb128 0x2e
+ 689 0038 01       		.byte	0x1
+ 690 0039 3F       		.uleb128 0x3f
+ 691 003a 19       		.uleb128 0x19
+ 692 003b 03       		.uleb128 0x3
+ 693 003c 0E       		.uleb128 0xe
+ 694 003d 3A       		.uleb128 0x3a
+ 695 003e 0B       		.uleb128 0xb
+ 696 003f 3B       		.uleb128 0x3b
+ 697 0040 0B       		.uleb128 0xb
+ 698 0041 27       		.uleb128 0x27
+ 699 0042 19       		.uleb128 0x19
+ 700 0043 11       		.uleb128 0x11
+ 701 0044 01       		.uleb128 0x1
+ 702 0045 12       		.uleb128 0x12
+ 703 0046 06       		.uleb128 0x6
+ 704 0047 40       		.uleb128 0x40
+ 705 0048 18       		.uleb128 0x18
+ 706 0049 9742     		.uleb128 0x2117
+ 707 004b 19       		.uleb128 0x19
+ 708 004c 01       		.uleb128 0x1
+ 709 004d 13       		.uleb128 0x13
+ 710 004e 00       		.byte	0
+ 711 004f 00       		.byte	0
+ 712 0050 06       		.uleb128 0x6
+ 713 0051 34       		.uleb128 0x34
+ 714 0052 00       		.byte	0
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 15
+
+
+ 715 0053 03       		.uleb128 0x3
+ 716 0054 0E       		.uleb128 0xe
+ 717 0055 3A       		.uleb128 0x3a
+ 718 0056 0B       		.uleb128 0xb
+ 719 0057 3B       		.uleb128 0x3b
+ 720 0058 0B       		.uleb128 0xb
+ 721 0059 49       		.uleb128 0x49
+ 722 005a 13       		.uleb128 0x13
+ 723 005b 02       		.uleb128 0x2
+ 724 005c 17       		.uleb128 0x17
+ 725 005d 00       		.byte	0
+ 726 005e 00       		.byte	0
+ 727 005f 07       		.uleb128 0x7
+ 728 0060 898201   		.uleb128 0x4109
+ 729 0063 00       		.byte	0
+ 730 0064 11       		.uleb128 0x11
+ 731 0065 01       		.uleb128 0x1
+ 732 0066 31       		.uleb128 0x31
+ 733 0067 13       		.uleb128 0x13
+ 734 0068 00       		.byte	0
+ 735 0069 00       		.byte	0
+ 736 006a 08       		.uleb128 0x8
+ 737 006b 898201   		.uleb128 0x4109
+ 738 006e 01       		.byte	0x1
+ 739 006f 11       		.uleb128 0x11
+ 740 0070 01       		.uleb128 0x1
+ 741 0071 31       		.uleb128 0x31
+ 742 0072 13       		.uleb128 0x13
+ 743 0073 00       		.byte	0
+ 744 0074 00       		.byte	0
+ 745 0075 09       		.uleb128 0x9
+ 746 0076 8A8201   		.uleb128 0x410a
+ 747 0079 00       		.byte	0
+ 748 007a 02       		.uleb128 0x2
+ 749 007b 18       		.uleb128 0x18
+ 750 007c 9142     		.uleb128 0x2111
+ 751 007e 18       		.uleb128 0x18
+ 752 007f 00       		.byte	0
+ 753 0080 00       		.byte	0
+ 754 0081 0A       		.uleb128 0xa
+ 755 0082 898201   		.uleb128 0x4109
+ 756 0085 01       		.byte	0x1
+ 757 0086 11       		.uleb128 0x11
+ 758 0087 01       		.uleb128 0x1
+ 759 0088 31       		.uleb128 0x31
+ 760 0089 13       		.uleb128 0x13
+ 761 008a 01       		.uleb128 0x1
+ 762 008b 13       		.uleb128 0x13
+ 763 008c 00       		.byte	0
+ 764 008d 00       		.byte	0
+ 765 008e 0B       		.uleb128 0xb
+ 766 008f 2E       		.uleb128 0x2e
+ 767 0090 01       		.byte	0x1
+ 768 0091 3F       		.uleb128 0x3f
+ 769 0092 19       		.uleb128 0x19
+ 770 0093 03       		.uleb128 0x3
+ 771 0094 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 16
+
+
+ 772 0095 3A       		.uleb128 0x3a
+ 773 0096 0B       		.uleb128 0xb
+ 774 0097 3B       		.uleb128 0x3b
+ 775 0098 0B       		.uleb128 0xb
+ 776 0099 27       		.uleb128 0x27
+ 777 009a 19       		.uleb128 0x19
+ 778 009b 49       		.uleb128 0x49
+ 779 009c 13       		.uleb128 0x13
+ 780 009d 8701     		.uleb128 0x87
+ 781 009f 19       		.uleb128 0x19
+ 782 00a0 11       		.uleb128 0x11
+ 783 00a1 01       		.uleb128 0x1
+ 784 00a2 12       		.uleb128 0x12
+ 785 00a3 06       		.uleb128 0x6
+ 786 00a4 40       		.uleb128 0x40
+ 787 00a5 18       		.uleb128 0x18
+ 788 00a6 9742     		.uleb128 0x2117
+ 789 00a8 19       		.uleb128 0x19
+ 790 00a9 01       		.uleb128 0x1
+ 791 00aa 13       		.uleb128 0x13
+ 792 00ab 00       		.byte	0
+ 793 00ac 00       		.byte	0
+ 794 00ad 0C       		.uleb128 0xc
+ 795 00ae 34       		.uleb128 0x34
+ 796 00af 00       		.byte	0
+ 797 00b0 03       		.uleb128 0x3
+ 798 00b1 0E       		.uleb128 0xe
+ 799 00b2 3A       		.uleb128 0x3a
+ 800 00b3 0B       		.uleb128 0xb
+ 801 00b4 3B       		.uleb128 0x3b
+ 802 00b5 05       		.uleb128 0x5
+ 803 00b6 49       		.uleb128 0x49
+ 804 00b7 13       		.uleb128 0x13
+ 805 00b8 3F       		.uleb128 0x3f
+ 806 00b9 19       		.uleb128 0x19
+ 807 00ba 3C       		.uleb128 0x3c
+ 808 00bb 19       		.uleb128 0x19
+ 809 00bc 00       		.byte	0
+ 810 00bd 00       		.byte	0
+ 811 00be 0D       		.uleb128 0xd
+ 812 00bf 35       		.uleb128 0x35
+ 813 00c0 00       		.byte	0
+ 814 00c1 49       		.uleb128 0x49
+ 815 00c2 13       		.uleb128 0x13
+ 816 00c3 00       		.byte	0
+ 817 00c4 00       		.byte	0
+ 818 00c5 0E       		.uleb128 0xe
+ 819 00c6 34       		.uleb128 0x34
+ 820 00c7 00       		.byte	0
+ 821 00c8 03       		.uleb128 0x3
+ 822 00c9 0E       		.uleb128 0xe
+ 823 00ca 3A       		.uleb128 0x3a
+ 824 00cb 0B       		.uleb128 0xb
+ 825 00cc 3B       		.uleb128 0x3b
+ 826 00cd 0B       		.uleb128 0xb
+ 827 00ce 49       		.uleb128 0x49
+ 828 00cf 13       		.uleb128 0x13
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 17
+
+
+ 829 00d0 3F       		.uleb128 0x3f
+ 830 00d1 19       		.uleb128 0x19
+ 831 00d2 02       		.uleb128 0x2
+ 832 00d3 18       		.uleb128 0x18
+ 833 00d4 00       		.byte	0
+ 834 00d5 00       		.byte	0
+ 835 00d6 0F       		.uleb128 0xf
+ 836 00d7 01       		.uleb128 0x1
+ 837 00d8 01       		.byte	0x1
+ 838 00d9 49       		.uleb128 0x49
+ 839 00da 13       		.uleb128 0x13
+ 840 00db 01       		.uleb128 0x1
+ 841 00dc 13       		.uleb128 0x13
+ 842 00dd 00       		.byte	0
+ 843 00de 00       		.byte	0
+ 844 00df 10       		.uleb128 0x10
+ 845 00e0 21       		.uleb128 0x21
+ 846 00e1 00       		.byte	0
+ 847 00e2 49       		.uleb128 0x49
+ 848 00e3 13       		.uleb128 0x13
+ 849 00e4 2F       		.uleb128 0x2f
+ 850 00e5 0B       		.uleb128 0xb
+ 851 00e6 00       		.byte	0
+ 852 00e7 00       		.byte	0
+ 853 00e8 11       		.uleb128 0x11
+ 854 00e9 2E       		.uleb128 0x2e
+ 855 00ea 00       		.byte	0
+ 856 00eb 3F       		.uleb128 0x3f
+ 857 00ec 19       		.uleb128 0x19
+ 858 00ed 3C       		.uleb128 0x3c
+ 859 00ee 19       		.uleb128 0x19
+ 860 00ef 6E       		.uleb128 0x6e
+ 861 00f0 0E       		.uleb128 0xe
+ 862 00f1 03       		.uleb128 0x3
+ 863 00f2 0E       		.uleb128 0xe
+ 864 00f3 3A       		.uleb128 0x3a
+ 865 00f4 0B       		.uleb128 0xb
+ 866 00f5 3B       		.uleb128 0x3b
+ 867 00f6 0B       		.uleb128 0xb
+ 868 00f7 00       		.byte	0
+ 869 00f8 00       		.byte	0
+ 870 00f9 00       		.byte	0
+ 871              		.section	.debug_loc,"",%progbits
+ 872              	.Ldebug_loc0:
+ 873              	.LLST0:
+ 874 0000 08000000 		.4byte	.LVL1
+ 875 0004 16000000 		.4byte	.LVL3
+ 876 0008 0100     		.2byte	0x1
+ 877 000a 54       		.byte	0x54
+ 878 000b 16000000 		.4byte	.LVL3
+ 879 000f 20000000 		.4byte	.LFE63
+ 880 0013 0500     		.2byte	0x5
+ 881 0015 72       		.byte	0x72
+ 882 0016 00       		.sleb128 0
+ 883 0017 73       		.byte	0x73
+ 884 0018 00       		.sleb128 0
+ 885 0019 22       		.byte	0x22
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 18
+
+
+ 886 001a 00000000 		.4byte	0
+ 887 001e 00000000 		.4byte	0
+ 888              		.section	.debug_aranges,"",%progbits
+ 889 0000 34000000 		.4byte	0x34
+ 890 0004 0200     		.2byte	0x2
+ 891 0006 00000000 		.4byte	.Ldebug_info0
+ 892 000a 04       		.byte	0x4
+ 893 000b 00       		.byte	0
+ 894 000c 0000     		.2byte	0
+ 895 000e 0000     		.2byte	0
+ 896 0010 00000000 		.4byte	.LFB63
+ 897 0014 20000000 		.4byte	.LFE63-.LFB63
+ 898 0018 00000000 		.4byte	.LFB64
+ 899 001c 10000000 		.4byte	.LFE64-.LFB64
+ 900 0020 00000000 		.4byte	.LFB65
+ 901 0024 18000000 		.4byte	.LFE65-.LFB65
+ 902 0028 00000000 		.4byte	.LFB66
+ 903 002c 58000000 		.4byte	.LFE66-.LFB66
+ 904 0030 00000000 		.4byte	0
+ 905 0034 00000000 		.4byte	0
+ 906              		.section	.debug_ranges,"",%progbits
+ 907              	.Ldebug_ranges0:
+ 908 0000 00000000 		.4byte	.LFB63
+ 909 0004 20000000 		.4byte	.LFE63
+ 910 0008 00000000 		.4byte	.LFB64
+ 911 000c 10000000 		.4byte	.LFE64
+ 912 0010 00000000 		.4byte	.LFB65
+ 913 0014 18000000 		.4byte	.LFE65
+ 914 0018 00000000 		.4byte	.LFB66
+ 915 001c 58000000 		.4byte	.LFE66
+ 916 0020 00000000 		.4byte	0
+ 917 0024 00000000 		.4byte	0
+ 918              		.section	.debug_line,"",%progbits
+ 919              	.Ldebug_line0:
+ 920 0000 4D020000 		.section	.debug_str,"MS",%progbits,1
+ 920      0200F401 
+ 920      00000201 
+ 920      FB0E0D00 
+ 920      01010101 
+ 921              	.LASF4:
+ 922 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 922      6E74385F 
+ 922      7400
+ 923              	.LASF37:
+ 924 000a 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 924      57726974 
+ 924      65436F6E 
+ 924      74726F6C 
+ 924      00
+ 925              	.LASF36:
+ 926 001b 4C43445F 		.ascii	"LCD_Start\000"
+ 926      53746172 
+ 926      7400
+ 927              	.LASF47:
+ 928 0025 433A5C55 		.ascii	"C:\\Users\\Walaa\\Documents\\PSoC Creator\\unicon_w"
+ 928      73657273 
+ 928      5C57616C 
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 19
+
+
+ 928      61615C44 
+ 928      6F63756D 
+ 929 0053 6F726B73 		.ascii	"orkspace\\PSoC_Unicon.cydsn\000"
+ 929      70616365 
+ 929      5C50536F 
+ 929      435F556E 
+ 929      69636F6E 
+ 930              	.LASF5:
+ 931 006e 5F5F696E 		.ascii	"__int32_t\000"
+ 931      7433325F 
+ 931      7400
+ 932              	.LASF27:
+ 933 0078 4C43445F 		.ascii	"LCD_PutChar\000"
+ 933      50757443 
+ 933      68617200 
+ 934              	.LASF11:
+ 935 0084 75696E74 		.ascii	"uint8_t\000"
+ 935      385F7400 
+ 936              	.LASF35:
+ 937 008c 55415254 		.ascii	"UART_ClearRxBuffer\000"
+ 937      5F436C65 
+ 937      61725278 
+ 937      42756666 
+ 937      657200
+ 938              	.LASF18:
+ 939 009f 55415254 		.ascii	"UART_RX_INT\000"
+ 939      5F52585F 
+ 939      494E5400 
+ 940              	.LASF33:
+ 941 00ab 75617274 		.ascii	"uart_rx_int_StartEx\000"
+ 941      5F72785F 
+ 941      696E745F 
+ 941      53746172 
+ 941      74457800 
+ 942              	.LASF13:
+ 943 00bf 666C6F61 		.ascii	"float\000"
+ 943      7400
+ 944              	.LASF38:
+ 945 00c5 6E36345F 		.ascii	"n64_ShiftReg_buttonstate_Start\000"
+ 945      53686966 
+ 945      74526567 
+ 945      5F627574 
+ 945      746F6E73 
+ 946              	.LASF42:
+ 947 00e4 636F756E 		.ascii	"count_time_to_transmit_Start\000"
+ 947      745F7469 
+ 947      6D655F74 
+ 947      6F5F7472 
+ 947      616E736D 
+ 948              	.LASF45:
+ 949 0101 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 949      43313120 
+ 949      352E342E 
+ 949      31203230 
+ 949      31363036 
+ 950 0134 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 950      20726576 
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 20
+
+
+ 950      6973696F 
+ 950      6E203233 
+ 950      37373135 
+ 951 0167 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 951      66756E63 
+ 951      74696F6E 
+ 951      2D736563 
+ 951      74696F6E 
+ 952              	.LASF48:
+ 953 018f 52784461 		.ascii	"RxData\000"
+ 953      746100
+ 954              	.LASF24:
+ 955 0196 746F5F63 		.ascii	"to_console\000"
+ 955      6F6E736F 
+ 955      6C6500
+ 956              	.LASF7:
+ 957 01a1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 957      20756E73 
+ 957      69676E65 
+ 957      6420696E 
+ 957      7400
+ 958              	.LASF3:
+ 959 01b3 73686F72 		.ascii	"short unsigned int\000"
+ 959      7420756E 
+ 959      7369676E 
+ 959      65642069 
+ 959      6E7400
+ 960              	.LASF34:
+ 961 01c6 55415254 		.ascii	"UART_Start\000"
+ 961      5F537461 
+ 961      727400
+ 962              	.LASF21:
+ 963 01d1 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 963      52784275 
+ 963      66666572 
+ 963      00
+ 964              	.LASF25:
+ 965 01de 636F6E74 		.ascii	"controller_byte_counter\000"
+ 965      726F6C6C 
+ 965      65725F62 
+ 965      7974655F 
+ 965      636F756E 
+ 966              	.LASF20:
+ 967 01f6 636F6D6D 		.ascii	"comm_state_isr\000"
+ 967      5F737461 
+ 967      74655F69 
+ 967      737200
+ 968              	.LASF14:
+ 969 0205 646F7562 		.ascii	"double\000"
+ 969      6C6500
+ 970              	.LASF49:
+ 971 020c 6D61696E 		.ascii	"main\000"
+ 971      00
+ 972              	.LASF39:
+ 973 0211 6E36345F 		.ascii	"n64_ShiftReg_commack_Start\000"
+ 973      53686966 
+ 973      74526567 
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 21
+
+
+ 973      5F636F6D 
+ 973      6D61636B 
+ 974              	.LASF41:
+ 975 022c 6E36345F 		.ascii	"n64_zero_bit_Start\000"
+ 975      7A65726F 
+ 975      5F626974 
+ 975      5F537461 
+ 975      727400
+ 976              	.LASF1:
+ 977 023f 756E7369 		.ascii	"unsigned char\000"
+ 977      676E6564 
+ 977      20636861 
+ 977      7200
+ 978              	.LASF10:
+ 979 024d 756E7369 		.ascii	"unsigned int\000"
+ 979      676E6564 
+ 979      20696E74 
+ 979      00
+ 980              	.LASF9:
+ 981 025a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 981      206C6F6E 
+ 981      6720756E 
+ 981      7369676E 
+ 981      65642069 
+ 982              	.LASF40:
+ 983 0271 6E36345F 		.ascii	"n64_one_bit_Start\000"
+ 983      6F6E655F 
+ 983      6269745F 
+ 983      53746172 
+ 983      7400
+ 984              	.LASF23:
+ 985 0283 66726F6D 		.ascii	"from_controller\000"
+ 985      5F636F6E 
+ 985      74726F6C 
+ 985      6C657200 
+ 986              	.LASF30:
+ 987 0293 636F756E 		.ascii	"count_time_to_transmit_Enable\000"
+ 987      745F7469 
+ 987      6D655F74 
+ 987      6F5F7472 
+ 987      616E736D 
+ 988              	.LASF31:
+ 989 02b1 6E36345F 		.ascii	"n64_ShiftReg_commack_WriteRegValue\000"
+ 989      53686966 
+ 989      74526567 
+ 989      5F636F6D 
+ 989      6D61636B 
+ 990              	.LASF26:
+ 991 02d4 55415254 		.ascii	"UART_ReadRxData\000"
+ 991      5F526561 
+ 991      64527844 
+ 991      61746100 
+ 992              	.LASF12:
+ 993 02e4 696E7433 		.ascii	"int32_t\000"
+ 993      325F7400 
+ 994              	.LASF17:
+ 995 02ec 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 22
+
+
+ 995      74797065 
+ 995      00
+ 996              	.LASF29:
+ 997 02f5 54696D65 		.ascii	"Timer_2_Enable\000"
+ 997      725F325F 
+ 997      456E6162 
+ 997      6C6500
+ 998              	.LASF8:
+ 999 0304 6C6F6E67 		.ascii	"long long int\000"
+ 999      206C6F6E 
+ 999      6720696E 
+ 999      7400
+ 1000              	.LASF46:
+ 1001 0312 6D61696E 		.ascii	"main.c\000"
+ 1001      2E6300
+ 1002              	.LASF15:
+ 1003 0319 63686172 		.ascii	"char\000"
+ 1003      00
+ 1004              	.LASF2:
+ 1005 031e 73686F72 		.ascii	"short int\000"
+ 1005      7420696E 
+ 1005      7400
+ 1006              	.LASF6:
+ 1007 0328 6C6F6E67 		.ascii	"long int\000"
+ 1007      20696E74 
+ 1007      00
+ 1008              	.LASF16:
+ 1009 0331 6C6F6E67 		.ascii	"long double\000"
+ 1009      20646F75 
+ 1009      626C6500 
+ 1010              	.LASF0:
+ 1011 033d 7369676E 		.ascii	"signed char\000"
+ 1011      65642063 
+ 1011      68617200 
+ 1012              	.LASF43:
+ 1013 0349 6E36345F 		.ascii	"n64_one_bit_WriteRegValue\000"
+ 1013      6F6E655F 
+ 1013      6269745F 
+ 1013      57726974 
+ 1013      65526567 
+ 1014              	.LASF28:
+ 1015 0363 54696D65 		.ascii	"Timer_1_Stop\000"
+ 1015      725F315F 
+ 1015      53746F70 
+ 1015      00
+ 1016              	.LASF19:
+ 1017 0370 6E36345F 		.ascii	"n64_init_isr\000"
+ 1017      696E6974 
+ 1017      5F697372 
+ 1017      00
+ 1018              	.LASF44:
+ 1019 037d 6E36345F 		.ascii	"n64_zero_bit_WriteRegValue\000"
+ 1019      7A65726F 
+ 1019      5F626974 
+ 1019      5F577269 
+ 1019      74655265 
+ 1020              	.LASF22:
+ARM GAS  C:\Users\Walaa\AppData\Local\Temp\cc5NSdet.s 			page 23
+
+
+ 1021 0398 74617267 		.ascii	"target_console\000"
+ 1021      65745F63 
+ 1021      6F6E736F 
+ 1021      6C6500
+ 1022              	.LASF32:
+ 1023 03a7 6E36345F 		.ascii	"n64_ShiftReg_buttonstate_WriteData\000"
+ 1023      53686966 
+ 1023      74526567 
+ 1023      5F627574 
+ 1023      746F6E73 
+ 1024              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

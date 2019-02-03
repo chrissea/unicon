@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\TopDesign</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Pins</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Analog</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Clocks</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Interrupts</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\DMA</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\System</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Directives</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Flash Security</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\EEPROM</v>
+<v>unicon_workspace\PSoC_Unicon\Header Files</v>
+<v>unicon_workspace\PSoC_Unicon\Header Files\cyapicallbacks.h</v>
+<v>unicon_workspace\PSoC_Unicon\Source Files</v>
+<v>unicon_workspace\PSoC_Unicon\Source Files\main.c</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_ShiftReg_commack</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Pins</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Analog</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Clocks</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Interrupts</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\DMA</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\System</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Directives</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\Flash Security</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.cydwr\EEPROM</v>
+<v>unicon_workspace\PSoC_Unicon\Header Files</v>
+<v>unicon_workspace\PSoC_Unicon\Header Files\cyapicallbacks.h</v>
+<v>unicon_workspace\PSoC_Unicon\Source Files</v>
+<v>unicon_workspace\PSoC_Unicon\Source Files\main.c</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\Console_2</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\count_time_to_transmit</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\cy_boot</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\LCD</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\LCD_LCDPort</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_comm_state_isr</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_init_isr</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_one_bit</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\N64_Shift_Clock</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_ShiftReg_buttonstate</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_ShiftReg_commack</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_ShiftReg_commack\n64_ShiftReg_commack.c</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_ShiftReg_commack\n64_ShiftReg_commack.h</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_ShiftReg_commack\n64_ShiftReg_commack_PM.c</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\n64_zero_bit</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\System_Clock_Slow</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\Timer_1</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\Timer_2</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\UART</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\UART_IntClock</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\uart_rx_int</v>
+<v>unicon_workspace\PSoC_Unicon\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\TopDesign</v>
+<v>unicon_workspace\PSoC_Unicon\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\TopDesign</v>
+<v>unicon_workspace\PSoC_Unicon\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Console_2.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\count_time_to_transmit.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\count_time_to_transmit_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_comm_state_isr.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_init_isr.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_one_bit.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_one_bit_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\N64_Shift_Clock.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_buttonstate.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_buttonstate_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_commack.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_commack_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_zero_bit.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_zero_bit_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\System_Clock_Slow.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_2.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_2_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\uart_rx_int.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\PSoC_Unicon.elf</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\PSoC_Unicon.hex</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\PSoC_Unicon.map</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.gpdsc</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon.rpt</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC_Unicon_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Console_2.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\count_time_to_transmit.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\count_time_to_transmit_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_comm_state_isr.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_init_isr.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_one_bit.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_one_bit_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\N64_Shift_Clock.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_buttonstate.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_buttonstate_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_commack.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_ShiftReg_commack_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_zero_bit.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\n64_zero_bit_PM.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\System_Clock_Slow.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1.lst</v>
+<v>unicon_workspace\PSoC_Unicon\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1_PM.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC 5LP Architecture TRM</v>
+<v>unicon_workspace\PSoC_Unicon\CY8C52LP Family Datasheet</v>
+<v>unicon_workspace\PSoC_Unicon\System Reference Guides</v>
+<v>unicon_workspace\PSoC_Unicon\System Reference Guides\cy_boot_v5_70</v>
+<v>unicon_workspace\PSoC_Unicon\and_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\CharLCD_v2_20.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\Counter_v3_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_bufoe_v1_10.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_clock_v2_20</v>
+<v>unicon_workspace\PSoC_Unicon\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_constant_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_dffe_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_isr_v1_70</v>
+<v>unicon_workspace\PSoC_Unicon\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_pins_v2_20</v>
+<v>unicon_workspace\PSoC_Unicon\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_tff_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\cy_tff_v1_0\cy_tff_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cydff_v1_30</v>
+<v>unicon_workspace\PSoC_Unicon\cydff_v1_30\cydff_v1_30.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\EdgeDetect_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\FreqDiv_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\mux_v1_10</v>
+<v>unicon_workspace\PSoC_Unicon\mux_v1_10\mux_v1_10.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\not_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\not_v1_0\not_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\or_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\or_v1_0\or_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\ShiftReg_v2_30</v>
+<v>unicon_workspace\PSoC_Unicon\ShiftReg_v2_30\ShiftReg_v2_30.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\Timer_v2_80</v>
+<v>unicon_workspace\PSoC_Unicon\Timer_v2_80\Timer_v2_80.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>unicon_workspace</v>
+<v>unicon_workspace\PSoC_Unicon</v>
+<v>unicon_workspace\PSoC_Unicon\PSoC 5LP Architecture TRM</v>
+<v>unicon_workspace\PSoC_Unicon\CY8C52LP Family Datasheet</v>
+<v>unicon_workspace\PSoC_Unicon\System Reference Guides</v>
+<v>unicon_workspace\PSoC_Unicon\System Reference Guides\cy_boot_v5_70</v>
+<v>unicon_workspace\PSoC_Unicon\and_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\CharLCD_v2_20.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\Counter_v3_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_bufoe_v1_10.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_clock_v2_20</v>
+<v>unicon_workspace\PSoC_Unicon\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_constant_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_dffe_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_isr_v1_70</v>
+<v>unicon_workspace\PSoC_Unicon\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_pins_v2_20</v>
+<v>unicon_workspace\PSoC_Unicon\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cy_tff_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\cy_tff_v1_0\cy_tff_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\cydff_v1_30</v>
+<v>unicon_workspace\PSoC_Unicon\cydff_v1_30\cydff_v1_30.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\EdgeDetect_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\FreqDiv_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\mux_v1_10</v>
+<v>unicon_workspace\PSoC_Unicon\mux_v1_10\mux_v1_10.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\not_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\not_v1_0\not_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\or_v1_0</v>
+<v>unicon_workspace\PSoC_Unicon\or_v1_0\or_v1_0.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\ShiftReg_v2_30</v>
+<v>unicon_workspace\PSoC_Unicon\ShiftReg_v2_30\ShiftReg_v2_30.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\Timer_v2_80</v>
+<v>unicon_workspace\PSoC_Unicon\Timer_v2_80\Timer_v2_80.pdf</v>
+<v>unicon_workspace\PSoC_Unicon\UART_v2_50.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs />
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

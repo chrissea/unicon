@@ -1,0 +1,122 @@
+# PSoC_Unicon
+# 2019-02-01 22:38:24Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+dont_use_location cancell -1 -1 0
+dont_use_location comparatorcell -1 -1 1
+dont_use_location comparatorcell -1 -1 3
+dont_use_location dfbcell -1 -1 0
+dont_use_location sccell -1 -1 0
+dont_use_location sccell -1 -1 1
+dont_use_location sccell -1 -1 2
+dont_use_location sccell -1 -1 3
+dont_use_location vidaccell -1 -1 1
+dont_use_location vidaccell -1 -1 2
+dont_use_location vidaccell -1 -1 3
+dont_use_location sarcell -1 -1 1
+dont_use_location abufcell -1 -1 0
+dont_use_location abufcell -1 -1 2
+dont_use_location abufcell -1 -1 1
+dont_use_location abufcell -1 -1 3
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "From_ESP(0)" iocell 3 7
+set_io "To_ESP(0)" iocell 3 6
+set_io "\LCD:LCDPort(0)\" iocell 2 0
+set_io "\LCD:LCDPort(1)\" iocell 2 1
+set_io "\LCD:LCDPort(2)\" iocell 2 2
+set_io "\LCD:LCDPort(3)\" iocell 2 3
+set_io "\LCD:LCDPort(4)\" iocell 2 4
+set_io "\LCD:LCDPort(5)\" iocell 2 5
+set_io "\LCD:LCDPort(6)\" iocell 2 6
+set_io "Console_2(0)" iocell 0 0
+set_location "Net_943" 2 3 1 3
+set_location "Net_108" 3 3 0 2
+set_location "\UART:BUART:counter_load_not\" 3 5 1 0
+set_location "\UART:BUART:tx_status_0\" 3 4 1 1
+set_location "\UART:BUART:tx_status_2\" 3 4 1 2
+set_location "\UART:BUART:rx_counter_load\" 3 2 0 1
+set_location "\UART:BUART:rx_postpoll\" 3 0 1 3
+set_location "\UART:BUART:rx_status_4\" 3 0 0 2
+set_location "\UART:BUART:rx_status_5\" 3 0 1 0
+set_location "\n64_ShiftReg_commack:bSR:status_0\" 2 2 0 1
+set_location "start_rcv" 2 5 1 3
+set_location "Net_1395" 2 4 1 2
+set_location "n64_init_isr" interrupt -1 -1 17
+set_location "__ONE__" 1 0 1 2
+set_location "\UART:BUART:sTX:TxShifter:u0\" 3 4 2
+set_location "__ZERO__" 0 2 1 2
+set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" 3 5 2
+set_location "\UART:BUART:sTX:TxSts\" 3 4 4
+set_location "\UART:BUART:sRX:RxShifter:u0\" 3 0 2
+set_location "\UART:BUART:sRX:RxBitCounter\" 3 1 7
+set_location "\UART:BUART:sRX:RxSts\" 3 0 4
+set_location "uart_rx_int" interrupt -1 -1 1
+set_location "\n64_one_bit:bSR:SyncCtl:CtrlReg\" 2 5 6
+set_location "\n64_one_bit:bSR:StsReg\" 2 5 4
+set_location "\n64_one_bit:bSR:sC8:BShiftRegDp:u0\" 2 5 2
+set_location "\n64_zero_bit:bSR:SyncCtl:CtrlReg\" 2 0 6
+set_location "\n64_zero_bit:bSR:StsReg\" 2 0 4
+set_location "\n64_zero_bit:bSR:sC8:BShiftRegDp:u0\" 2 0 2
+set_location "\n64_ShiftReg_commack:bSR:SyncCtl:CtrlReg\" 2 3 6
+set_location "\n64_ShiftReg_commack:bSR:StsReg\" 2 2 4
+set_location "\n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u0\" 2 3 2
+set_location "\n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u1\" 3 3 2
+set_location "\n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u2\" 3 2 2
+set_location "\n64_ShiftReg_commack:bSR:sC32:BShiftRegDp:u3\" 2 2 2
+set_location "\n64_ShiftReg_buttonstate:bSR:SyncCtl:CtrlReg\" 1 1 6
+set_location "\n64_ShiftReg_buttonstate:bSR:StsReg\" 0 1 4
+set_location "\n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u0\" 3 1 2
+set_location "\n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u1\" 2 1 2
+set_location "\n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u2\" 1 1 2
+set_location "\n64_ShiftReg_buttonstate:bSR:sC32:BShiftRegDp:u3\" 0 1 2
+set_location "n64_comm_state_isr" interrupt -1 -1 0
+set_location "\count_time_to_transmit:CounterHW\" timercell -1 -1 2
+set_location "\Timer_1:TimerHW\" timercell -1 -1 0
+set_location "\Timer_2:TimerHW\" timercell -1 -1 1
+set_location "cydff_7" 2 3 1 1
+set_location "cydff_6" 3 4 0 0
+set_location "n64_bit_clk" 2 5 0 0
+set_location "cydff_5" 3 3 1 1
+set_location "cydff_1" 3 4 0 1
+set_location "cydff_2" 3 4 0 2
+set_location "cydff_3" 3 3 1 0
+set_location "cydff_4" 3 3 1 2
+set_location "cydff_15" 2 5 1 1
+set_location "cy_tff_2" 2 3 0 0
+set_location "cydff_10" 2 4 0 0
+set_location "\UART:BUART:txn\" 3 4 1 0
+set_location "\UART:BUART:tx_state_1\" 3 5 1 2
+set_location "\UART:BUART:tx_state_0\" 3 5 0 0
+set_location "\UART:BUART:tx_state_2\" 3 5 1 1
+set_location "\UART:BUART:tx_bitclk\" 3 5 0 1
+set_location "\UART:BUART:tx_ctrl_mark_last\" 3 1 0 2
+set_location "\UART:BUART:rx_state_0\" 3 1 0 0
+set_location "\UART:BUART:rx_load_fifo\" 3 1 1 3
+set_location "\UART:BUART:rx_state_3\" 3 2 1 2
+set_location "\UART:BUART:rx_state_2\" 3 1 0 3
+set_location "\UART:BUART:rx_bitclk_enable\" 3 1 1 1
+set_location "\UART:BUART:rx_state_stop1_reg\" 3 0 0 3
+set_location "\UART:BUART:pollcount_1\" 3 0 0 0
+set_location "\UART:BUART:pollcount_0\" 3 0 1 2
+set_location "\UART:BUART:rx_status_3\" 3 0 0 1
+set_location "\UART:BUART:rx_last\" 3 1 1 0
+set_location "cydff_14" 3 2 0 0
+set_location "cydff_8" 2 3 1 0
+set_location "\N64_Bit_Clock:not_last_reset\" 2 5 0 3
+set_location "\N64_Bit_Clock:count_1\" 2 5 0 1
+set_location "\N64_Bit_Clock:count_0\" 2 5 0 2
+set_location "\n64_ShiftReg_commack:bSR:load_reg\" 2 2 1 1
+set_location "\detect_comm_state_1:last\" 2 4 0 1
+set_location "cydff_16" 2 2 0 0
+set_location "cydff_9" 2 3 1 2
+set_location "tmpOE__bufoe_3_net_0" 3 4 0 3
+set_location "switch_msg" 3 3 0 0
+set_location "Net_1204" 2 2 1 3
+set_location "Net_1202" 2 2 1 2
+set_location "Net_1175" 2 4 1 0
+set_location "Net_1177" 2 4 0 3
